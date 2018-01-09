@@ -1,0 +1,201 @@
+﻿@using Begonia.Toyota.WebSite.Enums;
+@model Begonia.Toyota.WebSite.Models.IndexVideoModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentController = string.Empty;
+    if (ViewContext.RouteData.Values["Controller"] != null)
+    {
+        CurrentController = ViewContext.RouteData.Values["Controller"].ToString();
+    }
+}
+
+<script type="text/javascript">
+   function check() {
+       if ($("#VideoTitle").val() != "" && $("#VideoIntro").val() != "" && $("#ReviewUrl").val() != "" && $("#FullUrl").val() != "") {
+           goSubmit();
+       } else {
+           alert("請填入必填項目");
+       }
+   }
+</script>
+<article class="BOX" id="CONTENT_1">
+    @{
+        Html.RenderPartial("_MenuPartial");
+    }
+    
+    <article id="RIGHT_BOX" class="CONTENT_R">
+        <article id="POS">
+            您當前位置是：<a href="#">首頁管理</a> > <a href="~/IndexVideo/List">首頁影片</a> > <span class="NOW">新增</span>
+        </article>
+        <section id="R_CONTENT_BOX">
+            <span class="POINT">表示必填項目</span>
+            <br />
+            <span style="color:red">
+                @Html.ValidationMessage("message")
+            </span>
+            @using (Html.BeginForm(Model.Mode == EditPageMode.Create ? "create" : "update",
+                CurrentController, new { page = Model.page }, FormMethod.Post,
+                new { enctype = "multipart/form-data", @class = "pure-form pure-form-aligned", id = "f1" }))
+            {
+                @Html.HiddenFor(p => p.Id)
+                @Html.HiddenFor(p => p.CreateId)
+                @Html.HiddenFor(p => p.CreateTime)
+    @Html.HiddenFor(p => p.SStatus)
+    @Html.HiddenFor(p => p.Search)
+
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab1" style="border-top: 1px #cecdcd solid;">
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">影片標題：</span></td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.VideoTitle, new { css = "t3", size="50", maxlength = 50 })
+                            @Html.ValidationMessageFor(p => p.VideoTitle, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">影片簡述：</span></td>
+                        <td class="table1_text">
+                            @Html.TextAreaFor(p => p.VideoIntro, new { css = "t3", style = "width: 450px;height: 200px", maxlength = 256 })
+                            @Html.ValidationMessageFor(p => p.VideoIntro, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">預覽影片連結：</span></td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.ReviewUrl, new { css = "t3", size = "50" })
+                            @Html.ValidationMessageFor(p => p.ReviewUrl, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">完整影片連結：</span></td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.FullUrl, new { css = "t3", size = "50" })
+                            @Html.ValidationMessageFor(p => p.FullUrl, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">圖片(mobile)「只於手機版上顯示」、建議尺寸800x600：</span></td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.MobileImg))
+                            {
+                                <a id="imgA" href="@Url.Content("~/File/Get?FileId=" + Model.MobileImg)" target="_blank">
+                                    <img id="img1" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.MobileImg)" />
+                                </a>
+                            }
+                            <img id="img1" style='@(!string.IsNullOrEmpty(Model.MobileImg) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile" name="ImgFile" onchange="readURL(this)" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimg('ImgFile', 'img1')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.MobileImg)
+                            @Html.ValidationMessageFor(p => p.MobileImg, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="right" class="table1_title onn2"><span class="TP">狀態：</span></td>
+                        <td>
+                            <input type="radio" name="Status" id="Status" value="true" @(Model.Status ? "checked" : "") />
+                            上線&nbsp;&nbsp;
+                            <input type="radio" name="Status" id="Status" value="false" @(!Model.Status ? "checked" : "") />
+                            隱藏&nbsp;&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">上稿時間：</td>
+                        <td class="table1_text">
+                            @Model.CreateTime
+                        </td>
+                    </tr>
+                    @if (Model.Rolses.Contains("IndexC") || Model.Rolses.Contains("Admin"))
+                    {
+                        <tr>
+                            <td align="right" class="onn2">&nbsp;</td>
+                            <td><span class="BTN3"><a href="#" onclick="check()">確定送出</a></span></td>
+                        </tr>
+                    }
+                </table>
+            }
+        </section>
+    </article>
+
+</article>
+
+@*@Html.ActionLink("回上頁", "List", new { page = Model.page }, new { @class = "pure-button" })
+<p>
+@Html.ValidationMessage("message")
+</p>
+
+@using (Html.BeginForm(Model.Mode == EditPageMode.Create ? "create" : "update", 
+    CurrentController, new { page = Model.page }, FormMethod.Post,
+    new { enctype = "multipart/form-data", @class = "pure-form pure-form-aligned" }))
+{
+	<fieldset>	
+
+		
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.VideoTitle)
+			@Html.TextBoxFor(p => p.VideoTitle, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.VideoTitle)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.VideoIntro)
+			@Html.TextBoxFor(p => p.VideoIntro, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.VideoIntro)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.ReviewUrl)
+			@Html.TextAreaFor(p => p.ReviewUrl, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.ReviewUrl)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.FullUrl)
+			@Html.TextAreaFor(p => p.FullUrl, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.FullUrl)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.MobileImg)
+			@Html.TextBoxFor(p => p.MobileImg, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.MobileImg)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Status)
+			<label for="Status" class="pure-radio">
+				@Html.RadioButtonFor(p => p.Status, "True") 是&nbsp;
+				@Html.RadioButtonFor(p => p.Status, "False") 否&nbsp;
+			</label>
+			@Html.ValidationMessageFor(p => p.Status)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.CreateTime)
+			@Model.CreateTime
+			@Html.HiddenFor(p => p.CreateTime)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.CreateId)
+			@Model.CreateId
+			@Html.HiddenFor(p => p.CreateId)
+		</div>
+
+
+
+		<div class="pure-control-group">
+            <label></label>
+            @if (Model.Mode == EditPageMode.Create)
+            {
+                <input type="submit" value="新 增" class="pure-button" />
+            }
+            else if (Model.Mode == EditPageMode.Update)
+            {
+                <input type="submit" value="修 改" class="pure-button" />
+            }
+           
+        </div>
+	</fieldset>
+}*@

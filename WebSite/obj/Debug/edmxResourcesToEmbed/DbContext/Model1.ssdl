@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="toyota_machineryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="a_used_car_engine">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="a_used_car_info">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="product_type_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="list_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="number" Type="nvarchar" MaxLength="50" />
+    <Property Name="engine_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tool" Type="nvarchar" MaxLength="50" />
+    <Property Name="tonnes" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="length" Type="nvarchar" MaxLength="50" />
+    <Property Name="engine_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="car_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="years" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="used_hours" Type="nvarchar" MaxLength="50" />
+    <Property Name="price" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="contact_person" Type="nvarchar" MaxLength="50" />
+    <Property Name="contact_method" Type="nvarchar" MaxLength="50" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="a_used_car_info_img">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="a_used_car_info_id" Type="int" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="contact_catalog_manager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="answer_date" Type="datetime" />
+    <Property Name="service_units" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="256" />
+    <Property Name="have_brand" Type="nvarchar" MaxLength="256" />
+    <Property Name="want_catalog" Type="nvarchar" MaxLength="256" />
+    <Property Name="remark" Type="nvarchar(max)" />
+    <Property Name="answer" Type="nvarchar(max)" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="answer_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="contact_us_manager">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="answer_date" Type="datetime" />
+    <Property Name="service_units" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="problem_info" Type="nvarchar(max)" />
+    <Property Name="answer" Type="nvarchar(max)" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="answer_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="fixed_data">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="html" Type="nvarchar(max)" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fixed_data2">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="c1" Type="nvarchar(max)" />
+    <Property Name="c2" Type="nvarchar(max)" />
+    <Property Name="create_date" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="index_banner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="banner_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="banner_intro" Type="nvarchar" MaxLength="256" />
+    <Property Name="btn_url" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="index_video">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="video_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="video_intro" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="review_url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="full_url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="mobile_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="info_location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="location" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fax" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="info_news">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="title_date" Type="datetime" Nullable="false" />
+    <Property Name="list_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="list_intro" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="detail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="info_prize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="years" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="log_login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AccountName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="LoginStatus" Type="bit" Nullable="false" />
+    <Property Name="LoginTime" Type="datetime" />
+    <Property Name="LogoutTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="FailReson" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="log_news">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsId" Type="int" Nullable="false" />
+    <Property Name="NewsTitle" Type="nvarchar" MaxLength="256" />
+    <Property Name="Action" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AccountId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_accessories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name_red" Type="nvarchar" MaxLength="50" />
+    <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="detail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="name_black" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="product_info">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sub_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="product_type_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="engine_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="banner" Type="nvarchar" MaxLength="50" />
+    <Property Name="overview_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="overview_tonnes_start" Type="float" Nullable="false" />
+    <Property Name="overview_tonnes_end" Type="float" Nullable="false" />
+    <Property Name="overview_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="overview_img_intro" Type="nvarchar" MaxLength="256" />
+    <Property Name="introduction" Type="nvarchar(max)" />
+    <Property Name="detail_gas" Type="nvarchar(max)" />
+    <Property Name="detail_diesel" Type="nvarchar(max)" />
+    <Property Name="detail_electric" Type="nvarchar(max)" />
+    <Property Name="detail_overlook_img" Type="nvarchar" MaxLength="50" />
+    <Property Name="detail_slide_img" Type="nvarchar" MaxLength="50" />
+    <Property Name="detail_engine_table" Type="nvarchar(max)" />
+    <Property Name="detail_motor_battery_table" Type="nvarchar(max)" />
+    <Property Name="meta_keywords" Type="nvarchar(max)" />
+    <Property Name="meta_description" Type="nvarchar(max)" />
+    <Property Name="create_time" Type="datetime" Nullable="false" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="on_shelf_date" Type="datetime" />
+    <Property Name="overview_title" Type="nvarchar" MaxLength="50" />
+    <Property Name="overview_intro" Type="nvarchar" MaxLength="50" />
+    <Property Name="logo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="product_info_accessories_list">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="accessories_id" Type="int" Nullable="false" />
+    <Property Name="orderby" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_info_spc_image">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="intro" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="question_and_answer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="detail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="orderfield" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="create_time" Type="datetime" />
+    <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Account" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" />
+    <Property Name="Password" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastLoginTime" Type="datetime" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserID" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="UpdateUserID" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="256" />
+    <Property Name="Role" Type="nvarchar" MaxLength="256" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="T_Account_Permission_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="AccountId" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="PermissionId" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreateUserId" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreateUserId" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="UpdateUserId" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="toyota_machineryModelStoreContainer">
+    <EntitySet Name="a_used_car_engine" EntityType="Self.a_used_car_engine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="a_used_car_info" EntityType="Self.a_used_car_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="a_used_car_info_img" EntityType="Self.a_used_car_info_img" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contact_catalog_manager" EntityType="Self.contact_catalog_manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contact_us_manager" EntityType="Self.contact_us_manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fixed_data" EntityType="Self.fixed_data" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fixed_data2" EntityType="Self.fixed_data2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="index_banner" EntityType="Self.index_banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="index_video" EntityType="Self.index_video" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="info_location" EntityType="Self.info_location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="info_news" EntityType="Self.info_news" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="info_prize" EntityType="Self.info_prize" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="log_login" EntityType="Self.log_login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="log_news" EntityType="Self.log_news" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_accessories" EntityType="Self.product_accessories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_info" EntityType="Self.product_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_info_accessories_list" EntityType="Self.product_info_accessories_list" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_info_spc_image" EntityType="Self.product_info_spc_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="question_and_answer" EntityType="Self.question_and_answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Account" EntityType="Self.T_Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Account_Permission_Mapping" EntityType="Self.T_Account_Permission_Mapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_Permission" EntityType="Self.T_Permission" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

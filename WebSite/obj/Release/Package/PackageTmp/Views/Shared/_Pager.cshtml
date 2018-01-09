@@ -1,0 +1,76 @@
+﻿@using Begonia.Toyota.WebSite.Models
+@model PagerModel
+@{
+
+    string URL = "/" +Request.RequestContext.RouteData.Values["controller"] + "/" + Request.RequestContext.RouteData.Values["action"];
+    int ii = 1;
+    foreach (var i in Request.RequestContext.RouteData.Values)
+    {
+        if (i.Key != "controller" && i.Key != "action")
+        {
+            if (ii == 1)
+            {
+                URL += "?" + i.Key + "=" + i.Value;
+            }
+            else
+            {
+                URL += "&" + i.Key + "=" + i.Value;
+            }
+            ii++;
+        }
+    }
+}
+@if (Model.TotalPages > 1)
+{
+    @*<ul class="pure-paginator">
+        @Html.Pager(Model.PageSize, Model.Page, Model.TotalRecords).Options(o => o
+            .DisplayTemplate("PagerTemplate")
+            .RouteValues(Request.RequestContext.RouteData.Values)
+            .AddRouteValue("PageSize", Model.PageSize)
+            )
+    </ul>*@
+    <article id="NOWNUM">總共<span>@Model.TotalRecords</span>個文章，當前&nbsp;@Model.Page/@Model.TotalPages</article>
+    <article id="PAGENUM">
+        <div class="manu">
+           @*<span style="color: red"> @URL</span>*@
+            @*<span class="disabled"><a href="#?page=1">首頁</a></span>*@
+            <a href='@(URL+"&page=1")'>首頁</a>
+            @if (Model.Page > 1)
+            {
+                <a href="@(URL+"&page="+(Model.Page - 1))">上頁</a>
+            }
+            @if (Model.TotalPages < 7)
+            {
+                int index = 0;
+                for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    if (i == Model.Page)
+                    {
+                        <span class="current">@i</span>
+                    }
+                    else
+                    {
+                        <a href='@(URL+"&page="+i)'>@i</a>
+                    }
+                    index++;
+                    if (index == 7)
+                    {
+                        break;
+                    }
+                }
+
+                if (index == 7)
+                {
+                    <a href='@(URL+"&page="+Model.TotalPages)'>...@Model.TotalPages </a>
+                }
+            }
+            @if (Model.Page < Model.TotalPages)
+            {
+                <a href="@(URL+"&page="+(Model.Page + 1))">下頁</a>
+            }
+            <a href='@(URL+"&page="+Model.TotalPages)'>尾頁</a>
+        </div>
+    </article>
+}
+
+

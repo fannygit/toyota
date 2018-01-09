@@ -1,0 +1,85 @@
+﻿@using Begonia.Toyota.WebSite.Enums;
+@using JamZoo.Project.WebSite.Enums
+@model Begonia.Toyota.WebSite.Models.FixedDataModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentController = string.Empty;
+    if (ViewContext.RouteData.Values["Controller"] != null)
+    {
+        CurrentController = ViewContext.RouteData.Values["Controller"].ToString();
+    }
+}
+
+<script type="text/javascript">
+    $(function () {
+        var msg = '@TempData["msg"]';
+        if (msg != "") {
+            alert("修改成功");
+        }
+    });
+</script>
+<article class="BOX" id="CONTENT_1">
+    @{
+        Html.RenderPartial("_MenuPartial");
+    }
+
+    <article id="RIGHT_BOX" class="CONTENT_R">
+        <article id="POS">
+            您當前位置是：<a href="#">@((Model.FunctionName.Contains("聯絡我們") || Model.FunctionName.Contains("索取型錄")) ? "聯絡我們管理" : "人才招募")</a> > <a href="~/FixedData/Add2?fn=@Model.FunctionName">@Model.FunctionName</a> > <span class="NOW">新增</span>
+        </article>
+        <section id="R_CONTENT_BOX">
+            <span class="POINT">表示必填項目</span>
+            <br />
+            <span style="color:red">
+                @Html.ValidationMessage("message")
+            </span>
+            @using (Html.BeginForm(Model.Mode == EditPageMode.Create ? "create2" : "update2",
+                CurrentController, new { page = Model.page }, FormMethod.Post,
+                new { enctype = "multipart/form-data", @class = "pure-form pure-form-aligned", id = "f1" }))
+            {
+                @Html.HiddenFor(p => p.CreateId)
+                @Html.HiddenFor(p => p.CreateTime)
+                @Html.HiddenFor(p => p.Id)
+                @Html.HiddenFor(p => p.FunctionName)
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab1" style="border-top: 1px #cecdcd solid;">
+                    
+                    @if (Model.FunctionName.Equals(FixedData2.現有職缺設定.ToString()))
+                    {
+                        <tr>
+                            <td width="140px" align="right" class="table1_title onn2"><span class="TP">人力銀行連結：</span></td>
+                            <td class="table1_text">
+                                @Html.TextBoxFor(p => p.HumanBankUrl, new { @class = "t3" })
+                                @Html.ValidationMessageFor(p => p.HumanBankUrl, null, new { style = "color:red" })
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td width="140px" align="right" class="table1_title onn2"><span class="TP">寄件者信箱：</span></td>
+                            <td class="table1_text">
+                                @Html.TextBoxFor(p => p.MailBoxSender, new { @class = "t3" })
+                                @Html.ValidationMessageFor(p => p.MailBoxSender, null, new { style = "color:red" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="140px" align="right" class="table1_title onn2"><span class="TP">收件人信箱(多個請用逗號隔開)：</span></td>
+                            <td class="table1_text">
+                                @Html.TextBoxFor(p => p.MailBoxReceiver, new { @class = "t3" })
+                                @Html.ValidationMessageFor(p => p.MailBoxReceiver, null, new { style = "color:red" })
+                            </td>
+                        </tr>
+                    }
+                    
+                  
+                    <tr>
+                        <td align="right" class="onn2">&nbsp;</td>
+                        <td><span class="BTN3"><a href="#" onclick="goSubmit()">確定送出</a></span></td>
+                    </tr>
+                </table>
+            }
+        </section>
+    </article>
+
+</article>

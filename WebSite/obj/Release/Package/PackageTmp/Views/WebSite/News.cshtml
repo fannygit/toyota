@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.InfoNewsModel
+
+<script>
+    function gofbshare()
+    {
+        var fbhtml_url = window.location.toString();
+        window.open('http://www.facebook.com/sharer/sharer.php?u=' + fbhtml_url);
+        return false;
+    }
+</script>
+<link rel="stylesheet" href="/Content/css/pages.css">
+<script>
+$('.menu_container').find('#item_container').find('.item').eq(0).addClass('active');
+</script>
+<section class="vision banner-news short">
+    <div class="text-box">
+        <h2><span class="red">最新</span>消息</h2>
+        <h2 class="eng">News</h2>
+        <p class="text description">持續不斷地更新商品資訊、最新技術應用、國內外得獎殊榮以及相關活動訊息等。讓您隨時掌握台灣豐田產機最新動態，快速調整產業佈局。</p>
+    </div>
+</section>
+<section class="news-content">
+    <div class="row small-collapse">
+
+        <div class="small-12 columns date-box">
+            <div class="float-right">
+                <a style="@(Model.previousId==Model.Id?"display: none":"")" href="@Url.Action("news", new { nid = Model.previousId})" class="news-btn btn-prev"><img src="/Content/images/news/icon_prev@2x.png" width="40" alt=""><span>prev</span></a>
+                <a style="@(Model.nextId==Model.Id?"display: none":"")" href="@Url.Action("news", new { nid = Model.nextId})" class="news-btn btn-next"><img src="/Content/images/news/icon_next@2x.png" width="40" alt=""><span>next</span></a>
+                <a href="@Url.Action("newslist")" class="news-btn btn-close"><img src="/Content/images/news/icon_close@2x.png" width="40" alt=""><span>close</span></a>
+            </div>
+            <div class="float-left">
+                <span class="text description date">@Model.TitleDate.ToString("yyyy/MM/dd")</span>
+                <a href="javascript:void(0);" onclick="gofbshare()" class=" btn-fb"><span>facebook</span></a>
+            </div>
+        </div>
+        <div class="small-12 columns">
+            <h3 class="text description news-title">@Model.Title</h3>
+        </div>
+
+
+    </div>
+    <div class="row content-in">
+       @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+    </div>
+</section>
+

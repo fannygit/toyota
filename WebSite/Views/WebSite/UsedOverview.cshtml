@@ -1,0 +1,282 @@
+﻿@{
+    ViewBag.Title = "RequestCatalogs";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.AUsedCarInfoListModel
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+<script>
+    $(function () {
+        var msg = '@TempData["msg"]';
+        if (msg != '')
+        {
+            $("#ttt").click();
+        }
+    });
+
+    function changeContent(key) {
+       
+        location.href = "/website/UsedOverview?id=" + key + "&type=" + '@Model.type' + "&eng=" + '@Model.eng' + "&ton=" + '@Model.ton' + "&yy=" + '@Model.yy';
+    }
+
+    function changeContent1(key) {
+        location.href = "/website/UsedOverview?type=" + key + "&eng=" + '@Model.eng' + "&ton=" + '@Model.ton' + "&yy=" + '@Model.yy';
+    }
+
+    function changeContent2(key) {
+        location.href = "/website/UsedOverview?eng=" + key + "&type=" + '@Model.type' + "&ton=" + '@Model.ton' + "&yy=" + '@Model.yy';
+    }
+
+    function changeContent3(key) {
+        location.href = "/website/UsedOverview?ton=" + key + "&eng=" + '@Model.eng' + "&type=" + '@Model.type' + "&yy=" + '@Model.yy';
+    }
+    function changeContent4(key) {
+        location.href = "/website/UsedOverview?yy=" + key + "&type=" + '@Model.type' + "&ton=" + '@Model.ton' + "&eng=" + '@Model.eng';
+    }
+
+</script>
+
+<section class="vision banner-news">
+    <div class="text-box">
+        <h2><span class="red">中古</span>車</h2>
+        <h2 class="eng">Used Car</h2>
+        <p class="text description">為服務廣大的客戶群，台灣豐田也有完善的二手產業車輛銷售服務，我們所提供之二手車輛，皆經過台灣豐田原廠專業認證，確保所銷售之車輛擁有最高的安全與性能。</p>
+    </div>
+    <div class="select-tab used">
+        <div class="select">
+            <a class="select-text">@Model.showtype</a>
+            <ul class="select-option" id="selectType">
+                <li class="title">產車種類</li>
+                @foreach (var i in Model.TypeList)
+                {
+                    <li onclick="changeContent1('@i.Value')" class="@(i.Value == Model.type ? "active" : "")">@i.Text</li>
+                }
+            </ul>
+        </div>
+        <div class="select">
+            <a class="select-text">@Model.showeng</a>
+            <ul class="select-option" id="selectEng">
+                <li class="title">引擎種類</li>
+                @foreach (var i in Model.EngineList)
+                {
+                    <li onclick="changeContent2('@i.Value')" class="@(i.Value == Model.eng ? "active" : "")">@i.Text</li>
+                }
+            </ul>
+        </div>
+        <div class="select">
+            <a class="select-text">@Model.showton</a>
+            <ul class="select-option" id="selectTon">
+                <li class="title">選擇噸數</li>
+                @foreach (var i in Model.TonnesList)
+                {
+                    <li onclick="changeContent3('@i')" class="@(i == Model.ton ? "active" : "")">@i</li>
+                }
+            </ul>
+        </div>
+        <div class="select">
+            <a class="select-text">@Model.showyy</a>
+            <ul class="select-option" id="selectYy">
+                <li class="title">選擇年份</li>
+                @foreach (var i in Model.YearsList)
+                {
+                    <li onclick="changeContent4('@i')" class="@(i == Model.yy ? "active" : "")">@i</li>
+                }
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="used-list">
+
+    @foreach (var i in Model.Data)
+    {
+        <input type="button" id="ttt" data-toggle="used-intro" style="display:none">
+        <a class="used-item" onmousedown="changeContent(@i.Id)">
+            @if (!string.IsNullOrEmpty(i.ListImg))
+            {
+                <span class="img-box"><img src="@Url.Content("~/File/Get?FileId=" + i.ListImg)" width="100%" alt=""></span>
+            }
+            
+            <h3>@i.Type</h3>
+            <ul>
+                <li>引擎形式 : @i.EngineId </li>
+                <li>噸數 : @i.Tonnes 頓</li>
+                <li>出廠年份 : @i.Years</li>
+            </ul>
+            <h3 class="red" onmousedown="changeContent(@i.Id)">建議售價:@i.Price</h3>
+        </a>
+    }
+    
+    <div class="text-center loader-box">
+    @*<div class="loader rspin">
+        <span class="c"></span>
+        <span class="d spin"><span class="e"></span></span>
+        <span class="r r1"></span>
+        <span class="r r2"></span>
+        <span class="r r3"></span>
+        <span class="r r4"></span>
+    </div>*@
+    </div>
+</section>
+<div class="full used-intro reveal" id="used-intro" data-reveal data-v-offset="0">
+
+    <button class="close-button" data-close aria-label="Close reveal" type="button" >
+        <span aria-hidden="true"><img src="/content/images/used/icon_close@2x.png" width="100%" alt=""></span>
+    </button>
+
+    <div class="intro-box">
+
+        <div class="orbit img-gallery" role="region" aria-label="" data-orbit>
+            <div class="orbit-wrapper">
+                <div class="orbit-controls">
+                    @if (Model.ImgList.Count() > 1)
+                    {
+                        <button class="orbit-previous reveal-arrow reveal-prev"><span class="show-for-sr">Previous Slide</span></button>
+                        <button class="orbit-next reveal-arrow reveal-next"><span class="show-for-sr">Next Slide</span></button>
+                    }
+                </div>
+                <ul class="orbit-container" id="imgUl">
+                    @foreach (var i in Model.ImgList)
+                    {
+                        <li class="@(Model.ImgList.FirstOrDefault() == i ? "is-active orbit-slide" :"orbit-slide")">
+                            <figure class="orbit-figure">
+                                <img class="orbit-image" src="@Url.Content("~/File/Get?FileId=" + i)" alt="">
+                            </figure>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <nav class="orbit-bullets">
+                
+                @{
+                    int index = 0;
+                    foreach (var i in Model.ImgList)
+                    {
+                        if (index == 0)
+                        {
+                            <button class="is-active" data-slide="0"></button>
+                        }
+                        else
+                        {
+                            <button data-slide="@i"></button>
+                        }
+                        index++;
+                    }
+                }
+            </nav>
+        </div>
+        <div class="text-box">
+            <h2><span class="red">詳細</span><span class="white">規格</span></h2>
+            <h2 class="eng">Specifications</h2>
+            <div class="table-box">
+                <table class="table-light" id="detailTable">
+                    <tbody>
+                        <tr>
+                            <td>NO：</td>
+                            <td>@Model.AUsedCarInfo.Number</td>
+                        </tr>
+                        <tr>
+                            <td>車型：</td>
+                            <td>@Model.AUsedCarInfo.Type</td>
+                        </tr>
+                        <tr>
+                            <td>引擎型式：</td>
+                            <td>@Model.AUsedCarInfo.EngineId </td>
+                        </tr>
+                        <tr>
+                            <td>屬具：</td>
+                            <td>@Model.AUsedCarInfo.Tool</td>
+                        </tr>
+                        <tr>
+                            <td>噸數：</td>
+                            <td>@Model.AUsedCarInfo.Tonnes</td>
+                        </tr>
+                        <tr>
+                            <td>貨叉長：</td>
+                            <td>@Model.AUsedCarInfo.Length</td>
+                        </tr>
+                        <tr>
+                            <td>引擎號碼：</td>
+                            <td>@Model.AUsedCarInfo.EngineNumber</td>
+                        </tr>
+                        <tr>
+                            <td>車身號碼：</td>
+                            <td>@Model.AUsedCarInfo.CarNumber</td>
+                        </tr>
+                        <tr>
+                            <td>年式：</td>
+                            <td>@Model.AUsedCarInfo.Years</td>
+                        </tr>
+                        <tr>
+                            <td>使用小時數：</td>
+                            <td>@Model.AUsedCarInfo.UsedHours</td>
+                        </tr>
+                        <tr>
+                            <td>售價：</td>
+                            <td>@Model.AUsedCarInfo.Price</td>
+                        </tr>
+                        <tr>
+                            <td>聯絡人：</td>
+                            <td>@Model.AUsedCarInfo.ContactPerson</td>
+                        </tr>
+                        <tr>
+                            <td>聯絡方式：</td>
+                            <td>@Model.AUsedCarInfo.ContactMethod</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="btn-box text-center">
+                    @*<a href="@Url.Action("contactus")" class="more_box animall" data-close aria-label="Close reveal">聯絡我們<img src="/content/images/element_12.png" alt=""></a>*@
+                    <a href="#" onclick="gohref1('/website/contactus')" class="more_box animall" data-close aria-label="Close reveal">聯絡我們<img src="/content/images/element_12.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="service page-service-link">
+    <a href="javascript:;" class="gotop" id="gotop"><img src="/content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="bigmenu_container">
+        <div class="row menu_element">
+            <a class="btn small-12 medium-6" href="@Url.Action("branch")">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <a class="btn small-12 medium-6" href="@Url.Action("warranty")">
+                <div class="icon warranty ">
+                </div>
+                <h3>售後服務</h3>
+                <h3 class="eng">Warranty Service</h3>
+                <div class="text">
+                    業界最優的保固條件，讓您的產業車輛隨時處於最佳狀態。
+                </div>
+                <div class="gradient_bg"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+
+        $('.menu_container').find('#item_container').find('.item').eq(2).addClass('active');
+
+        $('.used-intro').on('click', function (event) {
+            event.preventDefault();
+            var box = $('.intro-box');
+        });
+
+        $('.used-intro').mouseup(function (e) {
+            var container = $('.intro-box');
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                $('.close-button').trigger('click');
+            }
+        });
+
+    })
+</script>
+
+<!-- <script src="/content/js/app.js"></script> -->

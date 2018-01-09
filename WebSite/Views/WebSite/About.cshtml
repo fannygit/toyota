@@ -1,0 +1,275 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.AboutModel
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+
+<script>
+    $(function(){
+        slidesToShow();
+    })
+
+    function slidesToShow()
+    {
+        $('.menu_container').find('#item_container').find('.item').eq(0).addClass('active');
+        $('.honor-year').slick({
+            centerMode: true,
+            centerPadding: '0',
+            slidesToShow: 3,
+            focusOnSelect: true,
+            responsive: [
+              {
+                  breakpoint: 768,
+                  settings: {
+                      arrows: true,
+                      centerMode: true,
+                      centerPadding: '0',
+                      slidesToShow: 2
+                  }
+              },
+              {
+                  breakpoint: 480,
+                  settings: {
+                      arrows: true,
+                      centerMode: true,
+                      centerPadding: '0',
+                      slidesToShow: 1
+                  }
+              }
+            ]
+        });
+
+
+        $('.award-list').slick({
+            centerMode: true,
+            centerPadding: '0',
+            slidesToShow: 3,
+            focusOnSelect: true,
+            autoplay: true,
+            variableWidth: true,
+            initialSlide:1,
+            responsive: [
+              {
+                  breakpoint: 780,
+                  settings: {
+                      arrows: true,
+                      centerMode: true,
+                      centerPadding: '0',
+                      slidesToShow: 2
+                  }
+              },
+              {
+                  breakpoint: 480,
+                  settings: {
+                      arrows: true,
+                      centerMode: true,
+                      centerPadding: '0',
+                      slidesToShow: 1
+                  }
+              }
+            ]
+        });
+    }
+
+
+	function goshow(yy)
+    {
+	    $.ajax({
+	        url: "/WebSite/GetPrizeList/",
+	        data: { yy: yy },
+	        cache: false,
+	        type: "POST",
+	        success: function (data) {
+	            $("#awardList").html("");
+	            if ($('#hd').val()==yy)
+	            {
+	                yy = yy+"etc";
+	            }
+	            var markup = "";
+	            for (var x = 0; x < data.length; x++) {
+	                markup += "<div name=\""+yy+"\"><img src=\"/File/Get?FileId=" + data[x].Img + "\" alt=\"\"><p class=\"award_prol\">" + data[x].Title + "</p></div>";
+	            }
+	            $("#awardList").html(markup);
+	            $('.award-list').slick('unslick'); /* ONLY remove the classes and handlers added on initialize */
+	            //$('.slick-slide').remove(); /* Remove current slides elements, in case that you want to show new slides. */
+	            $('#awardList>div[name!="'+yy+'"]').remove();
+	            $('#hd').val(yy);
+	            $('#awardList>div[name="test"]').remove();
+	            $('.award-list').slick(getSliderSettings()); /* Initialize the slick again */
+	        },
+	        error: function (reponse) {
+	            alert("error : " + reponse);
+	        }
+	    });
+
+	}
+
+	function getSliderSettings() {
+	    return {
+	        centerMode: false,
+	        centerPadding: '0',
+	        slidesToShow: 3,
+	        focusOnSelect: true,
+	        autoplay: true,
+          initialSlide:0,
+	        responsive: [
+              {
+                  breakpoint: 768,
+                  settings: {
+                      arrows: true,
+                      centerMode: true,
+                      centerPadding: '0',
+                      slidesToShow: 2
+                  }
+              },
+              {
+                  breakpoint: 480,
+                  settings: {
+                      arrows: true,
+                      centerMode: true,
+                      centerPadding: '0',
+                      slidesToShow: 1
+                  }
+              }
+	        ]
+	    }
+	}
+
+
+	function gohref(yy)
+	{
+	    location.href = "/WebSite/About?yy=" + yy;
+	}
+</script>
+
+<section class="about-01 page-content">
+    <div class="row">
+        <div class="small-12 medium-6 large-6 columns">
+            <h2><span class="red">台灣</span>豐田</h2>
+            <h2 class="eng">About Us</h2>
+            <p class="text description">本公司前身為和泰汽車大型車產業車輛部門，秉持顧客第一的信念，提供各產業界顧客， 超越期待的創新、安全的優質產品與服務。2003年元月，自母公司和泰汽車分社化，獨立為台灣豐田產業機械股份有限公司，專營TOYOTA產業車輛銷售、售後服務、零件進(出) 口及租賃業務。</p>
+            <p class="text description">台灣豐田產業機械股份有限公司自和泰時期至今，累積幾十年產業車輛銷售與維修的經驗與knowhow，一直致力於提供顧客最完善的服務，並於2008年起，導入 ISO14001環境管理系統來提昇廠區環境安全水準;在維修技術上，所有技術員每年除須接受總公司舉辦之技術研習教育外，並須逐級參與總公司辦理的分級技能檢定測驗，透過完整的培訓，提供顧客最佳的售後服務。</p>
+        </div>
+    </div>
+    <img src="/Content/images/about/bg_about_01@2x.png" alt="" class="about-01-img">
+</section>
+<section class="about-02 page-content">
+    <div class="row">
+        <div class="small-12 medium-6 medium-offset-6 large-6 large-offset-6 columns">
+            <div class="about-02-text">
+                <h2>服務與拓展</h2>
+                <h2 class="eng">Service and Development</h2>
+                <p class="text description">公司主要利用「行動服務車」提供顧客到場維修保養的服務，加大服務的深度與廣度，創造顧客用車最大利益。不斷的自我鞭策、追求顧客滿意的理念，是台灣豐田產業機械股份有限公司能夠獲得國內眾多企業及車主肯定與愛護的主因。</p>
+                <p class="text description">2008年為配合集團大陸事業發展計畫，以及擴大本公司事業規模，於上海市成立「上海和乾物流設備貿易有限公司」，提供最完善的服務給予上海市區域的客戶。</p>
+            </div>
+        </div>
+    </div>
+    <img src="/Content/images/about/bg_about_02@2x.png" alt="" class="about-02-img">
+</section>
+<section class="about-03 page-content">
+    <div class="row">
+        <div class="small-12 columns">
+            <h2><span class="red">營業</span>項目</h2>
+            <h2 class="eng">Business Items</h2>
+            <p class="text description">台灣豐田為TOYOTA產業車輛台灣總代理以及運營汽車、零件進(出)口、銷售、租賃、汽車修理以及售後服務等等...，深耕台灣產業多年，擁有豐富的產業合作經驗，為全台灣最可靠的產業機具供應商。</p>
+            <h3>產品內容</h3>
+            
+        </div>
+    </div>
+    <div class="row align-stretch intro">
+        <div class="small-12 medium-6 columns">
+            <img src="/Content/images/about/icon_about_01@2x.png" width="93" alt="">
+            <div class="intro-text float-right">
+                <h3>堆高機</h3>
+                <h3 class="eng">Forklifts</h3>
+                <p class="text description">柴油、汽油坐式堆高機及電動坐式四輪/三輪、站立式、側坐式堆高機。</p>
+            </div>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <img src="/Content/images/about/icon_about_02@2x.png" width="93" alt="">
+            <div class="intro-text float-right">
+                <h3>鏟裝機</h3>
+                <h3 class="eng">Skid Steer Loader</h3>
+                <p class="text description">鏟裝機系列：荷重430公斤~900公斤。</p>
+            </div>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <img src="/Content/images/about/icon_about_03@2x.png" width="93" alt="">
+            <div class="intro-text float-right">
+                <h3>曳引車</h3>
+                <h3 class="eng">Large Tow Tractor</h3>
+                <p class="text description">柴油、電動式曳引車拖曳可達13,000公斤~70,000公斤。</p>
+            </div>
+        </div>
+        <div class="small-12 medium-6 columns">
+            <img src="/Content/images/about/icon_about_04@2x.png" width="93" alt="">
+            <div class="intro-text float-right">
+                <h3>物流諮詢服務</h3>
+                <h3 class="eng">Logistics Consulting</h3>
+                <p class="text description">提供物流搬運設備、諮詢與規劃服務。</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-04 page-content">
+    <div class="row">
+        <div class="small-12 columns">
+            <h2><span class="red">榮耀</span>與<span class="red">肯定</span></h2>
+            <h2 class="eng">Honor</h2>
+
+            <div class="slider honor-year">
+                @foreach (var i in Model.YearsList)
+                {
+                    <div onclick="goshow(@i)"><h3>@i</h3></div>
+                }
+            </div>
+            <br>
+            <br>
+            <input type="hidden" value="" id="hd">
+            <div class="slider award-list" id="awardList">
+                @foreach (var i in Model.PrizeList)
+                {
+                    <div name="test"><img src="/File/Get?FileId=@i.Img" alt=""><p class="award_prol">@i.Title</p></div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-05 page-content">
+<a href="javascript:;" class="gotop noUnderMenu" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="row">
+        <div class="small-12 columns">
+            <h2><span class="red">相關</span>企業</h2>
+            <h2 class="eng">Related Business</h2>
+        </div>
+
+    </div>
+    <div class="row align-stretch related_business">
+        <div class="small-12 medium-4 large-4 columns">
+            <a href="http://pressroom.hotaimotor.com.tw/zh/" target="_blank" onclick="">
+                <img src="/Content/images/about/img_about_r_01@2x.png" alt="">
+            </a>
+        </div>
+        <div class="small-12 medium-4 large-4 columns">
+            <a href="https://www.toyota-industries.com/" target="_blank" onclick="">
+                <img src="/Content/images/about/img_about_r_02@2x.png" alt="">
+            </a>
+        </div>
+        <div class="small-12 medium-4 large-4 columns">
+            <a href="http://case.sinjing.cn/case/ht/index.asp" target="_blank" onclick="">
+                <img src="/Content/images/about/img_about_r_03@2x.png" alt="">
+            </a>
+        </div>
+    </div>
+
+</section>
+<script>
+  $(function(){
+    $('.slick-track .slick-slide').eq(0).click();
+
+  })
+</script>
+
+

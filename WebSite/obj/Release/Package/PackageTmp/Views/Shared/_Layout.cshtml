@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html dir="ltr" lang="zh-TW" itemscope itemtype="http://schema.org/Blog">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="海棠設計">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>後端管理系統</title>
+    <link href="@Url.Content("~/Manage/css/style.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/datetimepicker/css/bootstrap-datetimepicker.css")" rel="stylesheet">
+    @RenderSection("css", false)
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Manage/js/rollover.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Manage/js/page.js")"></script>
+    <script src="@Url.Content("~/Content/ckeditor/ckeditor.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/ckfinder/ckfinder.js")"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    @RenderSection("js", false)
+
+    <script>
+    $(function () {
+        $("#datepicker").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy/mm/dd'
+        });
+        $("#datepicker2").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy/mm/dd'
+        });
+    });
+    function readURL(input, imageId, urlId) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#' + imageId).attr('src', e.target.result);
+                $('#' + urlId).attr("href", "javascript:;");
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function del(url, id, page) {
+        //alert('url=' + url + 'id=' + id + 'page='+page);
+        if (confirm('確定刪除?'))
+        {
+            $.post(url, { id: id, page: page },
+                function (data, textStatus, jqXHR) {
+                    //data: Received from server
+                    alert(data);
+                    location.reload();
+                });
+        }
+    }
+    function goSubmit() {
+        $("#f1").submit();
+    }
+
+    function godelimg(id, imgid) {
+        $('#' + id).val('');
+        $('#' + imgid).attr("style", "display:none");
+    }
+
+    function godelimgAll(vid, id, imgid) {
+        $('#' + vid).val('');
+        $('#' + id).val('');
+        $('#' + imgid).attr("style", "display:none");
+    }
+    </script>
+</head>
+<body>
+<div id="WRAPPER">
+    <header id="HEADER">
+        <h1><img src="~/manage/images/logo.jpg" alt="網站後台管理平台" width="219" height="92"></h1>
+        <article id="HELLO">您好，admin 現在是 @DateTime.Now.ToString("yyyy/MM/dd HH:mm")</article>
+        @*<nav id="NAV"> 橘色上方BAR不要
+                <ul>
+                    <li class="CC"><a href="#">系統管理</a></li>
+                    <li class="AA"><a href="#">首頁管理</a></li>
+                    <li class="AA"><a href="#">關於台灣豐田管理</a></li>
+                    <li class="AA"><a href="#">產品管理</a></li>
+                    <li class="AA"><a href="#">中古車管理</a></li>
+                    <li class="AA"><a href="#">產車服務</a></li>
+                    <li class="AA"><a href="#">人才招募</a></li>
+                    <li class="AA"><a href="#">聯絡我們</a></li>
+                    <li class="AA"><a href="#">常見問題</a></li>
+                </ul>
+            </nav>*@
+        ><article id="BTN_LOGIN"><a href="~/Account/Signout">登出</a></article>
+        <article id="BTN_WEB"><a href="#">前端網站</a></article>
+    </header>
+    <section id="CONTENT_BOX">
+        @RenderBody()
+    </section>
+    <footer id="FOOTER">
+        <!-- <article class="L">COPYRIGHT © 2017 海棠網頁設計公司 ALL RIGHTS RESERVED.</article>
+        <article class="R"><a href="#">瀏覽網站</a> |   <a href="http://www.begonia.tw/contact.htm" target="_blank">聯絡海棠</a></article> -->
+    </footer>
+</div>
+
+</body>
+</html>

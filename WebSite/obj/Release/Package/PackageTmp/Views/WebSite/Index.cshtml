@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.IndexModel
+
+<script src="/Content/js/lib/mightyslider/mightyslider.min.js"></script>
+
+
+<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+
+
+<div class="index_banner">
+    <div class="mightySlider mightyslider_windows8_skin">
+        
+        <!-- PARENT -->
+        <div class="frame">
+            <!-- FRAME -->
+            <ul class="slideelement">
+                <!-- SLIDEELEMENT -->
+                @foreach (var i in Model.BannerList.Data)
+                {
+                    <li data-mightyslider="cover: [
+  ['@Url.Content("~/File/Get?FileId=" + i.Img)', '(max-width:1024px)'],
+  ['@Url.Content("~/File/Get?FileId=" + i.Img)', '(max-width:5000px)']
+]">
+                        <div class="container">
+                            <div class="big_slogan">
+                                @i.BannerTitle
+                                <br>
+                                <div class="vic_slogan">
+                                    @i.BannerIntro
+                                    @if (!string.IsNullOrEmpty(i.BtnUrl))
+                                    {
+                                        <div class="more">
+                                            <a href="@i.BtnUrl" class="">了解更多<img src="/content/images/arrow_04.png" alt="" class="animall"></a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+                <!-- SLIDE -->
+            </ul>
+        </div>
+        
+    </div>
+</div>
+<section class="products_big_menu">
+    <div class="background_container">
+        <div class="white_ground"></div>
+        <div class="pic"></div>
+    </div>
+    <div class="kelp"></div>
+    <div class="menuContainer">
+        <div class="menuBox" id="MenuBox">
+            <div class="title_box">
+                <div class="title_container">
+                    <div class="box">
+                        <h2><span class="red">產品</span>介紹</h2>
+                        <h2 class="eng">Products</h2>
+                        <span class="text description">日本豐田自動織機係世界一流品牌，設計製造高質量的產業車輛，並具有最完整產品系列，包括內燃式／電動式堆高機、立式／側坐式電動堆高機、鏟裝機、曳引車等，滿足產業界客戶各種工況需求。</span>
+                    </div>
+                </div>
+            </div>
+            <a class="item Forklifts animall" href="javascript: void(0)" id="Forklift">
+                <div class="namebox animall">堆高機
+                    <br>
+                    <span class="eng animall">Forklifts</span>
+                    <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+                </div>
+            </a>
+            <a class="item Compact_Tractor_Loader animall" href="javascript: void(0)" id="Tractor">
+                <div class="namebox animall">
+                    鏟裝機
+                    <br>
+                    <span class="eng animall">
+    Skid Steer Loader
+     </span>
+                    <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+                </div>
+            </a>
+            <a class="item Large_Tow_Tractor animall half" href="javascript: void(0)" id="Tow">
+                <div class="namebox animall">
+                    曳引車
+                    <br>
+                    <span class="eng animall">
+     Large Tow Tractor
+     </span>
+                    <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+                </div>
+            </a>
+            <a class="item Others animall half" href="javascript: void(0)" id="Other">
+                <div class="namebox animall">
+                    其他
+                    <br>
+                    <span class="eng animall">
+     Others
+     </span>
+                    <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="news">
+    <div class="news_container">
+        <div class="title_container">
+            <div class="box">
+                <h2><span class="red">最新</span>消息</h2>
+                <h2 class="eng">News</h2>
+                <span class="text description">
+                    持續不斷地更新商品資訊、最新技術應用、國內外得獎殊榮以及相關活動訊息等。讓您隨時掌握台灣豐田最新動態，快速調整產業佈局。
+                </span>
+            </div>
+        </div>
+        <a href="@Url.Action("NewsList")" class="more_news animall">更多新聞<img src="/Content/images/element_12.png" alt=""></a>
+        <div style="clear:both"></div>
+        <div class="news_list_container">
+            @foreach (var i in Model.NewsList.Data)
+            {
+                <a class="item animall" href="@Url.Action("news", new { nid = i.Id})">
+                    <div class="cover" style="background-image: url(@Url.Content("~/File/Get?FileId=" + i.ListImg))">
+                        <div class="filter animall"></div>
+                        <div class="text">
+                            <h5>@i.TitleDate.ToString("yyyy/MM/dd")</h5>
+                            <p>@i.Title</p>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+<section class="about_us">
+    <div class="about_background">
+        <div class="know"></div>
+        <div class="media" id="indexMedia" style="background-image:url(@Url.Content("~/File/Get?FileId=" + Model.Video.MobileImg))">
+            <div class="filter"></div>
+            <div id="index_video">
+            </div>
+        </div>
+    </div>
+    <div class="about_container">
+        <div class="scope">
+            <div class="left">
+                <div class="title_container">
+                    <div class="box">
+                        <h2><span class="red">認識</span>我們</h2>
+                        <h2 class="eng">About Us</h2>
+                        <span class="text description">
+                            <br>
+                            <img src="/Content/images//ht_logo_07.png" alt="">
+                        </span>
+                    </div>
+                </div>
+                <div class="textbox">
+                    <p class="text">本公司前身為和泰汽車大型車產業車輛部門，為了秉持顧客第一的信念，提供各產業界顧客，超越期待的創新、安全的優質產品與服務，於2003年元月，自母公司和泰汽車分社化，獨立為台灣豐田產業機械公司，專營TOYOTA產業車輛銷售、售後服務、零件進(出)口及租賃業務。</p>
+                    <p class="text mobile">本公司前身為和泰汽車大型車產業車輛部門，為了秉持顧客第一的信念，提供各產業界顧客，超越期待的創新、安全的優質產品與服務，於2003年元月，自母公司和泰汽車分社化...</p>
+                    <a href="@Url.Action("About")" class="more_box animall">認識台灣豐田<img src="/Content/images/element_12.png" alt=""></a>
+                </div>
+            </div>
+            <div class="right">
+                <div class="title_container">
+                    <div class="box" style="text-align: left">
+                        <h2 class="white"><span class="red">商品</span>影片</h2>
+                        <h2 class="eng">Media</h2>
+                    </div>
+                </div>
+                <div class="text_box">
+                    <h2>@Model.Video.VideoTitle</h2>
+                    <p class="text">@Model.Video.VideoIntro</p>
+                    <a target="_blank" onclick="" href="@Model.Video.FullUrl" class="more_box animall">觀看影片<img src="/Content/images/element_12.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="service">
+    <div class="forklift_container">
+        <img src="/Content/images/element_03.png" alt="" class="forklift_pic">
+    </div>
+    <div class="title_container">
+        <div class="box">
+            <h2><span class="red">我們</span>的服務</h2>
+            <h2 class="eng">Solutions</h2>
+            <span class="text description">
+                台灣豐田於國內及大陸共設有多處的服務據點，全省約有五十位專業技師為您提供專業即時的服務。同時本公司整合完善的租賃服務及售後服務，提供TOYOTA產業車輛愛用者一流之服務。
+                只要一通電話，服務就到。
+            </span>
+        </div>
+    </div>
+    <div class="bigmenu_container ">
+        <div class="row menu_element">
+            <a class="btn small-12 medium-4" href="@Url.Action("Branch")">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <a class="btn small-12 medium-4" href="@Url.Action("LeaseService")">
+                <div class="icon lease">
+                </div>
+                <h3>租賃服務</h3>
+                <h3 class="eng">Leasing Services</h3>
+                <div class="text">
+                    具備應變未來的靈活性，使企業資金專注於核心業務。
+                </div>
+                <div class="gradient_bg"></div>
+            </a>
+            <a class="btn small-12 medium-4" href="@Url.Action("Warranty")">
+                <div class="icon warranty ">
+                </div>
+                <h3>售後服務</h3>
+                <h3 class="eng">Warranty Service</h3>
+                <div class="text">
+                    業界最優的保固條件，讓您的產業車輛隨時處於最佳狀態。
+                </div>
+                <div class="gradient_bg"></div>
+            </a>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflwRxTjE/www-widgetapi.js" async=""></script> 
+
+<span id="video_name">@Model.Video.ReviewUrl</span>
+@*@*<span id="video_name">vEnw7RX_abg</span>*@
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="toyotaicon" horiz-adv-x="1000" >
+<font-face font-family="toyotaicon" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="search" unicode="&#xe805;" d="M746 209l254-255-105-105-254 254q-106-72-232-72-169 0-289 120t-120 289 120 289 289 120 289-120 120-289q0-127-72-231z m-65 231q0 113-79 193t-193 80-193-80-80-193 80-192 193-80 193 80 79 192z" horiz-adv-x="1000" />
+
+<glyph glyph-name="left-small" unicode="&#xe808;" d="M595 403q21 0 36-16t15-37-15-37-36-15l-395 0 119-119q15-15 15-37t-15-37-36-15q-23 0-38 15l-245 245 245 245q15 15 37 15t37-15 15-37-15-37l-119-118 395 0z" horiz-adv-x="646" />
+
+<glyph glyph-name="right-small" unicode="&#xe904;" d="M328 595q15 15 36 15t37-15l245-245-245-245q-15-15-36-15-22 0-37 15t-15 37 15 37l120 119-395 0q-22 0-37 15t-16 37 16 37 37 16l395 0-120 118q-15 15-15 37t15 37z" horiz-adv-x="646" />
+
+<glyph glyph-name="down-open" unicode="&#xf004;" d="M0 533q0 25 18 43t44 18 42-18l305-303 304 303q18 18 43 18t43-18q18-18 18-43t-18-43l-390-391-391 391q-18 19-18 43z" horiz-adv-x="817.4" />
+
+<glyph glyph-name="up-open" unicode="&#xf005;" d="M0 167q0 26 18 43l391 391 390-391q17-17 17-43 0-26-17-44-18-17-44-17t-43 17l-303 305-305-305q-18-17-43-17t-43 17q-18 18-18 44z" horiz-adv-x="816.9" />
+
+<glyph glyph-name="right-open" unicode="&#xf006;" d="M0 0q0 25 18 43l305 304-305 304q-18 18-18 44t18 43 44 18 43-18l390-391-390-391q-19-18-43-18t-44 18q-18 18-18 44z" horiz-adv-x="495.1" />
+
+<glyph glyph-name="left-open" unicode="&#xf007;" d="M0 353l391 391q18 18 43 18 24 0 43-18 18-18 18-44t-18-43l-304-304 304-305q18-17 18-43t-18-43q-18-18-43-18t-43 18z" horiz-adv-x="495.1" />
+
+<glyph glyph-name="hand-pointer-o" unicode="&#xf25a;" d="M357 779q-29 0-50-21t-21-51v-500l-84 113q-23 30-60 30-29 0-50-21t-21-50q0-24 15-43l214-286q21-29 57-29h401q12 0 22 8t12 19l52 206q13 53 13 108v121q0 23-15 40t-38 16-38-15-16-38h-18v34q0 27-18 45t-44 19q-26 0-44-18t-19-45v-35h-18v50q0 31-20 53t-51 22q-30 0-51-21t-21-51v-53h-17v318q0 31-21 53t-51 22z m0 71q60 0 101-43t42-103v-123q12 1 18 1 55 0 96-38 27 11 56 11 63 0 102-48 15 4 32 4 52 0 88-38t37-90v-121q0-65-16-126l-51-205q-9-36-38-58t-66-23h-401q-33 0-64 15t-50 42l-214 286q-29 38-29 86 0 58 42 100t100 42q39 0 72-19v305q0 59 42 101t101 42z m72-786v215h-18v-215h18z m142 0v215h-17v-215h17z m143 0v215h-18v-215h18z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Welfare";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.FixedDataModel
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+<a href="javascript:;" class="gotop noUnderMenu" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+<script>
+        $(function () {
+
+            $('.menu_container').find('#item_container').find('.item').eq(4).addClass('active');
+        })
+    </script>
+@Html.Raw(HttpUtility.HtmlDecode(Model.Html))
+
+@*<section class="vision banner-welfare short">
+    <div class="text-box">
+        <h2><span class="red">公司</span>福利</h2>
+        <h2 class="eng">Welfare System</h2>
+        <p class="text description">員工是公司最重要的資產，尊重員工、創造和諧的工作氣氛、打造安全衛生的工作環境、關心員工與家庭間的情感聯繫，是我們努力的方向。在這裡，每一位員工在自己的工作崗位上認真工作、努力打拼，為公司的發展盡最大的努力。我們歡迎你，成為台灣豐田這個大家庭的一員。</p>
+    </div>
+</section>
+<section class="page-content">
+    <div class="row">
+        <div class="small-12 columns">
+            <ul class="welfare-list">
+                <li><div class="img"><img src="/Content/images/welfare/img_01@2x.png" alt=""></div><div class="text-box"><h2>工作健康與安全</h2><h2 class="eng">Health and Safety</h2><p class="text description">安全不僅是工作的基本條件，亦是我們不斷努力的目標。公司除替員工投保勞健保以外，每年依照需求安排員工參加健康檢查。在工作職場環境方面，不僅依照相關法令建置安全舒適的工作環境，更落實防災與演練，定期舉辦消防講座。</p></div></li>
+                <li><div class="img"><img src="/Content/images/welfare/img_02@2x.png" alt=""></div><div class="text-box"><h2>休閒活動</h2><h2 class="eng">Leisure Activities</h2><p class="text description">為了增進員工及其眷屬對本公司之了解與向心力，以及強化員工家庭間交流，我們會不定期舉辦各項活動，例如：慶生會、家庭日、年終尾牙等共好活動，拉近每位成員間的距離，一同齊心合作。</p></div></li>
+            </ul>
+            <div class="text-center"><a href="javascript:;" class="more_box animall">瀏覽我們的職缺</a></div>
+        </div>
+    </div>
+</section>*@
+

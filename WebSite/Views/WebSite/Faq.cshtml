@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = "Faq";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+<script>
+        $(function () {
+
+            $('.menu_container').find('#item_container').find('.item').eq(5).addClass('active');
+        })
+    </script>
+@model Begonia.Toyota.WebSite.Models.QuestionAndAnswerListModel
+
+<section class="vision banner-contact">
+    <div class="text-box">
+        <h2><span class="red">聯絡</span>我們</h2>
+        <h2 class="eng">Contact Us</h2>
+        <p class="text description">豐田產機非常重視客戶的反饋與意見,我們堅信良好的聯絡管道,是品質堅實的基礎，任何相關問題請來電或來信給我們，我們會儘速的與您聯繫，或您可以先參考<a href="@Url.Action("faq")" class="red">常見問題</a>。</p>
+    </div>
+    <div class="tab-box-faq">
+        <a href="@Url.Action("contactus")" >聯絡我們</a>
+        <a href="@Url.Action("requestcatalogs")">型錄索取</a>
+        <a href="@Url.Action("faq")"  class="active">常見問題</a>
+    </div>
+</section>
+<section class="page-content faq-content">
+    <div class="row">
+        <div class="small-12 columns">
+            <h2><span class="red">常見</span>問題</h2>
+            <h2 class="eng">Q &amp; A</h2>
+
+
+            <ul class="accordion text-left faq-list" data-accordion>
+                @foreach (var i in Model.Data.OrderBy(p=>p.Orderby))
+                {
+                    <li class="accordion-item" data-accordion-item>
+                        <a href="#" class="accordion-title">@i.Title</a>
+                        <div class="accordion-content text description" data-tab-content>
+                            @Html.Raw(HttpUtility.HtmlDecode(i.Detail))
+                        </div>
+                    </li>
+                }
+               
+                @*<li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">AC驅動系統有何好處？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <ul>
+                            <li>
+                                在追求完美設計的過程中，以現行DC動力系統無法滿足設計上的性能需求、紮實性及理想操作位置，故率先改 採AC動力系統
+                            </li>
+                            <li>
+                                AC動力系統有三大特色：
+                                <ol>
+                                    <li>相同尺寸馬達有較大的功能輸出表現(或相同輸出表現下AC馬達尺寸較小)</li>
+                                    <li>性能與操作感前所未有，穩定如一</li>
+                                    <li>低維修成本(無需更換碳刷及接觸器)</li>
+                                </ol>
+                            </li>
+                            <li>
+                                所以電動7FB具下列特性：
+                                <ol>
+                                    <li>風格細膩優越</li>
+                                    <li>上下車便利、操作舒適</li>
+                                    <li>優異的基礎性能及易操作性</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">FHPS與EHPS轉向系統之差異？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">TOYOTA ORS安全座椅？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">何謂SAS？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">電瓶低搭載位置有何好處 ?</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">新車使用注意事項</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">電瓶如何延長使用年限？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">電力回生充電？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">電動堆高機如何延長使用年限？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>
+                <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">電瓶壽命維持多久？</a>
+                    <div class="accordion-content text description" data-tab-content>
+                        <p>產生沒有意義的文字組合（文章？），供排版時填充版面用，但不會因為字義而左右版型的判斷。文字、標點符號出現機率大致符合台灣文章習慣。聽說很多學排版的都會用這個工具。</p>
+                    </div>
+                </li>*@
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+<section class="service page-service-link">
+    <a href="javascript:;" class="gotop" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="bigmenu_container">
+        <div class="row menu_element">
+            <a class="btn small-12 medium-6" href="@Url.Action("branch")">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <!--a class="btn small-12 medium-4" href="javascript:;">
+                <div class="icon lease">
+                </div>
+                <h3>租賃服務</h3>
+                <h3 class="eng">Leasing Services</h3>
+                <div class="text">
+                    具備應變未來的靈活性，使企業資金專注於核心業務。
+                </div>
+                <div class="gradient_bg"></div>
+            </a-->
+            <a class="btn small-12 medium-6" href="@Url.Action("warranty")">
+                <div class="icon warranty ">
+                </div>
+                <h3>售後服務</h3>
+                <h3 class="eng">Warranty Service</h3>
+                <div class="text">
+                    業界最優的保固條件，讓您的產業車輛隨時處於最佳狀態。
+                </div>
+                <div class="gradient_bg"></div>
+            </a>
+        </div>
+    </div>
+</section>

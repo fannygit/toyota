@@ -1,0 +1,32 @@
+﻿@model Begonia.Toyota.WebSite.Models.AccountListModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentController = string.Empty;
+    if (ViewContext.RouteData.Values["Controller"] != null)
+    {
+        CurrentController = ViewContext.RouteData.Values["Controller"].ToString();
+    }
+}
+
+<script>
+    $(function () {
+        var msg = '@TempData["isneedshowchangepwd"]';
+        if (msg != '') {
+            alert('請重新修改密碼(已達一個月尚未修改密碼)');
+        }
+    });
+</script>
+<article class="BOX" id="CONTENT_1">
+    @{
+        Html.RenderPartial("_MenuPartial");
+    }
+
+    <article id="RIGHT_BOX" class="CONTENT_R">
+        <article id="POS">
+            您當前位置是：<span class="NOW">首頁</span>
+        </article>
+        <nav id="BOX_NAV">
+        </nav>
+        歡迎光臨首頁
+    </article>
+</article>

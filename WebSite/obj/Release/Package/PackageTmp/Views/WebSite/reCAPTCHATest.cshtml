@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title>reCAPTCHA</title>
+    <script type="text/javascript">
+        // 驗證成功後執行
+        var onSubmit = function(token) {
+            $('#captchaToken').val(token);
+        };
+        var onloadCallback = function() {
+            grecaptcha.render('reCAPTCHA', {
+                'sitekey': '6LfBwzUUAAAAAKKxHpmBERoxbQIXypcB4VSTDfU_', // 這邊填寫自己的site_key
+                'callback': onSubmit // 執行成功後onSubmit變數接收
+            });
+        };
+    </script>
+</head>
+<body>
+    <form method="POST" action="reCAPTCHATestPOST">
+        <div id="reCAPTCHA"></div>
+        <input id="captchaToken" name="captchaToken" type="hidden" />
+        <input name="submit" type="submit" />
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>

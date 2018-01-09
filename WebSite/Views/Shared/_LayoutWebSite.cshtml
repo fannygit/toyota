@@ -1,0 +1,417 @@
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="海棠網頁設計">
+    <meta name="URL" content="">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:title" content="@TempData[" ogtitle "]" />
+    <meta property="og:description" content="@TempData[" ogdescription "]" />
+    <meta property="og:url" content="@TempData[" ogurl "]" />
+    <meta property="og:image" content="@TempData[" ogimage "]" />
+    <meta property="og:type" content="website" />
+    <meta property="og:type" content="business.business" />
+    <meta property="business:contact_data:street_address" content="" />
+    <meta property="business:contact_data:locality" content="" />
+    <meta property="business:contact_data:postal_code" content="" />
+    <meta property="business:contact_data:country_name" content="" />
+    <title>@TempData["title"]</title>
+    <link rel="stylesheet" href="/Content/css/app.min.css">
+    <!-- <link rel="stylesheet" href="/Content/css/hamburger.css"> @RenderSection("css", false) -->
+    <link rel="shortcut icon" type="/Content/images/png" href="/favicon-aturia.ico" />
+    <link rel="shortcut icon" type="/Content/images/png" href="http://aturia.begonia.tw/Content/images/favicon-aturia.ico" />
+    <link rel="shortcut icon" href="http://tmht.crazy-j.com.tw/favicon.ico" type="image/x-icon" />
+    <script src="/Content/js/lib/jquery/jquery.min.js"></script>
+    <script src="/Content/js/lib/imagesLoaded/imagesloaded.min.js"></script>
+    <script src="/Content/js/lib/foundation/foundation.min.js"></script>
+    <script src="/Content/js/lib/gsap/TweenMax.min.js"></script>
+    <script src="/Content/js/lib/ScrollMagic/ScrollMagic.min.js"></script>
+    <!--<script src="/Content/js/lib/ScrollMagic/debug.addIndicators.js"></script> -->
+    <!-- <script src="/Content/js/lib/gsap/animation.gsap.js"></script> -->
+    <script src="/Content/js/lib.min.js"></script>
+    <!-- <script src="/Content/js/lib/rippler/jquery.rippler.min.js"></script>
+    <script src="/Content/js/lib/picturefill/picturefill.min.js"></script>
+    <script src="/Content/js/lib/smooth-scroll/smooth-scroll.min.js"></script>
+    <script src="/Content/js/lib/overlaps/jquery.overlaps.min.js"></script>
+    <script src="/Content/js/lib/EasyZoom/easyzoom.js"></script> -->
+    <script src="/Content/js/lib/slick_js/slick.min.js"></script>
+    <!-- <script src="/Content/js/lib/jq_parallax/parallax.min.js"></script>    -->
+    @RenderSection("js", false)
+</head>
+
+<body>
+    <script>
+    function gohref1(yy) {
+        location.href = yy;
+    }
+
+    function gohrefC(yy) {
+        if (confirm('您將開啟台灣豐田產業機械官網以外的連結，請問是否同意？')) {
+            window.open(yy, '_blank');
+        }
+    }
+    </script>
+    <div class="loader_container" id="loader">
+        <div class="cssload-thecube">
+            <div class="cssload-cube cssload-c1"></div>
+            <div class="cssload-cube cssload-c2"></div>
+            <div class="cssload-cube cssload-c4"></div>
+            <div class="cssload-cube cssload-c3"></div>
+        </div>
+    </div>
+    <!-- pc版的產品選單 -->
+    <div class="mainmenu">
+        <a class="logo hvcenter" href="@Url.Action("Index")">
+            <img src="/Content/images/menu_element_03.png" alt="">
+        </a>
+        <div class="vic_logo hvcenter">
+            <img src="/Content/images/menu_element_06.png" alt="">
+        </div>
+        <div class="menu_container hide-for-medium-only hide-for-small-only">
+            <div class="share_search">
+                <div class="search">
+                    <input class="animall" type="text" id="googlesearch" name="googlesearch" placeholder="Search.." onfocus="cleartext(this)" onblur="resettext(this)">
+                    <!-- <img src="/Content/images/menu_element_07.png" alt="" onclick="location.href = '/website/searchresult?kg=' + $('#googlesearch').val();"> -->
+                    <img src="/Content/images/menu_element_07.png" alt="" onclick="goSearch();"> @*
+                    <input type="text" placeholder="Search" id="googlesearch">*@ @*
+                    <button onclick="location.href = '/website/searchresult?kg=' + $('#googlesearch').val();" class="button expand">Search</button>*@
+                </div>
+                <a class="fb_icon" href="https://business.facebook.com/%E5%8F%B0%E7%81%A3%E8%B1%90%E7%94%B0%E7%94%A2%E6%A9%9F-1961131114162736/?business_id=370082093410145" target="_blank">
+                    <img src="/Content/images/element_17.png" alt="">
+                </a>
+            </div>
+            <div class="row" id="item_container">
+                <div class="item large-2 animall">
+                    關於台灣豐田
+                    <a class="sub" href="@Url.Action("about")">公司簡介</a>
+                    <a class="sub" href="@Url.Action("newslist")">最新消息</a>
+                    <a class="sub" href="@Url.Action("branch")">據點查詢</a>
+                </div>
+                <div class="item large-2 animall products btn">產品介紹</div>
+                <div class="item large-2 animall btn" onclick="gohref1('/WebSite/UsedOverview')">
+                    中古車
+                </div>
+                <div class="item large-2 animall">
+                    產車服務
+                    <a href="@Url.Action("leaseservice")" class="sub">租賃服務</a>
+                    <a href="@Url.Action("warranty")" class="sub">售後服務</a>
+                </div>
+                <div class="item large-2 animall">
+                    人才招募
+                    <a href="@Url.Action("NowCareer")" target="_blank" onclick="return confirm('您將開啟台灣豐田產業機械官網以外的連結，請問是否同意？');" class="sub">現有職缺</a>
+                    <a href="@Url.Action("career")" class="sub">職涯規劃</a>
+                    <a href="@Url.Action("welfare")" class="sub">公司福利</a>
+                </div>
+                <div class="item large-2 animall">
+                    聯絡我們
+                    <a href="@Url.Action("contactus")" class="sub">聯絡我們</a>
+                    <a href="@Url.Action("requestcatalogs")" class="sub">索取型錄</a>
+                    <a href="@Url.Action("faq")" class="sub">常見問題</a>
+                </div>
+            </div>
+        </div>
+        <div class="hamburger_container">
+            <button class="hamburger hamburger--spring-r" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <div class="click_menu" id="ClickMenu">
+            <div class="search_container">
+                @*
+                <input class="open animall" type="text" name="search" placeholder="Search..">
+                <div class="zoomBox rippler rippler-default"> <img src="/content/images/menu_element_07.png" alt=""></div>*@
+                <input class="open animall" type="text" id="googlesearchM" name="googlesearchM" placeholder="Search..">
+                <!-- <div class="zoomBox rippler rippler-default" onclick="location.href = '/website/searchresult?kg=' + $('#googlesearchM').val();">
+                    <img src="/content/images/menu_element_07.png" alt="" >
+                </div> -->
+                <div class="zoomBox rippler rippler-default" onclick="goSearchM();">
+                    <img src="/content/images/menu_element_07.png" alt="">
+                </div>
+            </div>
+            <ul class="m_menu-container">
+                <li class="main_item sub">
+                    關於台灣豐田<img src="/content/images/element_14.png" alt="" class="arrow right animall">
+                    <div class="clickArea "></div>
+                    <div class="sub_menu_container">
+                        <div class="category_title " onclick="gohref1('/WebSite/About')">
+                            公司簡介 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                        <div class="category_title" onclick="gohref1('/WebSite/NewsList')">
+                            最新消息 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                        <div class="category_title" onclick="gohref1('/WebSite/Branch')">
+                            據點查詢 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="main_item sub">
+                    產品介紹 <img src="/content/images/element_14.png" alt="" class="arrow right animall">
+                    <div class="clickArea "></div>
+                    <div class="sub_menu_container">
+                        @{ Html.RenderPartial("_PTPartialMobile"); }
+                    </div>
+                </li>
+                <li class="main_item " onclick="gohref1('/WebSite/UsedOverview')">
+                    中古車 <img src="/content/images/element_14.png" alt="" class="arrow right animall">
+                </li>
+                <li class="main_item sub">
+                    產車服務<img src="/content/images/element_14.png" alt="" class="arrow right animall">
+                    <div class="clickArea "></div>
+                    <div class="sub_menu_container">
+                        <div class="category_title " onclick="gohref1('/WebSite/LeaseService')">
+                            租賃服務 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                        <div class="category_title " onclick="gohref1('/WebSite/Warranty')">
+                            售後服務 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="main_item sub">
+                    人才招募<img src="/content/images/element_14.png" alt="" class="arrow right animall">
+                    <div class="clickArea "></div>
+                    <div class="sub_menu_container">
+                        <div class="category_title " target="_blank" onclick="gohrefC('/WebSite/NowCareer');">
+                            現有職缺 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                        <div class="category_title " onclick="gohref1('/WebSite/Career')">
+                            職涯規劃 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                        <div class="category_title " onclick="gohref1('/WebSite/Welfare')">
+                            公司福利 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                    </div>
+                </li>
+                <li class="main_item sub">
+                    聯絡我們<img src="/content/images/element_14.png" alt="" class="arrow right animall">
+                    <div class="clickArea"></div>
+                    <div class="sub_menu_container">
+                        <div class="category_title " onclick="gohref1('/WebSite/ContactUs')">
+                            聯絡我們 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                        <div class="category_title " onclick="gohref1('/WebSite/RequestCatalogs')">
+                            型錄索取 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                        <div class="category_title " onclick="gohref1('/WebSite/Faq')">
+                            常見問題 <img src="/content/images/element_12.png" alt="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="share_container">
+                <a href="javascript:;">
+                    <img src="/content/images/element_17.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    @{ Html.RenderPartial("_PTPartial"); } @RenderBody()
+    <footer>
+        <div class="container" id="FtContainer">
+            <div class="unit">
+                <div class="title_container">
+                    <h4>關於台灣豐田<span class="hide_arrow animall" id="HideArrow"></span></h4>
+                </div>
+                <div class="red_underline"></div>
+                <ul class="items open">
+                    <li>
+                        <h5><a href="@Url.Action("about")">公司簡介</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="@Url.Action("newslist")">最新消息</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="@Url.Action("branch")">據點查詢</a></h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="unit">
+                <div class="title_container">
+                    <h4>產品介紹 <span class="hide_arrow animall" id="HideArrow"></span></h4>
+                </div>
+                <div class="red_underline"></div>
+                <ul class="items open footerItems" id="FooterItems">
+                    <li>
+                        <h5><a href="javascript: void(0)" id="Forklift">堆高機</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="javascript: void(0)" id="Tractor">鏟裝機</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="javascript: void(0)" id="Tow">曳引車</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="javascript: void(0)" id="Other">其他</a></h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="unit ">
+                <div class="title_container">
+                    <h4>中古車 <span class="hide_arrow animall" id="HideArrow"></span></h4>
+                </div>
+                <div class="red_underline"></div>
+                <ul class="items open">
+                    <li>
+                        <h5><a href="@Url.Action("UsedOverview")">中古車</a></h5>
+                    </li>
+                    <!-- <li>
+                        <h5><a href="#">預留</a></h5></li>
+                    <li>
+                        <h5><a href="#">預留</a></h5></li> -->
+                </ul>
+            </div>
+            <div class="unit ">
+                <div class="title_container">
+                    <h4>產車服務 <span class="hide_arrow animall" id="HideArrow"></span></h4>
+                </div>
+                <div class="red_underline"></div>
+                <ul class="items open">
+                    <li>
+                        <h5><a href="@Url.Action("leaseservice")">租賃服務</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="@Url.Action("warranty")">售後服務</a></h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="unit ">
+                <div class="title_container">
+                    <h4>人才招募 <span class="hide_arrow animall" id="HideArrow"></span></h4>
+                </div>
+                <div class="red_underline"></div>
+                <ul class="items open">
+                    <li>
+                        <h5><a href="@Url.Action("NowCareer")" target="_blank" onclick="return confirm('您將開啟台灣豐田產業機械官網以外的連結，請問是否同意？');">現有職缺</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="@Url.Action("career")">職涯規劃</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="@Url.Action("welfare")">公司福利</a></h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="unit ">
+                <div class="title_container">
+                    <h4>聯絡我們 <span class="hide_arrow animall" id="HideArrow"></span></h4>
+                </div>
+                <div class="red_underline"></div>
+                <ul class="items open">
+                    <li>
+                        <h5><a href="@Url.Action("contactus")">聯絡我們</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="@Url.Action("requestcatalogs")">索取型錄</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="@Url.Action("faq")">常見問題</a></h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="unit last">
+                <div class="title_container">
+                    <h3 class="alr"><a href="https://business.facebook.com/%E5%8F%B0%E7%81%A3%E8%B1%90%E7%94%B0%E7%94%A2%E6%A9%9F-1961131114162736/?business_id=370082093410145" target="_blank"><img src="/Content/images/element_17.png" alt="台灣豐田產機"></a></h3>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        <p><a href="@Url.Action(" Privacy ")">隱私權聲明</a> / 客服專線：0800-221-456</p>
+        Copyright © TOYOTA MATERIAL HANDLING TAIWAN LTD. All rights reserved.
+    </div>
+    <script src="/Content/js/app.min.js"></script>
+    <script type="text/javascript">
+    function goSearch() {
+
+        if ($('#googlesearch').val() == '') {
+            alert("請於左側輸入搜尋字串");
+
+        } else {
+
+            location.href = '/website/searchresult?kg=' + $('#googlesearch').val();
+
+        }
+
+    }
+
+    function goSearchM() {
+
+        if ($('#googlesearchM').val() == '') {
+            // alert("請於左側輸入搜尋字串");
+            $('#googlesearchM').attr('placeholder', '請輸入搜尋字串');
+
+
+        } else {
+
+            location.href = '/website/searchresult?kg=' + $('#googlesearchM').val();
+
+        }
+
+    }
+    $(function() {
+
+        document.getElementById('googlesearch').onkeypress = function(e) {
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '13') {
+                // Enter pressed
+                if ($('#googlesearch').val() == '') {
+                    alert("請於左側輸入搜尋字串");
+                } else {
+                    location.href = '/website/searchresult?kg=' + $('#googlesearch').val();
+                }
+                return false;
+            }
+        }
+
+        document.getElementById('googlesearchM').onkeypress = function(e) {
+            if (!e) e = window.event;
+            var keyCode = e.keyCode || e.which;
+            if (keyCode == '13') {
+                // Enter pressed
+                if ($('#googlesearchM').val() == '') {
+                    $('#googlesearchM').attr('placeholder', '請輸入搜尋字串');
+                } else {
+                    location.href = '/website/searchresult?kg=' + $('#googlesearchM').val();
+                }
+                return false;
+            }
+        }
+
+    })
+    $(function() {
+
+
+        var domain = document.domain;
+        $('a').click(function() {
+
+
+            var link = $(this).attr("href");
+            if (link.match('www') != null || link.match('http') != null) {
+                console.log("has www http");
+                if (link.match(domain) != null) {
+                    //location.href = $(this).attr("href");
+                } else {
+                    return confirm('您將開啟台灣豐田產業機械官網以外的連結，請問是否同意？');
+                }
+            } else {
+
+                // console.log("no www");
+            }
+            console.log(domain);
+
+            //return confirm('您將開啟台灣豐田產業機械官網以外的連結，請問是否同意？');
+
+        })
+
+    })
+    </script>
+</body>
+
+</html>

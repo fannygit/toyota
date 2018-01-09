@@ -1,0 +1,492 @@
+﻿@using Begonia.Toyota.WebSite.Enums;
+@model Begonia.Toyota.WebSite.Models.AUsedCarInfoModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentController = string.Empty;
+    if (ViewContext.RouteData.Values["Controller"] != null)
+    {
+        CurrentController = ViewContext.RouteData.Values["Controller"].ToString();
+    }
+}
+
+
+<script type="text/javascript">
+   
+    $(function () {
+        $("#Years").datepicker({
+            yearRange: '1990:'+ @DateTime.Now.ToString("yyyy"),
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy',
+            onClose: function (dateText, inst) {
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, 1));
+            }
+        });
+        $("#Years").focus(function () {
+            $(".ui-datepicker-month").hide();
+        });
+    });
+    
+    function check() {
+        if ($("#Type").val() != ''&& $("#Tonnes").val() != ''&& $("#Years").val() != ''&& $("#Price").val() != ''&& $("#Price").val() != '') {
+            goSubmit();
+        } else {
+            alert("請填入必填項目");
+        }
+    }
+</script>
+<article class="BOX" id="CONTENT_1">
+    @{
+        Html.RenderPartial("_MenuPartial");
+    }
+
+    <article id="RIGHT_BOX" class="CONTENT_R">
+        <article id="POS">
+            您當前位置是：<a href="#">中古車管理</a> > <a href="~/AUsedCarEngine/Info">中古車資訊</a> > <span class="NOW">新增</span>
+        </article>
+        <section id="R_CONTENT_BOX">
+            <span class="POINT">表示必填項目</span>
+            <br />
+            <span style="color:red">
+                @Html.ValidationMessage("message")
+            </span>
+            <span class="BACK">@Html.ActionLink("返回", "List", new { page = Model.page }, new { @class = "pure-button" })</span>
+            @using (Html.BeginForm(Model.Mode == EditPageMode.Create ? "create" : "update",
+                CurrentController, new { page = Model.page }, FormMethod.Post,
+                new { enctype = "multipart/form-data", @class = "pure-form pure-form-aligned", id = "f1" }))
+            {
+                @Html.HiddenFor(p => p.Id)
+                @Html.HiddenFor(p => p.CreateId)
+                @Html.HiddenFor(p => p.CreateTime)
+                @Html.HiddenFor(p => p.SStatus)
+                @Html.HiddenFor(p => p.Search)
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab1" style="border-top: 1px #cecdcd solid;">
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">產品機型：</span></td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.Type, new {css = "t3", size = 50, maxlength = 50 })
+                            @Html.ValidationMessageFor(p => p.Type, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">產品類型：</span></td>
+                        <td class="table1_text">
+                            @Html.DropDownListFor(p => p.ProductType, Model.ProductTypeDropDownList, new { css = "t3" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">列表圖片 建議尺寸650x400：</span></td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ListImg))
+                            {
+                                <a id="imgA" href="@Url.Content("~/File/Get?FileId=" + Model.ListImg)" target="_blank">
+                                    <img id="img1" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ListImg)" />
+                                </a>
+                            }
+                            <img id="img1" style='@(!string.IsNullOrEmpty(Model.ListImg) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile" name="ImgFile" onchange="readURL(this,'img1','imgA')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimg('ImgFile', 'img1')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ListImg)
+                            @Html.ValidationMessageFor(p => p.ListImg, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">編號：</td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.Number, new { css = "t3", maxlength = 50 })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">引擎型式：</span></td>
+                        <td class="table1_text">
+                            @Html.DropDownListFor(p => p.EngineId, Model.EngineDropDownList, new { css = "t3" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">屬具：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.Tool, new { css = "t3", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">噸數：</span></td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.Tonnes, new { css = "t3", maxlength = 50 })
+                            @Html.ValidationMessageFor(p => p.Tonnes, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">貨叉長：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.Length, new { css = "t3", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">引擎號碼：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.EngineNumber, new { css = "t3", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">車身號碼：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.CarNumber, new { css = "t3", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">年式：</span></td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.Years, new {css = "t3", id = "Years"})
+                            @Html.ValidationMessageFor(p => p.Years, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">使用小時數：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.UsedHours, new { css = "t3" })</td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">售價：</span></td>
+                        <td class="table1_text">
+                            @Html.TextBoxFor(p => p.Price, new { css = "t3", maxlength = 50 })
+                            @Html.ValidationMessageFor(p => p.Price, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">聯絡人：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.ContactPerson, new { css = "t3", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">聯絡方式：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.ContactMethod, new { css = "t3", maxlength = 50 })</td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片1 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg1))
+                            {
+                                <a id="imgA1" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg1)" target="_blank">
+                                    <img id="img11" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg1)" />
+                                </a>
+                            }
+                            <img id="img11" style='@(!string.IsNullOrEmpty(Model.ProductImg1) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile1" name="ImgFile1" onchange="readURL(this,'img11','imgA1')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg1','ImgFile1','img11')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg1)
+                            @Html.ValidationMessageFor(p => p.ProductImg1, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片2 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg2))
+                            {
+                                <a id="imgA2" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg2)" target="_blank">
+                                    <img id="img12" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg2)" />
+                                </a>
+                            }
+                            <img id="img12" style='@(!string.IsNullOrEmpty(Model.ProductImg2) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile2" name="ImgFile2" onchange="readURL(this,'img12','imgA2')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg2','ImgFile2','img12')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg2)
+                            @Html.ValidationMessageFor(p => p.ProductImg2, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片3 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg3))
+                            {
+                                <a id="imgA3" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg3)" target="_blank">
+                                    <img id="img13" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg3)" />
+                                </a>
+                            }
+
+                            <img id="img13" style='@(!string.IsNullOrEmpty(Model.ProductImg3) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile3" name="ImgFile3" onchange="readURL(this,'img13','imgA3')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg3','ImgFile3','img13')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg3)
+                            @Html.ValidationMessageFor(p => p.ProductImg3, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片4 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg4))
+                            {
+                                <a id="imgA4" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg4)" target="_blank">
+                                    <img id="img14" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg4)" />
+                                </a>
+                            }
+                            <img id="img14" style='@(!string.IsNullOrEmpty(Model.ProductImg4) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile4" name="ImgFile4" onchange="readURL(this,'img14','imgA4')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg4','ImgFile4','img14')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg4)
+                            @Html.ValidationMessageFor(p => p.ProductImg4, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片5 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg5))
+                            {
+                                <a id="imgA5" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg5)" target="_blank">
+                                    <img id="img15" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg5)" />
+                                </a>
+                            }
+
+                            <img id="img15" style='@(!string.IsNullOrEmpty(Model.ProductImg5) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile5" name="ImgFile5" onchange="readURL(this,'img15','imgA5')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg5','ImgFile5','img15')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg5)
+                            @Html.ValidationMessageFor(p => p.ProductImg5, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片6 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg6))
+                            {
+                                <a id="imgA6" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg6)" target="_blank">
+                                    <img id="img16" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg6)" />
+                                </a>
+                            }
+                            <img id="img16" style='@(!string.IsNullOrEmpty(Model.ProductImg6) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile6" name="ImgFile6" onchange="readURL(this,'img16','imgA6')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg6','ImgFile6','img16')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg6)
+                            @Html.ValidationMessageFor(p => p.ProductImg6, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片7 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg7))
+                            {
+                                <a id="imgA7" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg7)" target="_blank">
+                                    <img id="img17" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg7)" />
+                                </a>
+                            }
+                            <img id="img17" style='@(!string.IsNullOrEmpty(Model.ProductImg7) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile7" name="ImgFile7" onchange="readURL(this,'img17','imgA7')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg7','ImgFile7','img17')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg7)
+                            @Html.ValidationMessageFor(p => p.ProductImg7, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片8 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg8))
+                            {
+                                <a id="imgA8" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg8)" target="_blank">
+                                    <img id="img18" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg8)" />
+                                </a>
+                            }
+                            <img id="img18" style='@(!string.IsNullOrEmpty(Model.ProductImg8) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile8" name="ImgFile8" onchange="readURL(this,'img18','imgA8')"  class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg8','ImgFile8','img18')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg8)
+                            @Html.ValidationMessageFor(p => p.ProductImg8, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">產品圖片9 建議尺寸800x520：</td>
+                        <td class="table1_text">
+                            @if (!string.IsNullOrEmpty(Model.ProductImg9))
+                            {
+                                <a id="imgA9" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg9)" target="_blank">
+                                    <img id="img19" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg9)" />
+                                </a>
+                            }
+                            <img id="img19" style='@(!string.IsNullOrEmpty(Model.ProductImg9) ? "display:none" : "width:100px;")' src="" />
+                            <input type="file" id="ImgFile9" name="ImgFile9" onchange="readURL(this,'img19','imgA9')" class="pure-input-1-2" />
+                            <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg9','ImgFile9','img19')" class="pure-input-1-2" />
+                            @Html.HiddenFor(p => p.ProductImg9)
+                            @Html.ValidationMessageFor(p => p.ProductImg9, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                <tr>
+                    <td width="140px" align="right" class="table1_title onn2">產品圖片10 建議尺寸800x520：</td>
+                    <td class="table1_text">
+                        @if (!string.IsNullOrEmpty(Model.ProductImg10))
+                        {
+                            <a id="imgA10" href="@Url.Content("~/File/Get?FileId=" + Model.ProductImg10)" target="_blank">
+                                <img id="img110" style="width:100px;" src="@Url.Content("~/File/Get?FileId=" + Model.ProductImg10)" />
+                            </a>
+                        }
+                        <img id="img110" style='@(!string.IsNullOrEmpty(Model.ProductImg10) ? "display:none" : "width:100px;") src=""  />
+                        <input type="file" id="ImgFile10" name="ImgFile10"  onchange="readURL(this,'img110','imgA10')" class="pure-input-1-2" />
+                        <input type="button" value="移除圖片" onclick="godelimgAll('ProductImg10','ImgFile10','img110')" class="pure-input-1-2" />
+                        @Html.HiddenFor(p => p.ProductImg10)
+                        @Html.ValidationMessageFor(p => p.ProductImg10, null, new { style = "color:red" })
+                    </td>
+                </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">排序：</td>
+                        <td class="table1_text">@Html.TextBoxFor(p => p.Orderby, new { css = "t3" })</td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="table1_title onn2"><span class="TP">狀態：</span></td>
+                        <td>
+                            <input type="radio" name="Status" id="Status" value="true" @(Model.Status ? "checked" : "") />
+                            上線&nbsp;&nbsp;
+                            <input type="radio" name="Status" id="Status" value="false" @(!Model.Status ? "checked" : "") />
+                            隱藏&nbsp;&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">上稿時間：</td>
+                        <td class="table1_text">
+                            @Model.CreateTime
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="onn2">&nbsp;</td>
+                        <td><span class="BTN3"><a href="#" onclick="check()">確定送出</a></span></td>
+                    </tr>
+                </table>
+            }
+        </section>
+    </article>
+
+</article>
+
+@*@Html.ActionLink("回上頁", "List", new { page = Model.page }, new { @class = "pure-button" })
+<p>
+@Html.ValidationMessage("message")
+</p>
+
+@using (Html.BeginForm(Model.Mode == EditPageMode.Create ? "create" : "update", 
+    CurrentController, new { page = Model.page }, FormMethod.Post,
+    new { enctype = "multipart/form-data", @class = "pure-form pure-form-aligned" }))
+{
+	<fieldset>	
+
+		
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Type)
+			@Html.TextBoxFor(p => p.Type, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.Type)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.AccessoriesId)
+			@Html.TextBoxFor(p => p.AccessoriesId, new { @class = "pure-input-1-3" })
+			@Html.ValidationMessageFor(p => p.AccessoriesId)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.ListImg)
+			@Html.TextBoxFor(p => p.ListImg, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.ListImg)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Number)
+			@Html.TextBoxFor(p => p.Number, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.Number)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.EngineId)
+			@Html.TextBoxFor(p => p.EngineId, new { @class = "pure-input-1-3" })
+			@Html.ValidationMessageFor(p => p.EngineId)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Tool)
+			@Html.TextBoxFor(p => p.Tool, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.Tool)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Tonnes)
+			@Html.TextBoxFor(p => p.Tonnes, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.Tonnes)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Length)
+			@Html.TextBoxFor(p => p.Length, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.Length)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.EngineNumber)
+			@Html.TextBoxFor(p => p.EngineNumber, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.EngineNumber)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.CarNumber)
+			@Html.TextBoxFor(p => p.CarNumber, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.CarNumber)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Years)
+			@Html.TextBoxFor(p => p.Years, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.Years)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.UsedHours)
+			@Html.TextBoxFor(p => p.UsedHours, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.UsedHours)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Price)
+			@Html.TextBoxFor(p => p.Price, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.Price)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.ContactPerson)
+			@Html.TextBoxFor(p => p.ContactPerson, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.ContactPerson)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.ContactMethod)
+			@Html.TextBoxFor(p => p.ContactMethod, new { @class = "pure-input-1-2" })
+			@Html.ValidationMessageFor(p => p.ContactMethod)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Orderby)
+			@Html.TextBoxFor(p => p.Orderby, new { @class = "pure-input-1-3" })
+			@Html.ValidationMessageFor(p => p.Orderby)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.Status)
+			<label for="Status" class="pure-radio">
+				@Html.RadioButtonFor(p => p.Status, "True") 是&nbsp;
+				@Html.RadioButtonFor(p => p.Status, "False") 否&nbsp;
+			</label>
+			@Html.ValidationMessageFor(p => p.Status)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.CreateTime)
+			@Model.CreateTime
+			@Html.HiddenFor(p => p.CreateTime)
+		</div>
+
+		<div class="pure-control-group">
+			@Html.LabelFor(p => p.CreateId)
+			@Model.CreateId
+			@Html.HiddenFor(p => p.CreateId)
+		</div>
+
+
+
+		<div class="pure-control-group">
+            <label></label>
+            @if (Model.Mode == EditPageMode.Create)
+            {
+                <input type="submit" value="新 增" class="pure-button" />
+            }
+            else if (Model.Mode == EditPageMode.Update)
+            {
+                <input type="submit" value="修 改" class="pure-button" />
+            }
+           
+        </div>
+	</fieldset>
+}*@

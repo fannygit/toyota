@@ -1,0 +1,240 @@
+﻿
+<script>
+    $(function () {
+        $("#ForkliftDiv_1").html("");
+        $("#ForkliftDiv_2").html("");
+        $("#TractorDiv_1").html("");
+        $("#TractorDiv_2").html("");
+        $("#TowDiv_1").html("");
+        $("#TowDiv_2").html("");
+        $("#OtherDivOtherDiv").html("");
+        $.ajax({
+            url: "/WebSite/GetProductsList/",
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "";
+                for (var x = 0; x < data.Data1.length; x++) {
+                    markup +=
+                        "<a class=\"small-6 medium-4 large-3 columns list_cover \" onclick=\"goPD(" +
+                        data.Data1[x].Id +
+                        ")\">" +
+                        "<img src=\"/File/Get?FileId=" +
+                        data.Data1[x].Img +
+                        "\" alt=\"\">" +
+                        "<h3>" +
+                        data.Data1[x].Name +
+                        "</h3>";
+                    if (data.Data1[x].OverviewTonnesStartSHOW == '' && data.Data1[x].OverviewTonnesEndSHOW == '') {
+                        markup += "<p>" + data.Data1[x].SubTitle + " </p></a>";
+                    } else {
+                        markup += "<p>" + data.Data1[x].SubTitle + " " + data.Data1[x].OverviewTonnesStartSHOW + " to " + data.Data1[x].OverviewTonnesEndSHOW + " ton</p></a>";
+                    }
+                    
+                }
+                $("#ForkliftDiv_1").html(markup);
+
+                markup = "";
+                for (var x = 0; x < data.Data2.length; x++) {
+                    markup +=
+                        "<a class=\"small-6 medium-4 large-3 columns list_cover \" onclick=\"goPD(" +
+                        data.Data2[x].Id +
+                        ")\">" +
+                        "<img src=\"/File/Get?FileId=" +
+                        data.Data2[x].Img +
+                        "\" alt=\"\">" +
+                        "<h3>" +
+                        data.Data2[x].Name +
+                        "</h3>";
+                    if (data.Data2[x].OverviewTonnesStartSHOW == '' && data.Data2[x].OverviewTonnesEndSHOW == '') {
+                        markup += "<p>" + data.Data2[x].SubTitle + " </p></a>";
+                    } else {
+                        markup += "<p>" + data.Data2[x].SubTitle + " " + data.Data2[x].OverviewTonnesStartSHOW + " to " + data.Data2[x].OverviewTonnesEndSHOW + " ton</p></a>";
+                    }
+                }
+                $("#ForkliftDiv_2").html(markup);
+
+                markup = "";
+                for (var x = 0; x < data.Data3.length; x++) {
+                    markup +=
+                        "<a class=\"small-6 medium-4 large-3 columns list_cover \" onclick=\"goPD(" +
+                        data.Data3[x].Id +
+                        ")\">" +
+                        "<img src=\"/File/Get?FileId=" +
+                        data.Data3[x].Img +
+                        "\" alt=\"\">" +
+                        "<h3>" +
+                        data.Data3[x].Name +
+                        "</h3>";
+                    if (data.Data3[x].OverviewTonnesStartSHOW == '' && data.Data3[x].OverviewTonnesEndSHOW == '') {
+                        markup += "<p>" + data.Data3[x].SubTitle + " </p></a>";
+                    } else {
+                        markup += "<p>" + data.Data3[x].SubTitle + " " + data.Data3[x].OverviewTonnesStartSHOW + " to " + data.Data3[x].OverviewTonnesEndSHOW + " ton</p></a>";
+                    }
+                }
+                $("#TractorDiv_1").html(markup);
+                markup = "";
+                for (var x = 0; x < data.Data4.length; x++) {
+                    markup +=
+                        "<a class=\"small-6 medium-4 large-3 columns list_cover \" onclick=\"goPD(" +
+                        data.Data4[x].Id +
+                        ")\">" +
+                        "<img src=\"/File/Get?FileId=" +
+                        data.Data4[x].Img +
+                        "\" alt=\"\">" +
+                        "<h3>" +
+                        data.Data4[x].Name +
+                        "</h3>";
+                    if (data.Data4[x].OverviewTonnesStartSHOW == '' && data.Data4[x].OverviewTonnesEndSHOW == '') {
+                        markup += "<p>" + data.Data4[x].SubTitle + " </p></a>";
+                    } else {
+                        markup += "<p>" + data.Data4[x].SubTitle + " " + data.Data4[x].OverviewTonnesStartSHOW + " to " + data.Data4[x].OverviewTonnesEndSHOW + " ton</p></a>";
+                    }
+                }
+                $("#TractorDiv_2").html(markup);
+                markup = "";
+                for (var x = 0; x < data.Data5.length; x++) {
+                    markup +=
+                        "<a class=\"small-6 medium-4 large-3 columns list_cover \" onclick=\"goPD(" +
+                        data.Data5[x].Id +
+                        ")\">" +
+                        "<img src=\"/File/Get?FileId=" +
+                        data.Data5[x].Img +
+                        "\" alt=\"\">" +
+                        "<h3>" +
+                        data.Data5[x].Name +
+                        "</h3>";
+                    if (data.Data5[x].OverviewTonnesStartSHOW == '' && data.Data5[x].OverviewTonnesEndSHOW == '') {
+                        markup += "<p>" + data.Data5[x].SubTitle + " </p></a>";
+                    } else {
+                        markup += "<p>" + data.Data5[x].SubTitle + " " + data.Data5[x].OverviewTonnesStartSHOW + " to " + data.Data5[x].OverviewTonnesEndSHOW + " ton</p></a>";
+                    }
+                }
+                $("#TowDiv_1").html(markup);
+                markup = "";
+                for (var x = 0; x < data.Data6.length; x++) {
+                    markup +=
+                        "<a class=\"small-6 medium-4 large-3 columns list_cover \" onclick=\"goPD(" +
+                        data.Data6[x].Id +
+                        ")\">" +
+                        "<img src=\"/File/Get?FileId=" +
+                        data.Data6[x].Img +
+                        "\" alt=\"\">" +
+                        "<h3>" +
+                        data.Data6[x].Name +
+                        "</h3>";
+                    if (data.Data6[x].OverviewTonnesStartSHOW == '' && data.Data6[x].OverviewTonnesEndSHOW == '') {
+                        markup += "<p>" + data.Data6[x].SubTitle + " </p></a>";
+                    } else {
+                        markup += "<p>" + data.Data6[x].SubTitle + " " + data.Data6[x].OverviewTonnesStartSHOW + " to " + data.Data6[x].OverviewTonnesEndSHOW + " ton</p></a>";
+                    }
+                }
+                $("#TowDiv_2").html(markup);
+                markup = "";
+                for (var x = 0; x < data.Data7.length; x++) {
+                    markup +=
+                        "<a class=\"small-6 medium-4 large-3 columns list_cover \" onclick=\"goPD(" +
+                        data.Data7[x].Id +
+                        ")\">" +
+                        "<img src=\"/File/Get?FileId=" +
+                        data.Data7[x].Img +
+                        "\" alt=\"\">" +
+                        "<h3>" +
+                        data.Data7[x].Name +
+                        "</h3>";
+                    if (data.Data7[x].OverviewTonnesStartSHOW == '' && data.Data7[x].OverviewTonnesEndSHOW == '') {
+                        markup += "<p>" + data.Data7[x].SubTitle + " </p></a>";
+                    } else {
+                        markup += "<p>" + data.Data7[x].SubTitle + " " + data.Data7[x].OverviewTonnesStartSHOW + " to " + data.Data7[x].OverviewTonnesEndSHOW + " ton</p></a>";
+                    }
+                }
+                $("#OtherDivOtherDiv").html(markup);
+                markup = "";
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+    });
+
+    function goPD(id)
+    {
+        location.href = "/WebSite/ProductsContent?id="+id;
+    }
+</script>
+<div class="pc_products_menu" id="pcProductsMenu">
+    <div class="control">
+        <a class="tab open animall" id="Forklift">堆高機</a>
+        <a class="tab animall" id="Tractor">鏟裝機</a>
+        <a class="tab animall" id="Tow">曳引車</a>
+        <a class="tab animall" id="OtherOther">其它</a>
+        <a href="javascript:void(0)" class="close_btn animall thick main_menu"></a>
+    </div>
+    <!-- 叉車........................................................ -->
+    <div class="product_list_container open" id="Forklift">
+        <div class="engine_type">
+            內燃式發動機
+        </div>
+        <div class="list_container">
+            <div class="row large-collapse" id="ForkliftDiv_1">
+             
+            </div>
+        </div>
+        <div class="engine_type">
+            電動式發動機
+        </div>
+        <div class="list_container">
+            <div class="row large-collapse" id="ForkliftDiv_2">
+
+            </div>
+        </div>
+    </div>
+
+    <!--鏟車_______________________________________________ -->
+    <div class="product_list_container" id="Tractor">
+        <div class="engine_type">
+            內燃式發動機
+        </div>
+        <div class="list_container" >
+            <div class="row large-collapse" id="TractorDiv_1">
+
+            </div>
+        </div>
+        <div class="engine_type">
+            電動式發動機
+        </div>
+        <div class="list_container">
+            <div class="row large-collapse" id="TractorDiv_2">
+
+            </div>
+        </div>
+    </div>
+    <!--拖車_______________________________________________ -->
+    <div class="product_list_container" id="Tow">
+        <div class="engine_type">
+            內燃式發動機
+        </div>
+        <div class="list_container">
+            <div class="row large-collapse" id="TowDiv_1">
+            </div>
+        </div>
+        
+        <div class="engine_type">
+            電動式發動機
+        </div>
+        <div class="list_container">
+            <div class="row large-collapse" id="TowDiv_2">
+            </div>
+        </div>
+
+    </div>
+    <!--其它_______________________________________________ -->
+    <div class="product_list_container" id="OtherOther">
+       
+        <div class="list_container" >
+            <div class="row large-collapse" id="OtherDivOtherDiv">
+            </div>
+        </div>
+        
+    </div>
+</div>

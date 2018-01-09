@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Warranty";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.FixedDataModel
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+@Html.Raw(HttpUtility.HtmlDecode(Model.Html))
+<script>
+        $(function () {
+
+            $('.menu_container').find('#item_container').find('.item').eq(3).addClass('active');
+        })
+    </script>
+<section class="service page-service-link">
+    <a href="javascript:;" class="gotop" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="bigmenu_container">
+        <div class="row menu_element">
+            <a class="btn small-12 medium-6" href="@Url.Action("Branch")">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <a class="btn small-12 medium-6" href="@Url.Action("ContactUs")">
+                <div class="icon contact">
+                </div>
+                <h3>聯絡我們</h3>
+                <h3 class="eng">Contact Us</h3>
+                <div class="text">任何相關問題請來電或來信，我們會儘速與您聯繫。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+@*<section class="vision banner-warranty short">
+    <div class="text-box">
+        <h2><span class="red">售後</span>服務</h2>
+        <h2 class="eng">Warranty Service</h2>
+        <p class="text description">TOYOTA為業界最可靠、保障之品牌，優於勞動部職業安全衛生法規定，本公司所有車型皆取得「國家核可的型式證書」及「線上登錄」，並以友善環境精神，遵守國際環境標準規範，每年通過ISO14001國際環境管理系統認證。</p>
+    </div>
+</section>
+<section class="page-content warranty-content">
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="warranty-text">
+                <h2><span class="red">原廠</span>保固</h2>
+                <h2 class="eng">Original Warrantya</h2>
+                <p class="text description"> 提供業界最優的保固條件，凡新車自交車日起，提供12個月或 2,000工作小時（以先到者為準）保固。保固範圍內所引起故障（消耗品及人為因素造成除外），經由本公司認定後，即提供免費修理服務。</p>
+            </div>
+        </div>
+        <div class="small-12 columns">
+            <div class="warranty-text last">
+                <h2><span class="red">原廠</span>零件</h2>
+                <h2 class="eng">Original Parts</h2>
+                <p class="text description">本公司為日本豐田在台灣唯一授權總代理，堅持使用品質最佳、可靠之原廠零件，讓您的堆高機發揮最大的工作價值及確保操作安全。</p>
+                <p class="text description">業界唯一遍佈全台的零件倉庫， 備有完整的零件庫存及每日配送。今日下單，明日即可到府服務；若有緊急需求亦可向日本進行緊急訂貨（空運） ，最快可在7日內取得零件，有效縮短您的等待時間。</p>
+            </div>
+        </div>
+        <img src="/Content/images/warranty/warranty_01@2x.png" class="warranty-img" alt="">
+    </div>
+    <br>
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="warranty-text last full">
+                <h2><span class="red">專業</span>技術</h2>
+                <h2 class="eng">Professional Technique</h2>
+                <p class="text description"> 本公司依循日本豐田原廠訂定之標準作業流程，以提升服務品質，保障堆高機操作及行駛安全，讓每位客戶享有最完善的保養、維修服務。服務技師皆取得日本豐田原廠的「技術認證證書」及「國內堆高機駕照」，每年接受8小時以上的回廠技術教育訓練。每位服務人員皆配有專屬巡迴服務車， 只要一通電話預約，即可為您提供專業即時的售後服務及堆高機操作安全指導。</p>
+            </div>
+        </div>
+        <div class="small-12 columns">
+            <img src="/Content/images/warranty/warranty_02@2x.png" width="100%" class="warranty-img-full" alt="">
+        </div>
+    </div>
+</section>
+<section class="service page-service-link">
+    <a href="javascript:;" class="gotop" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="bigmenu_container">
+        <div class="row menu_element">
+            <a class="btn small-12 medium-6" href="javascript:;">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <a class="btn small-12 medium-6" href="javascript:;">
+                <div class="icon contact">
+                </div>
+                <h3>聯絡我們</h3>
+                <h3 class="eng">Contact Us</h3>
+                <div class="text">任何相關問題請來電或來信，我們會儘速與您聯繫。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+        </div>
+    </div>
+</section>*@

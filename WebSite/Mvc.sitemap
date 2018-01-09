@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="總覽" controller="Account" action="Info" roles="Admin">
+    <!--START-->
+    <mvcSiteMapNode title="系統管理" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="管理員管理" controller="Account" action="List" roles="Admin">
+      <mvcSiteMapNode title="管理員管理新增" controller="Account" action="Add"/>
+      <mvcSiteMapNode title="管理員管理修改" controller="Account" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="首頁管理" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="主視覺Banner管理" controller="IndexBanner" action="List" roles="Admin">
+      <mvcSiteMapNode title="主視覺Banner新增" controller="IndexBanner" action="Add"/>
+      <mvcSiteMapNode title="主視覺Banner修改" controller="IndexBanner" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="首頁影片管理" controller="IndexVideo" action="List" roles="Admin">
+      <mvcSiteMapNode title="首頁影片新增" controller="IndexVideo" action="Add"/>
+      <mvcSiteMapNode title="首頁影片修改" controller="IndexVideo" action="Edit"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="關於台灣豐田管理" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="得獎/肯定管理" controller="InfoPrize" action="List" roles="Admin">
+      <mvcSiteMapNode title="得獎/肯定新增" controller="InfoPrize" action="Add"/>
+      <mvcSiteMapNode title="得獎/肯定修改" controller="InfoPrize" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="最新消息管理" controller="InfoNews" action="List" roles="Admin">
+      <mvcSiteMapNode title="最新消息新增" controller="InfoNews" action="Add"/>
+      <mvcSiteMapNode title="最新消息修改" controller="InfoNews" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="據點查詢管理" controller="InfoLocation" action="List" roles="Admin">
+      <mvcSiteMapNode title="據點查詢新增" controller="InfoLocation" action="Add"/>
+      <mvcSiteMapNode title="據點查詢修改" controller="InfoLocation" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="產品管理" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="產品管理" controller="ProductInfo" action="List" roles="Admin">
+      <mvcSiteMapNode title="產品新增" controller="ProductInfo" action="Add"/>
+      <mvcSiteMapNode title="產品修改" controller="ProductInfo" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="配件管理" controller="ProductAccessories" action="List" roles="Admin">
+      <mvcSiteMapNode title="配件新增" controller="ProductAccessories" action="Add"/>
+      <mvcSiteMapNode title="配件修改" controller="ProductAccessories" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="中古車管理" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="引擎式管理" controller="AUsedCarEngine" action="List" roles="Admin">
+      <mvcSiteMapNode title="引擎式新增" controller="AUsedCarEngine" action="Add"/>
+      <mvcSiteMapNode title="引擎式修改" controller="AUsedCarEngine" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="中古車管理" controller="AUsedCarInfo" action="List" roles="Admin">
+      <mvcSiteMapNode title="中古車新增" controller="AUsedCarInfo" action="Add"/>
+      <mvcSiteMapNode title="中古車修改" controller="AUsedCarInfo" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="產車服務" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="租賃服務管理" controller="ProductAccessories" action="List" roles="Admin">
+      <mvcSiteMapNode title="租賃服務新增" controller="ProductAccessories" action="Add"/>
+      <mvcSiteMapNode title="租賃服務修改" controller="ProductAccessories" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="售後服務管理" controller="ProductAccessories" action="List" roles="Admin">
+      <mvcSiteMapNode title="售後服務新增" controller="ProductAccessories" action="Add"/>
+      <mvcSiteMapNode title="售後服務修改" controller="ProductAccessories" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="人才招募" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="現有職缺設定" controller="ProductAccessories" action="List" roles="Admin">
+      <mvcSiteMapNode title="現有職缺設定新增" controller="ProductAccessories" action="Add"/>
+      <mvcSiteMapNode title="現有職缺設定修改" controller="ProductAccessories" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="職涯規劃管理" controller="ProductAccessories" action="List" roles="Admin">
+      <mvcSiteMapNode title="職涯規劃新增" controller="ProductAccessories" action="Add"/>
+      <mvcSiteMapNode title="職涯規劃修改" controller="ProductAccessories" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="公司福利管理" controller="ProductAccessories" action="List" roles="Admin">
+      <mvcSiteMapNode title="公司福利新增" controller="ProductAccessories" action="Add"/>
+      <mvcSiteMapNode title="公司福利修改" controller="ProductAccessories" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="聯絡我們" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="聯絡我們管理" controller="ContactUsManager" action="List" roles="Admin">
+      <mvcSiteMapNode title="聯絡我們新增" controller="ContactUsManager" action="Add"/>
+      <mvcSiteMapNode title="聯絡我們修改" controller="ContactUsManager" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="聯絡我們信箱設定" controller="ContactUsManager" action="List" roles="Admin">
+      <mvcSiteMapNode title="聯絡我們信箱設定新增" controller="ContactUsManager" action="Add"/>
+      <mvcSiteMapNode title="聯絡我們信箱設定修改" controller="ContactUsManager" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="索取型錄管理" controller="ContactCatalogManager" action="List" roles="Admin">
+      <mvcSiteMapNode title="索取型錄管理新增" controller="ContactCatalogManager" action="Add"/>
+      <mvcSiteMapNode title="索取型錄管理修改" controller="ContactCatalogManager" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="索取型錄信箱設定" controller="ContactCatalogManager" action="List" roles="Admin">
+      <mvcSiteMapNode title="索取型錄信箱設定新增" controller="ContactCatalogManager" action="Add"/>
+      <mvcSiteMapNode title="索取型錄信箱設定修改" controller="ContactCatalogManager" action="Edit"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="常見問題" clickable="false" roles=""></mvcSiteMapNode>
+    <mvcSiteMapNode title="常見問題管理" controller="QuestionAndAnswer" action="List" roles="Admin">
+      <mvcSiteMapNode title="常見問題新增" controller="QuestionAndAnswer" action="Add"/>
+      <mvcSiteMapNode title="常見問題修改" controller="QuestionAndAnswer" action="Edit"/>
+    </mvcSiteMapNode>
+    <!--END-->
+  </mvcSiteMapNode>
+</mvcSiteMap>

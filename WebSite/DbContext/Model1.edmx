@@ -1,0 +1,1069 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="toyota_machineryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="a_used_car_engine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="a_used_car_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_type_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="list_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="number" Type="nvarchar" MaxLength="50" />
+          <Property Name="engine_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="tool" Type="nvarchar" MaxLength="50" />
+          <Property Name="tonnes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="length" Type="nvarchar" MaxLength="50" />
+          <Property Name="engine_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="car_number" Type="nvarchar" MaxLength="50" />
+          <Property Name="years" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="used_hours" Type="nvarchar" MaxLength="50" />
+          <Property Name="price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="contact_person" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_method" Type="nvarchar" MaxLength="50" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="a_used_car_info_img">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="a_used_car_info_id" Type="int" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact_catalog_manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="answer_date" Type="datetime" />
+          <Property Name="service_units" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="256" />
+          <Property Name="have_brand" Type="nvarchar" MaxLength="256" />
+          <Property Name="want_catalog" Type="nvarchar" MaxLength="256" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="answer" Type="nvarchar(max)" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="answer_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact_us_manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="answer_date" Type="datetime" />
+          <Property Name="service_units" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="problem_info" Type="nvarchar(max)" />
+          <Property Name="answer" Type="nvarchar(max)" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="answer_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="fixed_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="html" Type="nvarchar(max)" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fixed_data2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="c1" Type="nvarchar(max)" />
+          <Property Name="c2" Type="nvarchar(max)" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="index_banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="banner_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="banner_intro" Type="nvarchar" MaxLength="256" />
+          <Property Name="btn_url" Type="nvarchar(max)" />
+          <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="index_video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="video_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="video_intro" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="review_url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="full_url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="mobile_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="info_location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fax" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="info_news">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="title_date" Type="datetime" Nullable="false" />
+          <Property Name="list_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="list_intro" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="detail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="info_prize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="years" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="log_login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LoginStatus" Type="bit" Nullable="false" />
+          <Property Name="LoginTime" Type="datetime" />
+          <Property Name="LogoutTime" Type="datetime" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="FailReson" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="log_news">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsId" Type="int" Nullable="false" />
+          <Property Name="NewsTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="Action" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_accessories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_red" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="detail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name_black" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="product_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sub_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_type_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="engine_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="banner" Type="nvarchar" MaxLength="50" />
+          <Property Name="overview_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="overview_tonnes_start" Type="float" Nullable="false" />
+          <Property Name="overview_tonnes_end" Type="float" Nullable="false" />
+          <Property Name="overview_img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="overview_img_intro" Type="nvarchar" MaxLength="256" />
+          <Property Name="introduction" Type="nvarchar(max)" />
+          <Property Name="detail_gas" Type="nvarchar(max)" />
+          <Property Name="detail_diesel" Type="nvarchar(max)" />
+          <Property Name="detail_electric" Type="nvarchar(max)" />
+          <Property Name="detail_overlook_img" Type="nvarchar" MaxLength="50" />
+          <Property Name="detail_slide_img" Type="nvarchar" MaxLength="50" />
+          <Property Name="detail_engine_table" Type="nvarchar(max)" />
+          <Property Name="detail_motor_battery_table" Type="nvarchar(max)" />
+          <Property Name="meta_keywords" Type="nvarchar(max)" />
+          <Property Name="meta_description" Type="nvarchar(max)" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="on_shelf_date" Type="datetime" />
+          <Property Name="overview_title" Type="nvarchar" MaxLength="50" />
+          <Property Name="overview_intro" Type="nvarchar" MaxLength="50" />
+          <Property Name="logo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="product_info_accessories_list">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="accessories_id" Type="int" Nullable="false" />
+          <Property Name="orderby" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_info_spc_image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="intro" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="question_and_answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="detail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="orderfield" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="create_time" Type="datetime" />
+          <Property Name="create_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="Password" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserID" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateUserID" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="256" />
+          <Property Name="Role" Type="nvarchar" MaxLength="256" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="T_Account_Permission_Mapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="AccountId" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="PermissionId" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="CreateUserId" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreateUserId" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdateUserId" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="toyota_machineryModelStoreContainer">
+          <EntitySet Name="a_used_car_engine" EntityType="Self.a_used_car_engine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="a_used_car_info" EntityType="Self.a_used_car_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="a_used_car_info_img" EntityType="Self.a_used_car_info_img" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact_catalog_manager" EntityType="Self.contact_catalog_manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contact_us_manager" EntityType="Self.contact_us_manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fixed_data" EntityType="Self.fixed_data" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fixed_data2" EntityType="Self.fixed_data2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="index_banner" EntityType="Self.index_banner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="index_video" EntityType="Self.index_video" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="info_location" EntityType="Self.info_location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="info_news" EntityType="Self.info_news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="info_prize" EntityType="Self.info_prize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log_login" EntityType="Self.log_login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="log_news" EntityType="Self.log_news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_accessories" EntityType="Self.product_accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_info" EntityType="Self.product_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_info_accessories_list" EntityType="Self.product_info_accessories_list" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product_info_spc_image" EntityType="Self.product_info_spc_image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question_and_answer" EntityType="Self.question_and_answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Account" EntityType="Self.T_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Account_Permission_Mapping" EntityType="Self.T_Account_Permission_Mapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="T_Permission" EntityType="Self.T_Permission" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="toyota_machineryModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="a_used_car_engine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="a_used_car_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="product_type_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="list_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="engine_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tool" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tonnes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="engine_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="car_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="years" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="used_hours" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contact_person" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="a_used_car_info_img">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="a_used_car_info_id" Type="Int32" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact_catalog_manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="answer_date" Type="DateTime" Precision="3" />
+          <Property Name="service_units" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="have_brand" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="want_catalog" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="answer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contact_us_manager">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="answer_date" Type="DateTime" Precision="3" />
+          <Property Name="service_units" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="problem_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="answer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="fixed_data">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="html" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="fixed_data2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="c1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="c2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="index_banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="banner_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="banner_intro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="btn_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="index_video">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="video_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="video_intro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="review_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="full_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mobile_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="info_location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="info_news">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="title_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="list_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="list_intro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="info_prize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="years" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="log_login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginStatus" Type="Boolean" Nullable="false" />
+          <Property Name="LoginTime" Type="DateTime" Precision="3" />
+          <Property Name="LogoutTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailReson" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="log_news">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsId" Type="Int32" Nullable="false" />
+          <Property Name="NewsTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="product_accessories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_red" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name_black" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="product_info">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sub_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="product_type_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="engine_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="banner" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="overview_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="overview_tonnes_start" Type="Double" Nullable="false" />
+          <Property Name="overview_tonnes_end" Type="Double" Nullable="false" />
+          <Property Name="overview_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="overview_img_intro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail_gas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail_diesel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail_electric" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail_overlook_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="detail_slide_img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="detail_engine_table" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="detail_motor_battery_table" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta_keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="on_shelf_date" Type="DateTime" Precision="3" />
+          <Property Name="overview_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="overview_intro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="product_info_accessories_list">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="accessories_id" Type="Int32" Nullable="false" />
+          <Property Name="orderby" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_info_spc_image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="intro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="question_and_answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderfield" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Precision="3" />
+          <Property Name="create_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserID" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserID" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="T_Account_Permission_Mapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermissionId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateUserId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="T_Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreateUserId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdateUserId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="toyota_machineryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="a_used_car_engine" EntityType="Self.a_used_car_engine" />
+          <EntitySet Name="a_used_car_info" EntityType="Self.a_used_car_info" />
+          <EntitySet Name="a_used_car_info_img" EntityType="Self.a_used_car_info_img" />
+          <EntitySet Name="contact_catalog_manager" EntityType="Self.contact_catalog_manager" />
+          <EntitySet Name="contact_us_manager" EntityType="Self.contact_us_manager" />
+          <EntitySet Name="fixed_data" EntityType="Self.fixed_data" />
+          <EntitySet Name="fixed_data2" EntityType="Self.fixed_data2" />
+          <EntitySet Name="index_banner" EntityType="Self.index_banner" />
+          <EntitySet Name="index_video" EntityType="Self.index_video" />
+          <EntitySet Name="info_location" EntityType="Self.info_location" />
+          <EntitySet Name="info_news" EntityType="Self.info_news" />
+          <EntitySet Name="info_prize" EntityType="Self.info_prize" />
+          <EntitySet Name="log_login" EntityType="Self.log_login" />
+          <EntitySet Name="log_news" EntityType="Self.log_news" />
+          <EntitySet Name="product_accessories" EntityType="Self.product_accessories" />
+          <EntitySet Name="product_info" EntityType="Self.product_info" />
+          <EntitySet Name="product_info_accessories_list" EntityType="Self.product_info_accessories_list" />
+          <EntitySet Name="product_info_spc_image" EntityType="Self.product_info_spc_image" />
+          <EntitySet Name="question_and_answer" EntityType="Self.question_and_answer" />
+          <EntitySet Name="T_Account" EntityType="Self.T_Account" />
+          <EntitySet Name="T_Account_Permission_Mapping" EntityType="Self.T_Account_Permission_Mapping" />
+          <EntitySet Name="T_Permission" EntityType="Self.T_Permission" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="toyota_machineryModelStoreContainer" CdmEntityContainer="toyota_machineryEntities">
+          <EntitySetMapping Name="a_used_car_engine">
+            <EntityTypeMapping TypeName="toyota_machineryModel.a_used_car_engine">
+              <MappingFragment StoreEntitySet="a_used_car_engine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="a_used_car_info">
+            <EntityTypeMapping TypeName="toyota_machineryModel.a_used_car_info">
+              <MappingFragment StoreEntitySet="a_used_car_info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="product_type_id" ColumnName="product_type_id" />
+                <ScalarProperty Name="list_img" ColumnName="list_img" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="engine_id" ColumnName="engine_id" />
+                <ScalarProperty Name="tool" ColumnName="tool" />
+                <ScalarProperty Name="tonnes" ColumnName="tonnes" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="engine_number" ColumnName="engine_number" />
+                <ScalarProperty Name="car_number" ColumnName="car_number" />
+                <ScalarProperty Name="years" ColumnName="years" />
+                <ScalarProperty Name="used_hours" ColumnName="used_hours" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="contact_person" ColumnName="contact_person" />
+                <ScalarProperty Name="contact_method" ColumnName="contact_method" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="a_used_car_info_img">
+            <EntityTypeMapping TypeName="toyota_machineryModel.a_used_car_info_img">
+              <MappingFragment StoreEntitySet="a_used_car_info_img">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="a_used_car_info_id" ColumnName="a_used_car_info_id" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact_catalog_manager">
+            <EntityTypeMapping TypeName="toyota_machineryModel.contact_catalog_manager">
+              <MappingFragment StoreEntitySet="contact_catalog_manager">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="answer_date" ColumnName="answer_date" />
+                <ScalarProperty Name="service_units" ColumnName="service_units" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="have_brand" ColumnName="have_brand" />
+                <ScalarProperty Name="want_catalog" ColumnName="want_catalog" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+                <ScalarProperty Name="answer_name" ColumnName="answer_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contact_us_manager">
+            <EntityTypeMapping TypeName="toyota_machineryModel.contact_us_manager">
+              <MappingFragment StoreEntitySet="contact_us_manager">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="answer_date" ColumnName="answer_date" />
+                <ScalarProperty Name="service_units" ColumnName="service_units" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="problem_info" ColumnName="problem_info" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+                <ScalarProperty Name="answer_name" ColumnName="answer_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fixed_data">
+            <EntityTypeMapping TypeName="toyota_machineryModel.fixed_data">
+              <MappingFragment StoreEntitySet="fixed_data">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="html" ColumnName="html" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fixed_data2">
+            <EntityTypeMapping TypeName="toyota_machineryModel.fixed_data2">
+              <MappingFragment StoreEntitySet="fixed_data2">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="c1" ColumnName="c1" />
+                <ScalarProperty Name="c2" ColumnName="c2" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="index_banner">
+            <EntityTypeMapping TypeName="toyota_machineryModel.index_banner">
+              <MappingFragment StoreEntitySet="index_banner">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="banner_title" ColumnName="banner_title" />
+                <ScalarProperty Name="banner_intro" ColumnName="banner_intro" />
+                <ScalarProperty Name="btn_url" ColumnName="btn_url" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="index_video">
+            <EntityTypeMapping TypeName="toyota_machineryModel.index_video">
+              <MappingFragment StoreEntitySet="index_video">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="video_title" ColumnName="video_title" />
+                <ScalarProperty Name="video_intro" ColumnName="video_intro" />
+                <ScalarProperty Name="review_url" ColumnName="review_url" />
+                <ScalarProperty Name="full_url" ColumnName="full_url" />
+                <ScalarProperty Name="mobile_img" ColumnName="mobile_img" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="info_location">
+            <EntityTypeMapping TypeName="toyota_machineryModel.info_location">
+              <MappingFragment StoreEntitySet="info_location">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="info_news">
+            <EntityTypeMapping TypeName="toyota_machineryModel.info_news">
+              <MappingFragment StoreEntitySet="info_news">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="title_date" ColumnName="title_date" />
+                <ScalarProperty Name="list_img" ColumnName="list_img" />
+                <ScalarProperty Name="list_intro" ColumnName="list_intro" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="info_prize">
+            <EntityTypeMapping TypeName="toyota_machineryModel.info_prize">
+              <MappingFragment StoreEntitySet="info_prize">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="years" ColumnName="years" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log_login">
+            <EntityTypeMapping TypeName="toyota_machineryModel.log_login">
+              <MappingFragment StoreEntitySet="log_login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="LogoutTime" ColumnName="LogoutTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="FailReson" ColumnName="FailReson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="log_news">
+            <EntityTypeMapping TypeName="toyota_machineryModel.log_news">
+              <MappingFragment StoreEntitySet="log_news">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+                <ScalarProperty Name="NewsTitle" ColumnName="NewsTitle" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_accessories">
+            <EntityTypeMapping TypeName="toyota_machineryModel.product_accessories">
+              <MappingFragment StoreEntitySet="product_accessories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name_red" ColumnName="name_red" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+                <ScalarProperty Name="name_black" ColumnName="name_black" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_info">
+            <EntityTypeMapping TypeName="toyota_machineryModel.product_info">
+              <MappingFragment StoreEntitySet="product_info">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="sub_title" ColumnName="sub_title" />
+                <ScalarProperty Name="product_type_id" ColumnName="product_type_id" />
+                <ScalarProperty Name="engine_id" ColumnName="engine_id" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="banner" ColumnName="banner" />
+                <ScalarProperty Name="overview_type" ColumnName="overview_type" />
+                <ScalarProperty Name="overview_tonnes_start" ColumnName="overview_tonnes_start" />
+                <ScalarProperty Name="overview_tonnes_end" ColumnName="overview_tonnes_end" />
+                <ScalarProperty Name="overview_img" ColumnName="overview_img" />
+                <ScalarProperty Name="overview_img_intro" ColumnName="overview_img_intro" />
+                <ScalarProperty Name="introduction" ColumnName="introduction" />
+                <ScalarProperty Name="detail_gas" ColumnName="detail_gas" />
+                <ScalarProperty Name="detail_diesel" ColumnName="detail_diesel" />
+                <ScalarProperty Name="detail_electric" ColumnName="detail_electric" />
+                <ScalarProperty Name="detail_overlook_img" ColumnName="detail_overlook_img" />
+                <ScalarProperty Name="detail_slide_img" ColumnName="detail_slide_img" />
+                <ScalarProperty Name="detail_engine_table" ColumnName="detail_engine_table" />
+                <ScalarProperty Name="detail_motor_battery_table" ColumnName="detail_motor_battery_table" />
+                <ScalarProperty Name="meta_keywords" ColumnName="meta_keywords" />
+                <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="on_shelf_date" ColumnName="on_shelf_date" />
+                <ScalarProperty Name="overview_title" ColumnName="overview_title" />
+                <ScalarProperty Name="overview_intro" ColumnName="overview_intro" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_info_accessories_list">
+            <EntityTypeMapping TypeName="toyota_machineryModel.product_info_accessories_list">
+              <MappingFragment StoreEntitySet="product_info_accessories_list">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="accessories_id" ColumnName="accessories_id" />
+                <ScalarProperty Name="orderby" ColumnName="orderby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_info_spc_image">
+            <EntityTypeMapping TypeName="toyota_machineryModel.product_info_spc_image">
+              <MappingFragment StoreEntitySet="product_info_spc_image">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="intro" ColumnName="intro" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question_and_answer">
+            <EntityTypeMapping TypeName="toyota_machineryModel.question_and_answer">
+              <MappingFragment StoreEntitySet="question_and_answer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="orderfield" ColumnName="orderfield" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Account">
+            <EntityTypeMapping TypeName="toyota_machineryModel.T_Account">
+              <MappingFragment StoreEntitySet="T_Account">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Account_Permission_Mapping">
+            <EntityTypeMapping TypeName="toyota_machineryModel.T_Account_Permission_Mapping">
+              <MappingFragment StoreEntitySet="T_Account_Permission_Mapping">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Permission">
+            <EntityTypeMapping TypeName="toyota_machineryModel.T_Permission">
+              <MappingFragment StoreEntitySet="T_Permission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

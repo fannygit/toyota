@@ -1,0 +1,222 @@
+﻿@using Begonia.Toyota.WebSite.Enums;
+@model Begonia.Toyota.WebSite.Models.AccountModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentController = string.Empty;
+    if (ViewContext.RouteData.Values["Controller"] != null)
+    {
+        CurrentController = ViewContext.RouteData.Values["Controller"].ToString();
+    }
+}
+<script type="text/javascript">
+    
+</script>
+<article class="BOX" id="CONTENT_1">
+    @{
+        Html.RenderPartial("_MenuPartial");
+    }
+
+    <article id="RIGHT_BOX" class="CONTENT_R">
+        <article id="POS">
+            您當前位置是：<a href="#">系統設置</a> > <a href="~/Account/List">管理員</a> > <span class="NOW">新增</span>
+        </article>
+        <section id="R_CONTENT_BOX">
+            <span class="POINT">表示必填項目</span>
+            <br />
+            <span style="color:red">
+                @Html.ValidationMessage("message")
+            </span>
+            <span class="BACK">@Html.ActionLink("返回", "List", new { page = Model.page }, new { @class = "pure-button"})</span>
+            @using (Html.BeginForm(Model.Mode == EditPageMode.Create ? "create" : "update",
+                CurrentController, new {page = Model.page}, FormMethod.Post,
+                new { enctype = "multipart/form-data", @class = "pure-form pure-form-aligned", id = "f1" }))
+            {
+                @Html.HiddenFor(p=>p.Id)
+                @Html.HiddenFor(p => p.CreateUserID)
+                @Html.HiddenFor(p => p.UpdateUserID)
+                @Html.HiddenFor(p => p.CreateDate)
+                @Html.HiddenFor(p => p.UpdateDate)
+                @Html.HiddenFor(p => p.SStatus)
+                @Html.HiddenFor(p => p.Search)
+
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab1" style="border-top: 1px #cecdcd solid;">
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">帳號名稱：</span></td>
+                        <td class="table1_text">                            
+                        @Html.TextBoxFor(p => p.Account, new { css = "t3", maxlength = 256 })
+                        @Html.ValidationMessageFor(p => p.Account, null , new { style = "color:red" })
+                        </td>
+
+                    </tr>
+                
+                    @if (Model.Mode == EditPageMode.Create)
+                    {
+                        <tr>
+                            <td width="140px" align="right" class="table1_title onn2"><span class="TP">密碼：</span></td>
+                            <td class="table1_text">
+                                @Html.TextBoxFor(p => p.Password, new { css = "t3" })
+                                @Html.ValidationMessageFor(p => p.Password, null, new { style = "color:red" })
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="140px" align="right" class="table1_title onn2"><span class="TP">確認密碼：</span></td>
+                            <td class="table1_text">
+                                @Html.TextBoxFor(p => p.RePassword, new { css = "t3" })
+                                @Html.ValidationMessageFor(p => p.RePassword, null, new { style = "color:red" })
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(p => p.Password)
+                        
+                        <tr>
+                            <td width="140px" align="right" class="table1_title onn2">修改密碼：</td>
+                            <td class="table1_text">
+                                @Html.TextBoxFor(p => p.RePassword, new { css = "t3" })
+                                @Html.ValidationMessageFor(p => p.RePassword, null, new { style = "color:red" })
+                            </td>
+                        </tr>
+                    }
+                   
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2"><span class="TP">角色名稱：</span></td>
+                        <td class="table1_text">                            
+                        @Html.TextBoxFor(p => p.Role, new { css = "t3", maxlength = 256 })
+                        @Html.ValidationMessageFor(p => p.Role, null, new { style = "color:red" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">Email：</td>
+                        <td class="table1_text">                            
+                        @Html.TextBoxFor(p => p.Email, new { css = "t3", maxlength = 256 })
+                        @Html.ValidationMessageFor(p => p.Email, null, new { style = "color:red" })</td>
+                    </tr>
+                       
+                    <tr>
+                        <td align="right" class="table1_title onn2"><span class="TP">權限管理：</span></td>
+                        <td>
+                            @{
+                                int index = 0;
+                                foreach (var i in Model.PermissionDropDownList)
+                                {
+                                    index++;
+                                    if (index % 4 == 1)
+                                    {
+                                        <label>@Model.RolgMapping[i.Text].Split('-').FirstOrDefault()</label> <br/>
+                                    }
+                                    if (Model.Mode == EditPageMode.Create)
+                                    {
+                                        <input type="checkbox" name="PermissionList" id="PermissionList" value="@i.Value" checked="checked"  />
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" name="PermissionList" id="PermissionList" value="@i.Value" @(i.Selected ? "checked" : "") />
+                                    }
+
+                                    @Model.RolgMapping[i.Text].Split('-').LastOrDefault()
+                                    if (index % 4 == 0)
+                                    {
+                                        <br />
+                                    }
+                                }
+                            }
+                        </td>
+                        @Html.ValidationMessageFor(p => p.PermissionDropDownList, null, new { style = "color:red" })
+                    </tr>
+                    <tr>
+                        <td align="right" class="table1_title onn2"><span class="TP">狀態：</span></td>
+                        <td>
+                            <input type="radio" name="Status" id="Status" value="1" @(Model.Status == 1 ? "checked" : "") />
+                            啟用&nbsp;&nbsp;
+                            <input type="radio" name="Status" id="Status" value="0" @(Model.Status == 0 ? "checked" : "") />
+                            停用&nbsp;&nbsp;
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="140px" align="right" class="table1_title onn2">上稿時間：</td>
+                        <td class="table1_text">
+                            @Model.CreateDate
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right" class="onn2">&nbsp;</td>
+                        <td>
+                            <span class="BTN3">
+                            <a href="#" onclick="goSubmit()">確定送出</a>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            }
+        </section>
+    </article>
+
+</article>
+
+@*@Html.ActionLink("回上頁", "List", new { page = Model.page }, new { @class = "pure-button" })
+<p>
+    @Html.ValidationMessage("message")
+</p>
+@using (Html.BeginForm(Model.Mode == EditPageMode.Create ? "create" : "update",
+    CurrentController, new { page = Model.page }, FormMethod.Post,
+    new { enctype = "multipart/form-data", @class = "pure-form pure-form-aligned" }))
+{
+    @Html.HiddenFor(p => p.Id)
+    <fieldset>
+        <div class="pure-control-group">
+            @Html.LabelFor(p => p.Account)
+            @Html.TextBoxFor(p => p.Account)
+            @Html.ValidationMessageFor(p => p.Account)
+        </div>
+
+        <div class="pure-control-group">
+            @Html.LabelFor(p => p.Password)
+            @Html.PasswordFor(p => p.Password)
+            @Html.ValidationMessageFor(p => p.Password)
+            @Html.PasswordFor(p => p.RePassword)
+            @Html.ValidationMessageFor(p => p.RePassword)
+
+        </div>
+
+        <div class="pure-control-group">
+            @Html.LabelFor(p => p.Role)
+            @Html.DropDownListFor(p => p.Role, Model.RoleDropDownList, new { @class = "pure-input-small" })
+        </div>
+        <div class="pure-control-group">
+            @Html.LabelFor(p => p.Status)
+            <label for="Status" class="pure-radio">
+                @Html.RadioButtonFor(p => p.Status, "1") 啟用&nbsp;
+                @Html.RadioButtonFor(p => p.Status, "0") 停用&nbsp;
+            </label>
+            @Html.ValidationMessageFor(p => p.Status)
+        </div>
+        <div class="pure-control-group">
+            @Html.LabelFor(p => p.CreateDate)
+            @Model.CreateDate
+            @Html.HiddenFor(p => p.CreateDate)
+        </div>
+
+        @if (Model.LastLoginTime.HasValue)
+        {
+            <div class="pure-control-group">
+                @Html.LabelFor(p => p.LastLoginTime)
+                @Model.LastLoginTime
+            </div>
+        }
+
+        <div class="pure-control-group">
+            <label></label>
+            @if (Model.Mode == EditPageMode.Create)
+            {
+                <input type="submit" value="新 增" class="pure-button"/>
+            }
+            else if (Model.Mode == EditPageMode.Update)
+            {
+                <input type="submit" value="修 改" class="pure-button" onclick="return Check()" />
+            }
+
+        </div>
+    </fieldset>
+}*@

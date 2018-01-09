@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Career";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+<a href="javascript:;" class="gotop noUnderMenu" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+<script>
+        $(function () {
+
+            $('.menu_container').find('#item_container').find('.item').eq(4).addClass('active');
+        })
+    </script>
+
+@model Begonia.Toyota.WebSite.Models.FixedDataModel
+@Html.Raw(HttpUtility.HtmlDecode(Model.Html))
+
+@*
+    <section class="vision banner-career short">
+    <div class="text-box">
+        <h2><span class="red">職涯</span>規劃</h2>
+        <h2 class="eng">Career Planning</h2>
+        <p class="text description">台灣豐田長期以來透過公開管道，不斷招募相關領域的專業人才，秉持「適才適所」與「人盡其才」的理念，提供員工職涯發展機會、工作生活平衡，及提升能力，促進員工持續留任，建立互信、互愛、互助之團結精神以謀公司之業務發展。以用心經營事業的態度幫助員工在各自的工作崗位上，貢獻心力。</p>
+    </div>
+</section>
+<section class="page-content">
+    <div class="row">
+        <div class="small-12 columns">
+            <ul class="welfare-list">
+                <li><div class="img"><img src="/Content/images/career/img_01@2x.png" alt=""></div><div class="text-box"><h2>業務類</h2><h2 class="eng">Business</h2><p class="text description">身為開發新客戶的一線人員，公司定期舉辦產品知識課程，藉由了解產品之後，更能夠替客戶推薦最適合客戶的產品，解決客戶的問題，進而將本公司的產品推向各地。</p></div></li>
+                <li><div class="img"><img src="/Content/images/career/img_02@2x.png" alt=""></div><div class="text-box"><h2>修護類</h2><h2 class="eng">Repair</h2><p class="text description">以基層修護經驗為發展之重要基礎，持續學習，是台灣豐田協助員工發展的基石。我們重視員工的職能與潛力發展，並且不定期舉辦技術檢定考試、產品說明會等教育訓練課程，達到強化員工職能之目標。</p></div></li>
+                <li><div class="img"><img src="/Content/images/career/img_03@2x.png" alt=""></div><div class="text-box"><h2>內勤類</h2><h2 class="eng">Internal</h2><p class="text description">考量個人工作潛能、專長與意願，提供完善之教育訓練課程，配合必要的部門輪調，累積多方面實務經驗，並鼓勵員工進修與學習。公司另會不定期安排教育訓練課程，或替員工報名與其他關係企業一同受訓、進修，例如：PDCA、Toyota Way、TBP、進階excel課程等，促進同仁持續學習，以期未來應用於公司業務上。</p></div></li>
+            </ul>
+            <div class="text-center"><a href="javascript:;" class="more_box animall">瀏覽我們的職缺</a></div>
+            
+        </div>
+    </div>
+</section>
+
+    *@
+
+

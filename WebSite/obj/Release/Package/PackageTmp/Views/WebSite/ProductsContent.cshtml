@@ -1,0 +1,427 @@
+﻿@{
+    ViewBag.Title = "ProductsContent";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.ProductInfoModel
+
+<link rel="stylesheet" href="/content/css/owl.carousel.min.css">
+
+<script>
+$('.menu_container').find('#item_container').find('.item').eq(1).addClass('active');
+</script>
+<!-- 看規格大圖的div_______________________________________________________ -->
+@if (!string.IsNullOrEmpty(Model.DetailOverlookImg))
+{
+    <div class="large reveal" id="picOpenLarge" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"><a class="close-button" data-close aria-label="Close reveal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </a>
+        <div id="containerLargePic">
+            <img src="@Url.Content("~/File/Get?FileId=" + Model.DetailOverlookImg)" alt="">
+        </div>
+        
+        
+    </div>
+
+
+}
+<!-- 看規格大圖的div_______________________________________________________ -->
+<!--  配件popup____________________________________________________________ -->
+<div class="large reveal" id="AccessoriesOpen" data-reveal aria-labelledby="modalTitle" aria-hidden="true">
+    <a class="prevBtn" href="javascript:void(0);"></a>
+    <a class="nextBtn" href="javascript:void(0);"></a>
+    <div class="owl-carousel owl-theme AccessoriesContainer">
+    @{
+        int indexd=1;
+        foreach (var i in Model.AccessoriesDataList.Data)
+        {
+            <div class="item" data-hash="accessorie_@indexd">
+                <div class="photoConainer" style="background-image:url(@Url.Content("~/File/Get?FileId=" + i.Img))">
+                    <!-- <img src="@Url.Content("~/File/Get?FileId=" + i.Img)" alt="" /> -->
+                </div>
+                <div class="article">
+                    <div class="name">
+                        <span class="red">@i.NameR</span> @i.NameB
+                    </div>
+                    <div class="underline">
+                        <div class="redbox">
+                        </div>
+                    </div>
+                    <div class="vicDes">
+                        適用機型:<p>@i.Type </p>
+
+                    </div>
+                    <div class="article_Acc">
+                        @i.Detail
+                    </div>
+                </div>
+            </div>
+            indexd++;
+        }
+        }
+    </div>
+    <a class="close-button" data-close aria-label="Close reveal" type="button" href="javascript:void(0);">
+        <span aria-hidden="true">&times;</span>
+    </a>
+</div>
+<!--  配件popup____________________________________________________________ -->
+
+<!--  配件popup____________________________________________________________ -->
+<div class="large reveal" id="AccessoriesOpen" data-reveal aria-labelledby="modalTitle" aria-hidden="true">
+    <a class="prevBtn" href="javascript:void(0);"></a>
+    <a class="nextBtn" href="javascript:void(0);"></a>
+    <div class="owl-carousel owl-theme AccessoriesContainer">
+        @foreach (var i in Model.AccessoriesDataList.Data)
+        {
+            <div class="item">
+                <div class="photoConainer">
+                    <img src="@Url.Content("~/File/Get?FileId=" + i.Img)" alt="" />
+                </div>
+                <div class="article">
+                    <div class="name">
+                        <span class="red">@i.NameR</span>@i.NameB
+                    </div>
+                    <div class="underline">
+                        <div class="redbox">
+                        </div>
+                    </div>
+                    <div class="vicDes">
+                        適用機型:<p>@i.Type </p>
+
+                    </div>
+                    <div class="article_Acc">
+                        @i.Detail
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    <a class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </a>
+</div>
+<!--  配件popup____________________________________________________________ -->
+<div class="reveal-modal-bg" style="display: none"></div>
+@if (string.IsNullOrEmpty(Model.Banner))
+{
+    <div class="products_banneer" style="background-image: url(/content/images/products_banner.jpg)">
+        <img src="@(string.IsNullOrEmpty(Model.Logo) ? "/content/images/toyota_03.png" : Url.Content("~/File/Get?FileId=" + Model.Logo))" alt="" class="toyota_logo" />
+        <h1 class="series">@Model.Name</h1>
+        <h3 class="chineseName">@Model.SubTitle</h3>
+    </div>
+}
+else
+{
+    <div class="products_banneer" style="background-image: url(@Url.Content("~/File/Get?FileId=" + Model.Banner))">
+        <img src="@(string.IsNullOrEmpty(Model.Logo) ? "/content/images/toyota_03.png" : Url.Content("~/File/Get?FileId=" + Model.Logo))" alt="" class="toyota_logo" />
+        <h1 class="series">@Model.Name</h1>
+        <h3 class="chineseName">@Model.SubTitle</h3>
+    </div>
+}
+
+<div class="products_contact_menu fix" id="products_contact_menu">
+    <div class="container">
+        <a href="#overview" class="items " id="OVERVIEW">
+            <div class="btnConteiner">
+                概觀
+                <span class="eng animall show-for-large">Overview</span>
+                <span class="eng hide-for-large">Overview</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#technology" class="items " id="TECHNOLOGY">
+            <div class="btnConteiner">
+                技術
+                <span class="eng animall show-for-large">Technologies</span>
+                <span class="eng hide-for-large">Technologies</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#specification" class="items " id="SPECIFICATION">
+            <div class="btnConteiner">
+                詳細規格
+                <span class="eng animall show-for-large">Specifications</span>
+                <span class="eng hide-for-large">Specifications</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#gallery" class="items " id="GALLErY">
+            <div class="btnConteiner">
+                產品特集
+                <span class="eng animall show-for-large">Gallery</span>
+                <span class="eng hide-for-large">Gallery</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#accessories" class="items " id="ACCESSORIES">
+            <div class="btnConteiner">
+                配件
+                <span class="eng animall show-for-large">Accessories</span>
+                <span class="eng hide-for-large">Accessories</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+    </div>
+</div>
+<div class="products_contact_menu static">
+    <div class="container">
+        <a href="#overview" class="items" >
+            <div class="btnConteiner">
+                概觀
+                <span class="eng animall">Overview</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#technology" class="items">
+            <div class="btnConteiner">
+                技術
+                <span class="eng animall">Technologies</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#specification" class="items">
+            <div class="btnConteiner">
+                詳細規格
+                <span class="eng animall">Specifications</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#gallery" class="items">
+            <div class="btnConteiner">
+                產品特集
+                <span class="eng animall">Gallery</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+        <a href="#accessories" class="items">
+            <div class="btnConteiner">
+                配件
+                <span class="eng animall">Accessories</span>
+                <img src="/content/images/down_arrow_16.png" alt="" class="animall">
+            </div>
+        </a>
+    </div>
+</div>
+
+<section class="products_profile pageSection" id="overview">
+    <div class="pic_container" style="">
+        <img class="test123" src="@Url.Content("~/File/Get?FileId=" + Model.OverviewImg)" alt="@Model.OverviewImgIntro">
+    </div>
+    <div class="content">
+        <div class="mainText row">
+            <div class="small-12 medium-6 large-5 columns">
+                <h2 class="pd_Name">@Model.OverviewType</h2>
+                @if (!string.IsNullOrEmpty(Model.OverviewTonnesStartSHOW) && !string.IsNullOrEmpty(Model.OverviewTonnesEndSHOW))
+                {
+                    <h3 class="pd_Load">@Model.OverviewTonnesStartSHOW to @Model.OverviewTonnesEndSHOW ton</h3>
+                }
+                <span class="Chi_title">@Model.OverviewTitle</span>
+                <p>
+                    @Model.OverviewIntro
+                </p>
+                <a href="@Url.Action("RequestCatalogs")" class="getDm">索取型錄</a>
+                <a href="@Url.Action("Branch")" class="branch">據點查詢</a>
+            </div>
+            <div class="small-1 medium-6 large-8  columns">
+                <!-- ... -->
+            </div>
+        </div>
+    </div>
+</section>
+<div class="mobile_section_btn active rippler-default rippler" id="Technology" style="border-top: #fff 1px solid;"> 技術 / <span>Technology</span></div>
+<section class="technology mainContent pageSection" id="technology">
+    <div class="sectionTitle" style="padding-top: 0;">
+        @Html.Raw(HttpUtility.HtmlDecode(Model.Introduction))
+    </div>
+</section>
+<div class="mobile_section_btn rippler-default rippler" id="Specification"> 詳細規格 / <span>Specifications</span></div>
+<section class="specification mainContent pageSection " id="specification">
+    <div class="content">
+        <div class="title_container center">
+            <h2><span class="red">詳細</span>規格</h2>
+            <h2 class="eng">Specifications</h2>
+        </div>
+        @if (Model.EngineId == (Convert.ToInt16((int)Begonia.Toyota.WebSite.Enums.ProductEngineType.內燃)).ToString())
+        {
+            <div class="spc_tab row">
+                <a href="javascript: void(0)" class="item small-6 columns active">汽油 </a>
+                <a href="javascript: void(0)" class="item small-6 columns"> 柴油 </a>
+            </div>
+            <div class="gap">
+            </div>
+            <div class="spe_main table-scroll">
+                @Html.Raw(HttpUtility.HtmlDecode(Model.DetailGas))
+                @Html.Raw(HttpUtility.HtmlDecode(Model.DetailDiesel))
+            </div>
+            if (!string.IsNullOrEmpty(Model.DetailOverlookImg))
+            {
+                <!-- <p class="mark_annotation"><img src="/content/images/zomm_2_03.png" alt=""> 點擊下方圖片可放大</p> -->
+                <p class="mark_annotation">點擊下方圖片可放大</p>
+                <a class="openLarge" href="javascript: void(0)" data-open="picOpenLarge">
+                    <img src="@Url.Content("~/File/Get?FileId=" + Model.DetailOverlookImg)" alt="" class="" width="710" height="auto">
+                </a>
+            }
+            else
+            {
+
+                <br />
+            }
+            <div style="clear:both;"></div>
+            <p class="spe_title" style="">引擎規格表</p>
+            <div class="spe_main table-scroll">
+                @Html.Raw(HttpUtility.HtmlDecode(Model.DetailEngineTable))
+            </div>
+        }
+        else
+        {
+            <div class="spc_tab row">
+                <a href="javascript: void(0)" class="item small-6 columns active">電動 </a>
+            </div>
+            <div class="gap">
+            </div>
+            <div class="spe_main table-scroll">
+                @Html.Raw(HttpUtility.HtmlDecode(Model.DetailElectric))
+            </div>
+            if (!string.IsNullOrEmpty(Model.DetailOverlookImg))
+            {
+                <p class="mark_annotation"><img src="/content/images/zomm_2_03.png" alt=""> 點擊下方圖片可放大</p>
+                <a class="openLarge" href="javascript: void(0)" data-open="picOpenLarge">
+                    <img src="@Url.Content("~/File/Get?FileId=" + Model.DetailOverlookImg)" alt="" class="" width="710" height="auto">
+                </a>
+            }
+            else
+            {
+
+                <br />
+            }
+            <div class="spe_main table-scroll">
+                <p class="spe_title" style="">電瓶與馬達規格表</p>
+                @Html.Raw(HttpUtility.HtmlDecode(Model.DetailMotorBatteryTable))
+            </div>
+
+        }
+
+
+
+
+</section>
+@if (Model.ProductImgList.Any())
+{
+    <div class="mobile_section_btn rippler-default rippler" id="Gallery"> 產品特集 / <span>Gallery</span></div>
+    <section class="gallery mainContent pageSection" id="gallery">
+        <div class="content">
+            <div class="title_container center">
+                <h2><span class="red">產品</span>特集</h2>
+                <h2 class="eng">Gallery</h2>
+            </div>
+            <div class="album">
+                @foreach (var i in Model.ProductImgList)
+                {
+                    <div>
+                        <div class="container">
+                            <picture class="albumSlider">
+                                <img src="@Url.Content("~/File/Get?FileId=" + i.Key)" alt="">
+                            </picture>
+                            <div class="txtBorder">@i.Value</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+@if (Model.AccessoriesDataList.Data.Any())
+{
+    <div class="mobile_section_btn rippler-default rippler" id="Accessories"> 選購配件 / <span>Accessories</span></div>
+    <section class="accessories mainContent pageSection" id="accessories">
+         <a href="javascript:;" class="gotop noUnderMenu2" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+        <div class="content">
+            <div class="title_container center">
+                <h2><span class="red">選購</span>配件</h2>
+                <h2 class="eng">Accessories</h2>
+            </div>
+            <div class="row accessories">
+                @{
+                int index = 1;
+                foreach (var i in Model.AccessoriesDataList.Data)
+                {
+                    <a class="small-6 medium-4 columns" data-open="AccessoriesOpen" href="#accessorie_@index">
+                        <div class="container">
+                            <picture>
+                                <img src="@Url.Content("~/File/Get?FileId=" + i.Img)" alt="" />
+                            </picture>
+                            <div class="name">
+                                <span class="red">@i.NameR</span> @i.NameB
+                            </div>
+                            <div class=" description">
+                                <span class="dark">適用機型 :</span>
+                                <p>@i.Type</p>
+                            </div>
+                        </div>
+                    </a>
+                    index++;
+                }
+                }
+            </div>
+        </div>
+    </section>
+
+    @*<div class="mobile_section_btn rippler-default rippler" id="Accessories"> 選購配件 / <span>Accessories</span></div>
+    <section class="accessories mainContent pageSection" id="accessories">
+        <div class="content">
+            <div class="title_container center">
+                <h2><span class="red">選購</span>配件</h2>
+                <h2 class="eng">Accessories</h2>
+            </div>
+            <div class="row">
+                @foreach (var i in Model.AccessoriesDataList.Data)
+                {
+                    <a class="small-6 medium-4 columns" data-open="AccessoriesOpen" href="javascript:void(0);">
+                        <div class="container">
+                            <picture class="Accessories">
+                                <img src="@Url.Content("~/File/Get?FileId=" + i.Img)" alt="" />
+                            </picture>
+                            <div class="name">
+                                <span class="red">@i.NameR</span>@i.NameB
+                            </div>
+                            <div class=" description">
+                                <span class="dark">適用機型 :</span>
+                                <p>@i.Type</p>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </section>*@
+}
+<section class="service pdContent" style="@(Model.AccessoriesDataList.Data.Any() ? "" : "margin-top:0px")">
+    <div class="bigmenu_container inside">
+
+        <div class="row menu_element">
+            <a class="btn small-12 medium-6" href="@Url.Action("Branch")">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <a class="btn small-12 medium-6" href="@Url.Action("RequestCatalogs")">
+                <div class="icon edm">
+                </div>
+                <h3>索取型錄</h3>
+                <h3 class="eng">Request Catalog</h3>
+                <div class="text">
+                    歡迎使用台灣豐田線上索取型錄服務，填妥資料後我們將盡快為您服務。
+                </div>
+                <div class="gradient_bg"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script src="/Content/js/lib/owlSlider/owl.carousel.min.js"></script>
+<script src="/Content/js/lib/zoom-master/jquery.zoom.min.js"></script>

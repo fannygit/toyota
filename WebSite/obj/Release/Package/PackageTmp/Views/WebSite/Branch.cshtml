@@ -1,0 +1,242 @@
+﻿@{
+    ViewBag.Title = "Branch";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.InfoLocationListModel
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+<script>
+        $(function () {
+
+            $('.menu_container').find('#item_container').find('.item').eq(0).addClass('active');
+        })
+    </script>
+
+<section class="vision banner-branch" id="gotop">
+    <div class="text-box">
+        <h2><span class="red">據點</span>查詢</h2>
+        <h2 class="eng">Branch</h2>
+        <p class="text description">台灣豐田在台灣深耕多年，熟悉台灣各產業別的需求與情勢變化，我們擁有完善的銷售、保養、維修、租賃服務，若您有相關需求請立即拜訪我們的服務據點或聯絡技術專員，若您有任何建議也歡迎與我們聯繫。<br>營業時間：週一 ~ 週五 08:30-17:30</p>
+    </div>
+    <div class="tab-box">
+        <!-- <a href="#all" class="active">All</a> -->
+        <a href="#north">北部</a>
+        <a href="#center">中部</a>
+        <a href="#south">南部</a>
+        <a href="#east">東部</a>
+        <a href="#china">大陸</a>
+    </div>
+</section>
+
+<section class="branch_north branch-content open" id="north">
+    <div class="row">
+        <div class="small-12 columns">
+            <img src="/Content/images/branch/pin_dark@2x.png" width="42px" alt="">
+            <h2><span class="red">北部</span></h2>
+            <h2 class="eng dark">North</h2>
+        </div>
+        <div class="small-12 columns">
+            <div class="branch-list-box">
+                <table class="rwd-table">
+                    <thead>
+                        <tr>
+                            <th>據點</th>
+                            <th>電話</th>
+                            <th>傳真</th>
+                            <th>地址</th>
+                            <th class="text-center">地圖</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.Data.Where(p => p.Location == "1").OrderBy(p => p.Orderby))
+                    {
+                        <tr>
+                            <td class="red" data-title="據點"><p class="branchName"> @item.Name</p></td>
+                            <td data-title="電話"><p>@item.Tel</p></td>
+                            <td data-title="傳真"><p>@item.Fax</p></td>
+                            <td data-title="地址" class="address"><p>@item.Address</p></td>
+                            <td data-title="地圖" class="text-center"><a href="@item.SearchAddress" target="_blank"><img src="/Content/images/branch/pin_red@2x.png" width="13" alt=""></a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="branch_center branch-content open" id="center">
+    <div class="row">
+        <div class="small-12 columns">
+            <img src="/Content/images/branch/pin_light@2x.png" width="42px" alt="">
+            <h2><span class="white">中部</span></h2>
+            <h2 class="eng">North</h2>
+        </div>
+        <div class="small-12 columns">
+            <div class="branch-list-box">
+                <table class="rwd-table">
+                    <thead>
+                        <tr>
+                            <th>據點</th>
+                            <th>電話</th>
+                            <th>傳真</th>
+                            <th >地址</th>
+                            <th class="text-center">地圖</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Data.Where(p => p.Location == "2").OrderBy(p=>p.Orderby))
+                        {
+                            <tr>
+                                <td class="red" data-title="據點"><p class="branchName"> @item.Name</p></td>
+                                <td data-title="電話"><p>@item.Tel</p></td>
+                                <td data-title="傳真"><p>@item.Fax</p></td>
+                                <td data-title="地址" class="address"><p>@item.Address</p></td>
+                                <td data-title="地圖" class="text-center"><a href="@item.SearchAddress" target="_blank"><img src="/Content/images/branch/pin_red@2x.png" width="13" alt=""></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="branch_south branch-content open" id="south">
+    <div class="row">
+        <div class="small-12 columns">
+            <img src="/Content/images/branch/pin_dark@2x.png" width="42px" alt="">
+            <h2><span class="red">南部</span></h2>
+            <h2 class="eng dark">South</h2>
+        </div>
+        <div class="small-12 columns">
+            <div class="branch-list-box">
+                <table class="rwd-table">
+                    <thead>
+                        <tr>
+                            <th>據點</th>
+                            <th>電話</th>
+                            <th>傳真</th>
+                            <th>地址</th>
+                            <th class="text-center">地圖</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @foreach (var item in Model.Data.Where(p => p.Location == "3").OrderBy(p => p.Orderby))
+                       {
+                        <tr>
+                            <td class="red" data-title="據點"><p class="branchName"> @item.Name</p></td>
+                            <td data-title="電話"><p>@item.Tel</p></td>
+                            <td data-title="傳真"><p>@item.Fax</p></td>
+                            <td data-title="地址" class="address"><p>@item.Address</p></td>
+                            <td data-title="地圖" class="text-center"><a href="@item.SearchAddress" target="_blank"><img src="/Content/images/branch/pin_red@2x.png" width="13" alt=""></a></td>
+                        </tr>
+                       }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="branch_east branch-content open" id="east">
+    <div class="row">
+        <div class="small-12 columns">
+            <img src="/Content/images/branch/pin_light@2x.png" width="42px" alt="">
+            <h2><span class="white">東部</span></h2>
+            <h2 class="eng">East</h2>
+        </div>
+        <div class="small-12 columns">
+            <div class="branch-list-box">
+                <table class="rwd-table">
+                    <thead>
+                        <tr>
+                            <th>據點</th>
+                            <th>電話</th>
+                            <th>傳真</th>
+                            <th>地址</th>
+                            <th class="text-center">地圖</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Data.Where(p => p.Location == "4").OrderBy(p => p.Orderby))
+                        {
+                            <tr>
+                                <td class="red" data-title="據點"><p class="branchName"> @item.Name</p></td>
+                                <td data-title="電話"><p>@item.Tel</p></td>
+                                <td data-title="傳真"><p>@item.Fax</p></td>
+                                <td data-title="地址" class="address"><p>@item.Address</p></td>
+                                <td data-title="地圖" class="text-center"><a href="@item.SearchAddress" target="_blank"><img src="/Content/images/branch/pin_red@2x.png" width="13" alt=""></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="branch_china branch-content open" id="china">
+    <div class="row">
+        <div class="small-12 columns">
+            <img src="/Content/images/branch/pin_dark@2x.png" width="42px" alt="">
+            <h2><span class="red">大陸</span></h2>
+            <h2 class="eng dark">China</h2>
+        </div>
+        <div class="small-12 columns">
+            <div class="branch-list-box">
+                <table class="rwd-table">
+                    <thead>
+                        <tr>
+                            <th>據點</th>
+                            <th>電話</th>
+                            <th>傳真</th>
+                            <th>地址</th>
+                            <th class="text-center">地圖</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @foreach (var item in Model.Data.Where(p => p.Location == "5").OrderBy(p => p.Orderby))
+                       {
+                        <tr>
+                            <td class="red" data-title="據點"><p class="branchName"> @item.Name</p></td>
+                            <td data-title="電話"><p>@item.Tel</p></td>
+                            <td data-title="傳真"><p>@item.Fax</p></td>
+                            <td data-title="地址" class="address"><p>@item.Address</p></td>
+                            <td data-title="地圖" class="text-center"><a href="@item.SearchAddress" target="_blank"><img src="/Content/images/branch/pin_red@2x.png" width="13" alt=""></a></td>
+                        </tr>
+                       }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="service page-service-link">
+    <a href="javascript:;" class="gotop" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="bigmenu_container">
+        <div class="row menu_element">
+
+            <a class="btn small-12 medium-6" href="/WebSite/Warranty">
+                <div class="icon warranty ">
+                </div>
+                <h3>售後服務</h3>
+                <h3 class="eng">Warranty Service</h3>
+                <div class="text">
+                    業界最優的保固條件，讓您的產業車輛隨時處於最佳狀態。
+                </div>
+                <div class="gradient_bg"></div>
+            </a>
+            <a class="btn small-12 medium-6" href="/WebSite/RequestCatalogs">
+                <div class="icon edm">
+                </div>
+                <h3>索取型錄</h3>
+                <h3 class="eng">Request Catalog</h3>
+                <div class="text">歡迎使用台灣豐田線上索取型錄服務，填妥資料後我們將盡快為您服務。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,209 @@
+﻿@model Begonia.Toyota.WebSite.Models.IndexBannerListModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string CurrentController = string.Empty;
+    if (ViewContext.RouteData.Values["Controller"] != null)
+    {
+        CurrentController = ViewContext.RouteData.Values["Controller"].ToString();
+    }
+}
+<script>
+    function orderBy() {
+        var arr = {
+            data: []
+        };
+        var index = 0;
+        var len = $('#table1 tr').length;
+        $("#table1").find('tr').each(function () {
+            index++;
+            if ((index != 1) && (index != len)) {
+                var $tds = $(this).find('td');
+                var key = $(this).find("td:eq(4) input[type='hidden']").val();
+                var value = $(this).find("td:eq(4) input[type='text']").val();
+                arr.data.push({ key: key, value: value });
+            }
+        });
+        $.post("/Base/reOrder", { para: JSON.stringify(arr), fn: "IndexBanner" }, function (result) {
+            if (result.isSuccess = true)
+            {
+                alert("修改成功");
+            } else {
+                alert("修改失敗");
+            }
+        });
+    }
+</script>
+<article class="BOX" id="CONTENT_1">
+    @{
+        Html.RenderPartial("_MenuPartial");
+    }
+
+    <article id="RIGHT_BOX" class="CONTENT_R">
+        <article id="POS">
+            您當前位置是：<a href="#">首頁管理</a> > <a href="~/IndexBanner/List">主視覺Banner</a> > <span class="NOW">列表</span>
+        </article>
+        <nav id="BOX_NAV">
+        </nav>
+        <section id="R_CONTENT_BOX">
+            <article class="RBOX" id="R_CONTENT_1">
+                @using (Html.BeginForm("List", CurrentController, FormMethod.Get, new { @class = "pure-form", id = "f1" }))
+                {
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab1">
+                        <tr>
+                            <td align="right" class="table1_title onn2">Banner大標題：</td>
+                            <td class="table1_text">
+                                @Html.TextBoxFor(p => p.Search, new { placeholder = "搜尋文字", @class = "t1" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" class="table1_title onn2">狀態：</td>
+                            <td class="table1_text">
+                                <input type="radio" name="SStatus" id="SStatus" value="-1" @(Model.SStatus == -1 ? "checked" : "") />
+                                不限&nbsp;&nbsp;
+                                <input type="radio" name="SStatus" id="SStatus" value="1" @(Model.SStatus == 1 ? "checked" : "") />
+                                顯示&nbsp;&nbsp;
+                                <input type="radio" name="SStatus" id="SStatus" value="0" @(Model.SStatus == 0 ? "checked" : "") />
+                                隱藏&nbsp;&nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" class="onn2">&nbsp;</td>
+                            <td><span class="BTN1"><a href="#" onclick="goSubmit()">查詢</a></span></td>
+                        </tr>
+                    </table>
+                }  
+                @if (Model.Rolses.Contains("IndexC") || Model.Rolses.Contains("Admin"))
+                {
+                    <span class="BTN1" style="float: right"><a href="~/IndexBanner/Add?page=@Model.Page">新增</a></span>
+                    <br />
+                    <br />
+                }
+                <table id="table1" width="100%" border="0" cellspacing="0" cellpadding="0" class="tab2">
+                    <tr>
+
+                        <td width="20%" align="center" class="table2_title tbg_1"><a href="~/IndexBanner/List?orderby=@Model.OrderBy&page=@Model.Page&orderfield=t">Banner大標題</a></td>
+                        <td width="20%" align="center" class="table2_title tbg_2">按鈕連結</td>
+                        <td width="20%" align="center" class="table2_title tbg_2">圖片</td>
+                        <td width="10%" align="center" class="table2_title tbg_2">狀態</td>
+                        <td width="10%" align="center" class="table2_title tbg_2">排序</td>
+                        <td width="10%" align="center" class="table2_title tbg_2">編輯</td>
+                        <td width="10%" align="center" class="table2_title tbg_3">刪除</td>
+                    </tr>
+                    @foreach (var Row in Model.Data)
+                    {
+                        <tr>
+
+                            <td align="left" style="word-break: break-all" class="table2_text">@Row.BannerTitle</td>
+                            <td align="center" class="table2_text"><a href="@Row.BtnUrl">@Row.BtnUrl</a></td>
+                            <td align="center" class="table2_text">
+                                @if (string.IsNullOrEmpty(Row.Img))
+                                {
+                                    <img style='width:100px' src="@Url.Content("~/Content/images/default.png")" />
+
+                                }
+                                else
+                                {
+                                    <img style='width:100px' src="@Url.Content("~/File/Get?FileId=" + Row.Img)" />
+                                }
+                            </td>
+                            <td align="center" class="table2_text">@((Row.Status) ? "啟用" : "停用")</td>
+                            <td align="center" class="table2_text"><input type="text" class="t2"  value="@Row.Orderby" /><input type="hidden" value="@Row.Id" /></td>
+                            <td align="center" class="table2_text">
+                                @if (Model.Rolses.Contains("IndexU") || Model.Rolses.Contains("Admin"))
+                                {
+                                    <a href="~/IndexBanner/Edit?id=@Row.Id&page=@Model.Page&Search=@Model.Search&SStatus=@Model.SStatus"><img src="/manage/images/icon_edit.png" width="21" height="21" class="imgover"></a>
+                                }
+                            </td>
+                            <td align="center" class="table2_text r_line">
+                                @if (Model.Rolses.Contains("IndexD") || Model.Rolses.Contains("Admin"))
+                                {
+                                    <a href="#" onclick="del('/IndexBanner/Delete', '@Row.Id', '@Model.Page')"><img src="/manage/images/icon_delete.png" width="17" height="17" class="imgover"></a>
+                                }
+                            </td>
+
+                        </tr>
+                    } 
+                    @if (Model.Rolses.Contains("IndexU") || Model.Rolses.Contains("Admin"))
+                    {
+                        <tr>
+                            <td colspan="7" align="right" class="table2_text r_line"><span class="BTN3"><a href="#" onclick="orderBy()">更新排序</a></span></td>
+                        </tr>
+                    }
+                </table>
+                @{
+                    Request.RequestContext.RouteData.Values.Add("OrderField", Model.OrderField);
+                    Request.RequestContext.RouteData.Values.Add("OrderBy", Model.OrderBy - 1);
+                    Request.RequestContext.RouteData.Values.Add("Search", Model.Search);
+                    Request.RequestContext.RouteData.Values.Add("SStatus", Model.SStatus);
+                    @Html.Partial("_Pager", (Begonia.Toyota.WebSite.Models.PagerModel)Model)
+                }
+            </article>
+        </section>
+    </article>
+</article>
+
+@*@Html.Partial("_ErrorMsg", ViewContext.ViewData)
+<p></p>
+@using (Html.BeginForm("List", CurrentController, FormMethod.Get, new { @class = "pure-form" }))
+{ 
+    <div class="pure-u-1-1" style="text-align:right">
+        @Html.TextBoxFor(p => p.Search, new { placeholder = "搜尋文字" })
+        <input type="submit" class="pure-button" value="查詢" />
+    </div>
+}
+<p></p>
+@Html.ActionLink("新增", "add", new { page = Model.Page }, new { @class = "pure-button" })
+<p></p>
+<table class="pure-table pure-table-bordered" style="width: 100%">
+    <thead>
+        <tr>
+			<th>Banner大標題</th>
+			<th>Banner簡述</th>
+			<th>按鈕連結</th>
+			<th>圖片</th>
+			<th>排序</th>
+			<th>狀態</th>
+
+			<th style="width:52px"></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.Data != null)
+        {
+            if (Model.Data.Count == 0)
+            {
+            <tr class="info">
+                <td colspan="7">暫無資料 </td>
+            </tr>
+            }
+            foreach (var Row in Model.Data)
+            {
+            <tr>
+				<td> @Row.BannerTitle </td>
+				<td> @Row.BannerIntro </td>
+				<td> @Row.BtnUrl </td>
+				<td> @Row.Img </td>
+				<td> @Row.Orderby </td>
+				<td> @Row.Status </td>
+
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = Row.Id, page = Model.Page }, new { })
+                    @Html.ActionLink("刪除", "delete", new { id = Row.Id, page = Model.Page }, new { onclick = "return confirm('確定刪除?');" })
+                </td>
+            </tr>
+            }
+        }
+        else
+        {
+            <tr class="info">
+                <td colspan="7">暫無資料 </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p></p>
+@{
+    Request.RequestContext.RouteData.Values.Add("Search", Model.Search);
+    @Html.Partial("_Pager", (Begonia.Toyota.WebSite.Models.PagerModel)Model)
+}*@

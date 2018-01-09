@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+
+<script>
+  (function() {
+    var cx = '015166263831772180408:6w8s2wzfpgo';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<div class="text-box row searchResult"  id="SR">
+        <h2><span class="red">搜尋</span>結果</h2>
+        <h2 class="eng">Search Resualt</h2>
+        <!-- <p class="text description">持續不斷地更新商品資訊、最新技術應用、國內外得獎殊榮以及相關活動訊息等。讓您隨時掌握台灣豐田產機最新動態，快速調整產業佈局。</p> -->
+    </div>  
+<div class="row saerchContainer">
+    <gcse:searchresults-only></gcse:searchresults-only>
+</div>
+
+@*<gcse:searchresults></gcse:searchresults>*@

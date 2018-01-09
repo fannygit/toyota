@@ -1,0 +1,1 @@
+$(function(){var e=$(window),o=1.2,l=170;e.on("mousewheel DOMMouseScroll",function(t){t.preventDefault();var a=t.originalEvent.wheelDelta/120||-t.originalEvent.detail/3,n=e.scrollTop(),r=n-parseInt(a*l);TweenMax.to(e,o,{scrollTo:{y:r,autoKill:!0},ease:Power1.easeOut,autoKill:!0,overwrite:5})})});

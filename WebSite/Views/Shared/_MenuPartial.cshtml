@@ -1,0 +1,146 @@
+﻿@using JamZoo.Project.WebSite.Enums
+
+<script>
+    $(function () {
+        $.ajax({
+            url: "/Account/GetRoles/",
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                for (var x = 0; x < data.length; x++) {
+                    if (data[x] == "Admin") {
+                        $("#Admin").show();
+                        $("#Account").show();
+                        $("#Index").show();
+                        $("#About").show();
+                        $("#Product").show();
+                        $("#Used").show();
+                        $("#Service").show();
+                        $("#Human").show();
+                        $("#Contact").show();
+                        $("#Faq").show();
+                    }
+                    if (data[x].indexOf("Account") != -1) {
+                        $("#Account").show();
+                    }
+                    if (data[x].indexOf("Index") != -1) {
+                        $("#Index").show();
+                    }
+                    if (data[x].indexOf("About") != -1) {
+                        $("#About").show();
+                    }
+                    if (data[x].indexOf("Product") != -1) {
+                        $("#Product").show();
+                    }
+                    if (data[x].indexOf("Used") != -1) {
+                        $("#Used").show();
+                    }
+                    if (data[x].indexOf("Service") != -1) {
+                        $("#Service").show();
+                    }
+                    if (data[x].indexOf("Human") != -1) {
+                        $("#Human").show();
+                    }
+                    if (data[x].indexOf("Contact") != -1) {
+                        $("#Contact").show();
+                    }
+                    if (data[x].indexOf("Faq") != -1) {
+                        $("#Faq").show();
+                    }
+                }
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+    });
+</script>
+<article id="SWITCH" class="hideMenu">&nbsp;</article>
+<aside id="LEFT_BOX" class="CONTENT_L">
+    @*partial view*@
+    <section id="Account" style="display:none">
+        <article class="LBOX_TOP laa">系統管理</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/Account/List">管理員</a><a href="~/Account/List" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="Index" style="display:none">
+        <article class="LBOX_TOP laa">首頁管理</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/IndexBanner/List">主視覺Banner</a><a href="~/IndexBanner/List" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/IndexVideo/Add">首頁影片</a><a href="~/IndexVideo/Add" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="About" style="display:none">
+        <article class="LBOX_TOP laa">關於台灣豐田管理</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/InfoPrize/List">得獎/肯定</a><a href="~/InfoPrize/List" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/InfoNews/List">最新消息</a><a href="~/InfoNews/List" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/InfoLocation/List">據點查詢</a><a href="~/InfoLocation/List" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="Product" style="display:none">
+        <article class="LBOX_TOP laa">產品管理</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/ProductInfo/List">產品資訊</a><a href="~/ProductInfo/List" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/ProductAccessories/List">配件</a><a href="~/ProductAccessories/List" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="Used" style="display:none">
+        <article class="LBOX_TOP laa">中古車管理</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/AUsedCarEngine/List">引擎型式</a><a href="~/AUsedCarEngine/List" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/AUsedCarInfo/List">中古車資訊</a><a href="~/AUsedCarInfo/List" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="Service" style="display:none">
+        <article class="LBOX_TOP laa">產車服務</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/FixedData/Add?fn=@FixedData.租賃服務.ToString()">租賃服務</a><a href="~/FixedData/Add?fn=@FixedData.租賃服務.ToString()" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/FixedData/Add?fn=@FixedData.售後服務.ToString()">售後服務</a><a href="~/FixedData/Add?fn=@FixedData.售後服務.ToString()" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="Human" style="display:none">
+        <article class="LBOX_TOP laa">人才招募</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/FixedData/Add2?fn=@FixedData2.現有職缺設定.ToString()">現有職缺設定</a><a href="~/FixedData/Add2?fn=@FixedData2.現有職缺設定.ToString()" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/FixedData/Add?fn=@FixedData.職涯規劃管理.ToString()">職涯規劃管理</a><a href="~/FixedData/Add?fn=@FixedData.職涯規劃管理.ToString()" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/FixedData/Add?fn=@FixedData.公司福利管理.ToString()">公司福利管理</a><a href="~/FixedData/Add?fn=@FixedData.公司福利管理.ToString()" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+    <section id="Contact" style="display:none">
+        <article class="LBOX_TOP laa">聯絡我們管理</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/ContactUsManager/List">聯絡我們管理</a><a href="~/ContactUsManager/List" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/FixedData/Add2?fn=@FixedData2.聯絡我們信箱.ToString()">聯絡我們信箱</a><a href="~/FixedData/Add2?fn=@FixedData2.聯絡我們信箱.ToString()" class="add">管理</a></li>
+
+                <li class="LLINE"><a href="~/ContactCatalogManager/List">索取型錄管理</a><a href="~/ContactCatalogManager/List" class="add">管理</a></li>
+                <li class="LLINE"><a href="~/FixedData/Add2?fn=@FixedData2.索取型錄信箱.ToString()">索取型錄信箱</a><a href="~/FixedData/Add2?fn=@FixedData2.索取型錄信箱.ToString()" class="add">管理</a></li>
+
+            </ul>
+        </article>
+    </section>
+    <section id="Faq" style="display:none">
+        <article class="LBOX_TOP laa">常見問題</article>
+        <article class="LBOX_CONTENT">
+            <ul>
+                <li class="LLINE"><a href="~/QuestionAndAnswer/List">常見問題</a><a href="~/QuestionAndAnswer/List" class="add">管理</a></li>
+            </ul>
+        </article>
+    </section>
+</aside>

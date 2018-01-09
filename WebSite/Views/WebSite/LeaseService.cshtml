@@ -1,0 +1,174 @@
+﻿@{ ViewBag.Title = "LeaseService"; Layout = "~/Views/Shared/_LayoutWebSite.cshtml"; } 
+@model Begonia.Toyota.WebSite.Models.FixedDataModel
+<link rel="stylesheet" href="/Content/css/pages.css"> @Html.Raw(HttpUtility.HtmlDecode(Model.Html))
+<script>
+        $(function () {
+
+            $('.menu_container').find('#item_container').find('.item').eq(3).addClass('active');
+        })
+    </script>
+<section class="service page-service-link">
+    <a href="javascript:;" class="gotop" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="bigmenu_container">
+        <div class="row menu_element">
+            <a class="btn small-12 medium-6" href="@Url.Action("Branch")">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <a class="btn small-12 medium-6" href="@Url.Action("ContactUs")">
+                <div class="icon contact">
+                </div>
+                <h3>聯絡我們</h3>
+                <h3 class="eng">Contact Us</h3>
+                <div class="text">任何相關問題請來電或來信，我們會儘速與您聯繫。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+@*
+<section class="vision banner-lease short">
+    <div class="text-box">
+        <h2><span class="red">租賃</span>服務</h2>
+        <h2 class="eng">Lease Service</h2>
+        <p class="text description">台灣豐田所提供之租賃服務常被認誤為是「長期的租賃」， 但其實並不正確。本公司提供的租賃服務，企業不需有資本支出，原廠設備品質保修服務絕對可信賴，並且針對企業不同需求做計量管理。租賃方案可因應企業未來不同需求彈性調整，使企業成本為可預期。</p>
+    </div>
+</section>
+<section class="lease-01 lease-content">
+    <div class="row">
+        <div class="small-12 medium-5 large-5 columns">
+            <h2><span class="red">租賃</span>對企業有什麼好處?</h2>
+            <h2 class="eng">Benefits of Leasing</h2>
+            <ul class="list-sq">
+                <li>避免持有的風險</li>
+                <li>無需負擔資本支出</li>
+                <li>使用上更有彈性</li>
+                <li>原廠技師專業維護</li>
+                <li>可更專注於本業</li>
+            </ul>
+        </div>
+        <div class="small-12 medium-7 large-7 columns">
+            <img src="/Content/images/lease/img_01@2x.png" width="100%" class="lease-img" alt="">
+        </div>
+    </div>
+</section>
+<section class="lease-02 lease-content">
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="text-box">
+                <h2><span class="red">租賃</span>比購買更好!</h2>
+                <h2 class="eng">Leasing is Better Than Buying!</h2>
+                <p>企業與銀行、融資公司之間，一般所簽訂的產業機械設備租賃契約（係指融資契約）彈性較小。</p>
+                <p class="separated"><img src="/Content/images/lease/icon_dim@2x.png" width="10" alt=""></p>
+                <p>售後服務通常為兩種方式：</p>
+                <ul class="way">
+                    <li>1. 由外包第三方公司負責</li>
+                    <li>2. 由一般修理業者維護</li>
+                </ul>
+                <p>企業付款對象為銀行或是融資公司。</p>
+                <p class="separated"><img src="/Content/images/lease/icon_dim@2x.png" width="10" alt=""></p>
+                <p>這類分割的服務契約方式，服務範圍可能：</p>
+                <table class="table-line hide-for-small-only">
+                    <tbody>
+                        <tr>
+                            <td>不涵蓋預期外的損壞</td>
+                            <td>維修項目不包含所有零件</td>
+                        </tr>
+                        <tr>
+                            <td>限制機器的工作時數</td>
+                            <td>其他的限制</td>
+                        </tr>
+                        <tr>
+                            <td>故障時間有其他的擔保</td>
+                            <td>彈性相對較低</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table-line show-for-small-only">
+                    <tbody>
+                        <tr>
+                            <td>不涵蓋預期外的損壞</td>
+                        </tr>
+                        <tr>
+                            <td>維修項目不包含所有零件</td>
+                        </tr>
+                        <tr>
+                            <td>限制機器的工作時數</td>
+                        </tr>
+                        <tr>
+                            <td>其他的限制</td>
+                        </tr>
+                        <tr>
+                        </tr>
+                        <td>故障時間有其他的擔保</td>
+                        <td>彈性相對較低</td>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="lease-03 lease-content">
+    <div class="row">
+        <div class="small-12 medium-6 large-6 columns">
+            <h2><span class="red">原廠</span>租賃優勢！</h2>
+            <h2 class="eng">Original Leasing Advantage!</h2>
+            <ol class="list-num">
+                <li>
+                    <span>提供完善的租賃服務：</span>
+                    <ul class="list-sq">
+                        <li>無需固定資產管理</li>
+                        <li>費用支出更可控</li>
+                    </ul>
+                </li>
+                <li>
+                    <span>完善協助企業堆高機稼動數量管理：</span>
+                    <ul class="list-sq">
+                        <li>消除作業量變動帶來的設備利用率不平均</li>
+                        <li>降低需求變動導致設備閒置</li>
+                    </ul>
+                </li>
+                <li><span>台灣豐田租賃服務可具備應變未來的靈活性，以及可預見所有成本。</span></li>
+                <li><span>企業資金專注於核心業務，提升獲利水平。</span></li>
+                <li><span>擴大企業業務規模，提高企業競爭力。</span></li>
+            </ol>
+        </div>
+        <div class="small-12 medium-6 large-6 columns">
+            <img src="/Content/images/lease/img_02@2x.png" alt="" class="">
+        </div>
+    </div>
+</section>
+<section class="service page-service-link">
+    <a href="javascript:;" class="gotop" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+    <div class="bigmenu_container">
+        <div class="row menu_element">
+            <a class="btn small-12 medium-6" href="/branch">
+                <div class="icon branch">
+                </div>
+                <h3>據點查詢</h3>
+                <h3 class="eng">Branch Inquiry</h3>
+                <div class="text">透過簡易的操作，找尋離您最近的服務據點，簡單方便。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+            <a class="btn small-12 medium-6" href="/contactus">
+                <div class="icon contact">
+                </div>
+                <h3>聯絡我們</h3>
+                <h3 class="eng">Contact Us</h3>
+                <div class="text">任何相關問題請來電或來信，我們會儘速與您聯繫。</div>
+                <div class="gradient_bg">
+                </div>
+            </a>
+        </div>
+    </div>
+    
+</section>*@

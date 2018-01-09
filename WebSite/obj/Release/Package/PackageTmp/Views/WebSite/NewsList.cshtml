@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "NewsList";
+    Layout = "~/Views/Shared/_LayoutWebSite.cshtml";
+}
+@model Begonia.Toyota.WebSite.Models.InfoNewsListModel
+
+<link rel="stylesheet" href="/Content/css/pages.css">
+
+<script>
+$('.menu_container').find('#item_container').find('.item').eq(0).addClass('active');
+</script>
+<section class="vision banner-news">
+    <div class="text-box">
+        <h2><span class="red">最新</span>消息</h2>
+        <h2 class="eng">News</h2>
+        <p class="text description">持續不斷地更新商品資訊、最新技術應用、國內外得獎殊榮以及相關活動訊息等。讓您隨時掌握台灣豐田產機最新動態，快速調整產業佈局。</p>
+    </div>
+    <div class="select-tab">
+        <div class="select single">
+            <a class="select-text">@(string.IsNullOrEmpty(Model.yy)? "所有年分" : Model.yy)</a>
+            <ul class="select-option">
+                <li onclick="gohref('/website/newslist')"class="active">所有年分</li>
+                @foreach (var i in Model.DicDataDL)
+                {
+                    <li onclick="gohref('/website/newslist?yy=@i.Key')">@i.Key</li>
+                }
+            </ul>
+        </div>
+    </div>
+</section>
+@foreach (var i in Model.DicData)
+{
+    <section class="news-block" id="@i.Key">
+        <div class="row">
+            <div class="small-12 columns">
+                <h3 class="news-title noUnderLine">@i.Key</h3>
+            </div>
+        </div>
+        <div class="row align-stretch">
+            @foreach (var v in i.Value.OrderBy(p=>p.Orderby).ThenByDescending(p=>p.TitleDate))
+            {
+                <div class="small-12 medium-6 large-4 columns">
+                    <a href="@Url.Action("news", new { nid = v.Id})" class="news-item">
+                        <div class="picMask">
+                    <img src="@Url.Content("~/File/Get?FileId=" + v.ListImg)" width="114" alt="">
+                    </div> 
+                        <div class="text-box float-right">
+                            <p class="date text description">@v.TitleDate.ToString("yyyy/MM/dd")</p>
+                            <p class="text news-text">@v.Title</p>
+                        </div>
+                        
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
+}
+<div class="goTopContainer">
+<a href="javascript:;" class="gotop noUnderMenu" id="gotop"><img src="/Content/images/about/icon_arrow_03@2x.png" width="40" alt=""></a>
+</div>
+<script>
+    $(function () {
+        $('.menu_container').find('.item_container').find('.item').eq(0).addClass('active');
+    });
+
+    function gohref(yy) {
+        location.href = yy;
+    }
+</script>
