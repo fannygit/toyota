@@ -512,7 +512,7 @@ namespace Begonia.Toyota.WebSite.Service
 					contact_method = model.ContactMethod,
                     orderfield = model.Orderby,
 					status = model.Status,
-                    create_time = DateTime.Now,
+                    create_time = model.CreateTime,
 					create_id = model.CreateId,
 
                 };

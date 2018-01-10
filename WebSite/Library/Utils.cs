@@ -20,16 +20,24 @@ namespace Begonia.Toyota.WebSite.Library
     public static class Utils
     {
 
-        public static void SendMailByGmail(string MailList, string Subject, string Body)
+        public static void SendMailByGmail(string MailList, string mailSender, string Subject, string Body)
         {
-            string mailSender = ConfigurationManager.AppSettings["mailSender"];
+            if (string.IsNullOrEmpty(mailSender))
+            {
+                mailSender = ConfigurationManager.AppSettings["mailSender"];
+            }
+
             string smtpHost = ConfigurationManager.AppSettings["smtpHost"];
             string smtpPort = ConfigurationManager.AppSettings["smtpPort"];
             string networkCredentialUserName = ConfigurationManager.AppSettings["networkCredentialUserName"];
             string networkCredentialPassword = ConfigurationManager.AppSettings["networkCredentialPassword"];
 
             MailMessage msg = new MailMessage();
-            msg.To.Add(MailList);
+            foreach (var mail in MailList.Split(','))
+            {
+                msg.To.Add(mail);
+            }
+            
             msg.From = new MailAddress(mailSender, Subject, System.Text.Encoding.UTF8);
             //郵件標題 
             msg.Subject = Subject;

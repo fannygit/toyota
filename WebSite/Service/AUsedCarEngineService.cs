@@ -70,7 +70,7 @@ namespace Begonia.Toyota.WebSite.Service
                     break;
                 default:
                     Page.OrderBy++;
-                    o_query = o_query.OrderBy(p => p.orderfield).ThenByDescending(p => p.create_time);
+                    o_query = o_query.OrderByDescending(p => p.create_time);
                     break;
             }
 
@@ -177,9 +177,8 @@ namespace Begonia.Toyota.WebSite.Service
 					type = model.Type,
                     orderfield = model.Orderby,
 					status = model.Status,
-					create_time = model.CreateTime,
 					create_id = model.CreateId,
-
+                    create_time = model.CreateTime
                 };
 				
                 basedb.a_used_car_engine.Attach(o_entity);

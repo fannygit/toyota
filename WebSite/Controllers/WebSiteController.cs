@@ -583,7 +583,12 @@ namespace Begonia.Toyota.WebSite.Controllers
                     body += "問題描述: " + model1.Detail;
                    
                     TempData["msg"] = "送出成功";
-                    Utils.SendMailByGmail(model1.Email, "台灣豐田產業機械 聯絡我們", body);
+                    var m = htmlService.Get2("", FixedData2.聯絡我們信箱.ToString());
+                    if (!string.IsNullOrEmpty(m.MailBoxReceiver))
+                    {
+                        model1.Email = model1.Email + "," + m.MailBoxReceiver;
+                    }
+                    Utils.SendMailByGmail(model1.Email, m.MailBoxSender,"台灣豐田產業機械 聯絡我們", body);
                     return RedirectToAction("ContactUs");
                 }
             }
@@ -698,7 +703,12 @@ namespace Begonia.Toyota.WebSite.Controllers
                     body += "型錄索取: " + model1.selectPt + "/" + model1.selectName + "<br />";
                     body += "備註: " + model1.ReMarks + "<br />";
                     TempData["msg"] = "送出成功";
-                    Utils.SendMailByGmail(model1.Email, "台灣豐田產業機械 索取型錄", body);
+                    var m = htmlService.Get2("", FixedData2.索取型錄信箱.ToString());
+                    if (!string.IsNullOrEmpty(m.MailBoxReceiver))
+                    {
+                        model1.Email = model1.Email + "," + m.MailBoxReceiver;
+                    }
+                    Utils.SendMailByGmail(model1.Email, m.MailBoxSender, "台灣豐田產業機械 索取型錄", body);
                     return RedirectToAction("RequestCatalogs");
                 }
             }

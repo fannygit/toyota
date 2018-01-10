@@ -109,7 +109,7 @@ namespace Begonia.Toyota.WebSite.Service
                     break;
                 default:
                     Page.OrderBy++;
-                    o_query = o_query.OrderBy(p => p.orderfield).ThenByDescending(p => p.create_time);
+                    o_query = o_query.OrderByDescending(p => p.create_time);
                     break;
             }
 

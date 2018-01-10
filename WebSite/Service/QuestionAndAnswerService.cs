@@ -184,7 +184,7 @@ namespace Begonia.Toyota.WebSite.Service
 					detail = model.Detail,
                     orderfield = model.Orderby,
 					status = model.Status,
-					create_time = DateTime.Now,
+					create_time = model.CreateTime,
 					create_id = model.CreateId,
 
                 };
