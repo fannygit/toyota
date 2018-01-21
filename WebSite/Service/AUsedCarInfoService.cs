@@ -524,102 +524,85 @@ namespace Begonia.Toyota.WebSite.Service
                 basedb.Entry(o_entity).State = EntityState.Modified;
                 basedb.SaveChanges();
                 
+
                 #region 全刪
-                var o_all = from p in basedb.a_used_car_info_img
+                var allDel = from p in basedb.a_used_car_info_img
                             where p.a_used_car_info_id == model.Id
                             orderby p.orderfield
                             select p;
-
-                List<a_used_car_info_img> del = new List<a_used_car_info_img>();
-
-                int index = 1;
-                foreach (var i in o_all)
-                {
-                    if (i.img != model.ProductImg1 && i.img != model.ProductImg6 &&
-                        i.img != model.ProductImg2 && i.img != model.ProductImg7 &&
-                        i.img != model.ProductImg3 && i.img != model.ProductImg8 &&
-                        i.img != model.ProductImg4 && i.img != model.ProductImg9 &&
-                        i.img != model.ProductImg5 && i.img != model.ProductImg10)
-                    {
-                        del.Add(i);
-                    }
-                    else
-                    {
-                        i.orderfield = index;
-                        index++;
-                    }
-                }
-                foreach (var row in del)
+                foreach (var row in allDel)
                 {
                     basedb.a_used_car_info_img.Remove(row);
                 }
                 basedb.SaveChanges();
+
                 #endregion
 
                 #region 全新增
-                List<string> addImg = new List<string>();
 
                 if (model.ImgFile1 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg1", model.ImgFile1);
-                    addImg.Add(model.ProductImg1);
                 }
 
                 if (model.ImgFile2 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg2", model.ImgFile2);
-                    addImg.Add(model.ProductImg2);
                 }
 
                 if (model.ImgFile3 != null)
                 {
-                    Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg3", model.ImgFile3);
-                    addImg.Add(model.ProductImg3);
+                    Library.Utils.SaveFile<AUsedCarInfoModel>(model,HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg3", model.ImgFile3);
                 }
 
                 if (model.ImgFile4 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg4", model.ImgFile4);
-                    addImg.Add(model.ProductImg4);
                 }
 
                 if (model.ImgFile5 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg5", model.ImgFile5);
-                    addImg.Add(model.ProductImg5);
                 }
 
                 if (model.ImgFile6 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg6", model.ImgFile6);
-                    addImg.Add(model.ProductImg6);
                 }
 
                 if (model.ImgFile7 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg7", model.ImgFile7);
-                    addImg.Add(model.ProductImg7);
                 }
 
                 if (model.ImgFile8 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg8", model.ImgFile8);
-                    addImg.Add(model.ProductImg8);
                 }
 
                 if (model.ImgFile9 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg9", model.ImgFile9);
-                    addImg.Add(model.ProductImg9);
                 }
 
                 if (model.ImgFile10 != null)
                 {
                     Library.Utils.SaveFile<AUsedCarInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg10", model.ImgFile10);
-                    addImg.Add(model.ProductImg10);
                 }
 
+                List<string> addImg = new List<string>();
+                if (!string.IsNullOrEmpty(model.ProductImg1)) addImg.Add(model.ProductImg1);
+                if (!string.IsNullOrEmpty(model.ProductImg2)) addImg.Add(model.ProductImg2);
+                if (!string.IsNullOrEmpty(model.ProductImg3)) addImg.Add(model.ProductImg3);
+                if (!string.IsNullOrEmpty(model.ProductImg4)) addImg.Add(model.ProductImg4);
+                if (!string.IsNullOrEmpty(model.ProductImg5)) addImg.Add(model.ProductImg5);
+                if (!string.IsNullOrEmpty(model.ProductImg6)) addImg.Add(model.ProductImg6);
+                if (!string.IsNullOrEmpty(model.ProductImg7)) addImg.Add(model.ProductImg7);
+                if (!string.IsNullOrEmpty(model.ProductImg8)) addImg.Add(model.ProductImg8);
+                if (!string.IsNullOrEmpty(model.ProductImg9)) addImg.Add(model.ProductImg9);
+                if (!string.IsNullOrEmpty(model.ProductImg10)) addImg.Add(model.ProductImg10);
 
+                int index = 1;
                 foreach (var i in addImg)
                 {
                     a_used_car_info_img dbEntityImg = new a_used_car_info_img();

@@ -670,110 +670,78 @@ namespace Begonia.Toyota.WebSite.Service
                 }
                 #endregion
 
-                #region 全刪IMG
+                
+
+                #region 修改圖片
+                
+                //全刪除
                 var o_delete = from p in basedb.product_info_spc_image
-                               where p.product_id == model.Id
+                               where p.product_id == model.Id 
                                orderby p.orderfield
                                select p;
 
-                int index = 1;
                 foreach (var row in o_delete)
                 {
-                    if (model.ProductImg1 != row.img &&
-                        model.ProductImg2 != row.img &&
-                        model.ProductImg3 != row.img &&
-                        model.ProductImg4 != row.img &&
-                        model.ProductImg5 != row.img &&
-                        model.ProductImg6 != row.img)
-                    {
-                        basedb.product_info_spc_image.Remove(row);
-                    }
-                    else
-                    {
-                        row.orderfield = index;
-                        index++;
-                    }
+                    basedb.product_info_spc_image.Remove(row);
                 }
                 basedb.SaveChanges();
-                #endregion
+                
 
-                #region 全新增IMG
+                //全部重+
                 if (model.ImgFile1 != null)
                 {
                     Library.Utils.SaveFile<ProductInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg1", model.ImgFile1);
-                    //listimg.Add(model.ProductImg1);
-                    product_info_spc_image img1 = new product_info_spc_image();
-                    img1.img = model.ProductImg1;
-                    img1.intro = (string.IsNullOrEmpty(model.ProductDesc1) ? string.Empty : model.ProductDesc1);
-                    img1.orderfield = index;
-                    img1.product_id = model.Id;
-                    basedb.product_info_spc_image.Add(img1);
-                    index++;
                 }
                 if (model.ImgFile2 != null)
                 {
                     Library.Utils.SaveFile<ProductInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg2", model.ImgFile2);
-                    //listimg.Add(model.ProductImg2);
-                    product_info_spc_image img2 = new product_info_spc_image();
-                    img2.img = model.ProductImg2;
-                    img2.intro = (string.IsNullOrEmpty(model.ProductDesc2) ? string.Empty : model.ProductDesc2);
-                    img2.orderfield = index;
-                    img2.product_id = model.Id;
-                    basedb.product_info_spc_image.Add(img2);
-                    index++;
                 }
                 if (model.ImgFile3 != null)
                 {
                     Library.Utils.SaveFile<ProductInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg3", model.ImgFile3);
-                    //listimg.Add(model.ProductImg3);
-                    product_info_spc_image img3 = new product_info_spc_image();
-                    img3.img = model.ProductImg3;
-                    img3.intro = (string.IsNullOrEmpty(model.ProductDesc3) ? string.Empty : model.ProductDesc3);
-                    img3.orderfield = index;
-                    img3.product_id = model.Id;
-                    basedb.product_info_spc_image.Add(img3);
-                    index++;
                 }
                 if (model.ImgFile4 != null)
                 {
                     Library.Utils.SaveFile<ProductInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg4", model.ImgFile4);
-                    //listimg.Add(model.ProductImg4);
-                    product_info_spc_image img4 = new product_info_spc_image();
-                    img4.img = model.ProductImg4;
-                    img4.intro = (string.IsNullOrEmpty(model.ProductDesc4) ? string.Empty : model.ProductDesc4);
-                    img4.orderfield = index;
-                    img4.product_id = model.Id;
-                    basedb.product_info_spc_image.Add(img4);
-                    index++;
                 }
                 if (model.ImgFile5 != null)
                 {
                     Library.Utils.SaveFile<ProductInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg5", model.ImgFile5);
-                    //listimg.Add(model.ProductImg5);
-                    product_info_spc_image img5 = new product_info_spc_image();
-                    img5.img = model.ProductImg5;
-                    img5.intro = (string.IsNullOrEmpty(model.ProductDesc5) ? string.Empty : model.ProductDesc5);
-                    img5.orderfield = index;
-                    img5.product_id = model.Id;
-                    basedb.product_info_spc_image.Add(img5);
-                    index++;
                 }
                 if (model.ImgFile6 != null)
                 {
                     Library.Utils.SaveFile<ProductInfoModel>(model, HttpContext.Current.Server.MapPath("~/App_Data/UploadFile"), "ProductImg6", model.ImgFile6);
-                    //listimg.Add(model.ProductImg6);
-                    product_info_spc_image img6 = new product_info_spc_image();
-                    img6.img = model.ProductImg6;
-                    img6.intro = (string.IsNullOrEmpty(model.ProductDesc6) ? string.Empty : model.ProductDesc6);
-                    img6.orderfield = index;
-                    img6.product_id = model.Id;
-                    basedb.product_info_spc_image.Add(img6);
+                }
+
+                Dictionary<string,string> list = new Dictionary<string, string>();
+                if (!string.IsNullOrEmpty(model.ProductImg1))
+                    list.Add(model.ProductImg1, model.ProductDesc1);
+                if (!string.IsNullOrEmpty(model.ProductImg2))
+                    list.Add(model.ProductImg2, model.ProductDesc2);
+                if (!string.IsNullOrEmpty(model.ProductImg3))
+                    list.Add(model.ProductImg3, model.ProductDesc3);
+                if (!string.IsNullOrEmpty(model.ProductImg4))
+                    list.Add(model.ProductImg4, model.ProductDesc4);
+                if (!string.IsNullOrEmpty(model.ProductImg5))
+                    list.Add(model.ProductImg5, model.ProductDesc5);
+                if (!string.IsNullOrEmpty(model.ProductImg6))
+                    list.Add(model.ProductImg6, model.ProductDesc6);
+
+                int index = 1;
+                foreach (var img in list)
+                {
+                    product_info_spc_image spcImage = new product_info_spc_image();
+                    spcImage.img = img.Key;
+                    spcImage.intro = (string.IsNullOrEmpty(img.Value) ? string.Empty : img.Value);
+                    spcImage.orderfield = index;
+                    spcImage.product_id = model.Id;
+                    basedb.product_info_spc_image.Add(spcImage);
                     index++;
                 }
 
                 basedb.SaveChanges();
-
                 #endregion
+
             }
             catch (Exception ex)
             {

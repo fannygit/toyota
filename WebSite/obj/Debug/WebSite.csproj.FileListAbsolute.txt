@@ -1805,7 +1805,6 @@ D:\WebSite\WebSite\bin\zh-Hant\System.Web.Razor.resources.dll
 D:\WebSite\WebSite\bin\zh-Hant\System.Web.WebPages.resources.dll
 D:\WebSite\WebSite\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 D:\WebSite\WebSite\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
-D:\WebSite\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache
 D:\WebSite\WebSite\obj\Debug\WebSite.dll
 D:\WebSite\WebSite\obj\Debug\WebSite.pdb
 D:\WebSite - 複製\WebSite\bin\WebSite.dll.config
