@@ -26,6 +26,7 @@ namespace Begonia.Toyota.WebSite.Controllers
         public string domain = ConfigurationManager.AppSettings["domain"];
         public string secretKey = ConfigurationManager.AppSettings["secretKey"];
         // GET: /WebSite/
+        
 
         /// <summary>
         /// 首頁

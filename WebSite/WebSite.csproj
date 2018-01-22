@@ -1398,6 +1398,7 @@
     <Content Include="Content\css\style.bak.1.css" />
     <Content Include="Content\css\style.bak.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\Error.html" />
     <Content Include="Content\images\about\bg_about_01%401x.png" />
     <Content Include="Content\images\about\bg_about_01%402x.png" />
     <Content Include="Content\images\about\bg_about_02%401x.png" />

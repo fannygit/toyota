@@ -23,5 +23,13 @@ namespace Begonia.Toyota.WebSite
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        void Application_Error(object sender, EventArgs e)
+        {
+            // 發生未處理錯誤時執行的程式碼
+
+            var error = Server.GetLastError();
+            Server.Transfer("~/Content/Error.html");
+        }
     }
 }
