@@ -2,6 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -21,25 +22,30 @@
     <meta property="business:contact_data:postal_code" content="" />
     <meta property="business:contact_data:country_name" content="" />
     <title>@TempData["title"]</title>
-    <link rel="stylesheet" href="/Content/css/app.min.css">
+    
     <!-- <link rel="stylesheet" href="/Content/css/hamburger.css"> @RenderSection("css", false) -->
+
     <link rel="shortcut icon" type="/Content/images/png" href="/favicon-aturia.ico" />
     <link rel="shortcut icon" type="/Content/images/png" href="http://aturia.begonia.tw/Content/images/favicon-aturia.ico" />
     <link rel="shortcut icon" href="http://tmht.crazy-j.com.tw/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/Content/css/app.min.css">
     <script src="/Content/js/lib/jquery/jquery.min.js"></script>
-    <script src="/Content/js/lib/imagesLoaded/imagesloaded.min.js"></script>
-    <script src="/Content/js/lib/foundation/foundation.min.js"></script>
     <script src="/Content/js/lib/gsap/TweenMax.min.js"></script>
+    <script src="/Content/js/lib/foundation/foundation.min.js"></script>
     <script src="/Content/js/lib/ScrollMagic/ScrollMagic.min.js"></script>
+    <script src="/Content/js/lib/imagesLoaded/imagesloaded.min.js"></script>
+    <script src="/Content/js/lib.min.js"></script>
+    <script src="/Content/js/app.min.js"></script>
+    
     <!--<script src="/Content/js/lib/ScrollMagic/debug.addIndicators.js"></script> -->
     <!-- <script src="/Content/js/lib/gsap/animation.gsap.js"></script> -->
-    <script src="/Content/js/lib.min.js"></script>
+    
     <!-- <script src="/Content/js/lib/rippler/jquery.rippler.min.js"></script>
     <script src="/Content/js/lib/picturefill/picturefill.min.js"></script>
     <script src="/Content/js/lib/smooth-scroll/smooth-scroll.min.js"></script>
     <script src="/Content/js/lib/overlaps/jquery.overlaps.min.js"></script>
     <script src="/Content/js/lib/EasyZoom/easyzoom.js"></script> -->
-    <script src="/Content/js/lib/slick_js/slick.min.js"></script>
+    <!-- <script src="/Content/js/lib/slick_js/slick.min.js"></script> -->
     <!-- <script src="/Content/js/lib/jq_parallax/parallax.min.js"></script>    -->
     @RenderSection("js", false)
 </head>
@@ -322,10 +328,11 @@
         </div>
     </footer>
     <div class="copyright">
-        <p><a href="@Url.Action(" Privacy ")">隱私權聲明</a> / 客服專線：0800-221-456</p>
+        <p><a href="@Url.Action("Privacy")">隱私權聲明</a></p>
         Copyright © TOYOTA MATERIAL HANDLING TAIWAN LTD. All rights reserved.
     </div>
-    <script src="/Content/js/app.min.js"></script>
+    
+   
     <script type="text/javascript">
     function goSearch() {
 
@@ -389,11 +396,12 @@
 
 
         var domain = document.domain;
-        $('a').click(function() {
+        $('a[href]').click(function() {
 
 
             var link = $(this).attr("href");
-            if (link.match('www') != null || link.match('http') != null) {
+            if(link){
+                if (link.match('www') != null || link.match('http') != null) {
                 console.log("has www http");
                 if (link.match(domain) != null) {
                     //location.href = $(this).attr("href");
@@ -404,6 +412,11 @@
 
                 // console.log("no www");
             }
+
+
+
+            }
+            
             console.log(domain);
 
             //return confirm('您將開啟台灣豐田產業機械官網以外的連結，請問是否同意？');

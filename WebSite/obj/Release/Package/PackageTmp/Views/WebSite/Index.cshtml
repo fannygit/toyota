@@ -4,7 +4,7 @@
 }
 @model Begonia.Toyota.WebSite.Models.IndexModel
 
-<script src="/Content/js/lib/mightyslider/mightyslider.min.js"></script>
+
 
 
 <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
@@ -21,15 +21,17 @@
                 @foreach (var i in Model.BannerList.Data)
                 {
                     <li data-mightyslider="cover: [
-  ['@Url.Content("~/File/Get?FileId=" + i.Img)', '(max-width:1024px)'],
   ['@Url.Content("~/File/Get?FileId=" + i.Img)', '(max-width:5000px)']
 ]">
                         <div class="container">
                             <div class="big_slogan">
                                 @i.BannerTitle
                                 <br>
-                                <div class="vic_slogan">
+                                <div class="vic_slogan" >
+                                    <p limit="450px-30">
                                     @i.BannerIntro
+                                    </p>
+                                    
                                     @if (!string.IsNullOrEmpty(i.BtnUrl))
                                     {
                                         <div class="more">
@@ -179,7 +181,7 @@
 </section>
 <section class="service">
     <div class="forklift_container">
-        <img src="/Content/images/element_03.png" alt="" class="forklift_pic">
+        <img src="/Content/images/element_03_s.png" alt="" class="forklift_pic">
     </div>
     <div class="title_container">
         <div class="box">
@@ -225,6 +227,7 @@
         </div>
     </div>
 </section>
+<script src="/Content/js/lib/mightyslider/mightyslider.min.js"></script>
 <script type="text/javascript" id="www-widgetapi-script" src="https://s.ytimg.com/yts/jsbin/www-widgetapi-vflwRxTjE/www-widgetapi.js" async=""></script> 
 
 <span id="video_name">@Model.Video.ReviewUrl</span>

@@ -42,7 +42,7 @@ namespace Begonia.Toyota.WebSite.Service
                           where p.status ==true
                           select p;
 
-            var list = o_query.Select(p => p.years).Distinct().OrderBy(p=>p).ToList();
+            var list = o_query.Select(p => p.years).Distinct().OrderByDescending(p=>p).ToList();
 
             if (!string.IsNullOrEmpty(yy))
             {

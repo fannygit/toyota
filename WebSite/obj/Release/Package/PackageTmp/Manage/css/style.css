@@ -168,3 +168,17 @@ article.R a{color:#525254; text-decoration:none; padding:0 5px;}
 article.R a:hover{color:#313132; text-decoration:none;}
 
 
+#LEFT_BOX #Index,
+#LEFT_BOX #Account,
+#LEFT_BOX #About,
+#LEFT_BOX #Product,
+#LEFT_BOX #Used,
+#LEFT_BOX #Service,
+#LEFT_BOX #Human,
+#LEFT_BOX #Contact,
+#LEFT_BOX #Faq,
+#LEFT_BOX #Used{margin-bottom: 15px;}
+
+.table2_title a:link{color:#fff;}
+.table2_title a:visited{color:#fff;}
+.table2_title a:hover{color:#fff;}

@@ -69,7 +69,7 @@ namespace Begonia.Toyota.WebSite.Models
         {
 			Status = true;
 			CreateTime = DateTime.Now;
-
+            YearsDT = DateTime.Now.ToString("yyyy");
         }
     }
 }
