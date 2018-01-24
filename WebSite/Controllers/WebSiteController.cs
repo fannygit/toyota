@@ -56,13 +56,13 @@ namespace Begonia.Toyota.WebSite.Controllers
         /// 關於
         /// </summary>
         /// <returns></returns>
-        public ActionResult About(string yy)
+        public ActionResult About()
         {
             TempData["title"] = "台灣豐田 TOYOTA Material Handling Taiwan - About | 關於台灣豐田";
             AboutModel model = new AboutModel();
             InfoPrizeService prizeService = new InfoPrizeService();
-            model.YearsList = prizeService.GetYears1(yy);
-            string key = (string.IsNullOrEmpty(yy) ? model.YearsList.FirstOrDefault() : yy);
+            model.YearsList = prizeService.GetYears1("");
+            string key = model.YearsList.FirstOrDefault();
             model.PrizeList = prizeService.GetList1(key, true).OrderBy(p=>p.Orderby).ToList();
             return View(model);
         }

@@ -222,7 +222,7 @@
             <div class="slider honor-year">
                 @foreach (var i in Model.YearsList)
                 {
-                    <div onclick="goshow(@i)"><h3>@i</h3></div>
+                    <div id="@i" onclick="goshow(@i)"><h3>@i</h3></div>
                 }
             </div>
             <br>
