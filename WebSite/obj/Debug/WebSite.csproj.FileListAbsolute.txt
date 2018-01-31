@@ -1881,4 +1881,3 @@ D:\WebSite - 複製\WebSite\bin\zh-Hant\System.Web.WebPages.Deployment.resources
 D:\WebSite - 複製\WebSite\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
 D:\WebSite - 複製\WebSite\obj\Debug\WebSite.dll
 D:\WebSite - 複製\WebSite\obj\Debug\WebSite.pdb
-D:\WebSite\WebSite\obj\Debug\WebSite.csprojResolveAssemblyReference.cache

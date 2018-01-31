@@ -820,20 +820,23 @@ namespace Begonia.Toyota.WebSite.Controllers
             list.eng = eng;
             list.yy = yy;
             list.ton = ton;
-            //if (!string.IsNullOrEmpty(ton) && !ton.Equals("所有噸數"))
-            //{
-            //    try
-            //    {
-            //        list.ton = (!ton.Contains(".0") && Convert.ToDouble(ton) % 1 == 0) ? ton.ToString() + ".0" : ton.ToString();
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        list.ton = ton.ToString();
-            //    }
-            //}
 
             //搜尋資料
             list = carService.GetList1("", list, true);
+
+            //單筆資料
+            if (!string.IsNullOrEmpty(id))
+            {
+                int ii = Convert.ToInt32(id);
+                list.ImgList = carService.GetImgList(ii);
+                list.AUsedCarInfo = carService.Get1(ii);
+                TempData["msg"] = "wwww";
+            }
+            else
+            {
+                list.ImgList = new List<string>();
+                list.AUsedCarInfo = new AUsedCarInfoModel();
+            }
 
             //產車種類
             list.TypeList = new List<SelectListItem>();
@@ -910,19 +913,7 @@ namespace Begonia.Toyota.WebSite.Controllers
             }
             
 
-            //單筆資料
-            if (!string.IsNullOrEmpty(id))
-            {
-                int ii = Convert.ToInt32(id);
-                list.ImgList = carService.GetImgList(ii);
-                list.AUsedCarInfo = carService.Get1(ii);
-                TempData["msg"] = "wwww";
-            }
-            else
-            {
-                list.ImgList = new List<string>();
-                list.AUsedCarInfo = new AUsedCarInfoModel();
-            }
+            
             return View(list);
         }
 

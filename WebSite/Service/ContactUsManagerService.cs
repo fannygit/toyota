@@ -263,11 +263,11 @@ namespace Begonia.Toyota.WebSite.Service
                 var m = htmlService.Get2("", FixedData2.聯絡我們信箱.ToString());
                 if (!string.IsNullOrEmpty(m.MailBoxReceiver))
                 {
-                    model.Email = model.Email + "," + m.MailBoxReceiver;
+                    string body = "回覆內容: " + model.Answer + "<br />";
+                    Utils.SendMailByGmail(m.MailBoxReceiver, m.MailBoxSender, "【聯絡我們】台灣豐田產業機械 客服回覆", body);
                 }
 
-                string body = "回覆內容: " + model.Answer + "<br />";
-                Utils.SendMailByGmail(model.Email, m.MailBoxSender, "【聯絡我們】台灣豐田產業機械 客服回覆", body);
+                
             }
             catch (Exception ex)
             {
