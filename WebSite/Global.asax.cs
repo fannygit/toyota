@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -29,7 +30,14 @@ namespace Begonia.Toyota.WebSite
             // 發生未處理錯誤時執行的程式碼
 
             var error = Server.GetLastError();
-            Server.Transfer("~/Content/Error.html");
+            string d = ConfigurationManager.AppSettings["isProduction"];
+            bool isProduction = false;
+            if (string.IsNullOrEmpty(d))
+                isProduction = Convert.ToBoolean(d);
+
+            if (isProduction)
+                Server.Transfer("~/Content/Error.html");
+
         }
     }
 }

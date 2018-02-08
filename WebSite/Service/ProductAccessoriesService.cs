@@ -80,7 +80,7 @@ namespace Begonia.Toyota.WebSite.Service
             try
             {
                 Page.TotalRecords = query.Select(p => p.Id).Count();
-                Page.Data = query.Skip(Page.Skip).Take(Page.Take).Select(o_entity =>
+                Page.Data = query.Select(o_entity =>
                     new ProductAccessoriesModel()
                     {
                         Id = o_entity.Id,

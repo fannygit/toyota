@@ -327,9 +327,10 @@ namespace Begonia.Toyota.WebSite.Service
                 var m = htmlService.Get2("", FixedData2.索取型錄信箱.ToString());
                 if (!string.IsNullOrEmpty(m.MailBoxReceiver))
                 {
-                    string body = "回覆內容: " + model.Answer + "<br />";
-                    Utils.SendMailByGmail(m.MailBoxReceiver, m.MailBoxSender, "【索取型錄】台灣豐田產業機械 客服回覆", body);
+                    model.Email = model.Email + "," + m.MailBoxReceiver;
                 }
+                string body = "回覆內容: " + model.Answer + "<br />";
+                Utils.SendMailByGmail(model.Email, m.MailBoxSender, "【索取型錄】台灣豐田產業機械 客服回覆", body);
             }
             catch (Exception ex)
             {

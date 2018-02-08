@@ -4,12 +4,14 @@
 }
 @model Begonia.Toyota.WebSite.Models.AboutModel
 
-<link rel="stylesheet" href="/Content/css/pages.css">
+
 
 <script>
     $(function(){
         slidesToShow();
+        
     })
+
 
     function slidesToShow()
     {
@@ -40,6 +42,8 @@
               }
             ]
         });
+        $('.honor-year').slick('slickGoTo', 0);
+
 
 
         $('.award-list').slick({
@@ -71,6 +75,7 @@
               }
             ]
         });
+
     }
 
 
@@ -128,7 +133,7 @@
                   breakpoint: 480,
                   settings: {
                       arrows: true,
-                      centerMode: true,
+                      centerMode: false,
                       centerPadding: '0',
                       slidesToShow: 1
                   }
@@ -222,7 +227,7 @@
             <div class="slider honor-year">
                 @foreach (var i in Model.YearsList)
                 {
-                    <div id="@i" onclick="goshow(@i)"><h3>@i</h3></div>
+                    <div onclick="goshow(@i)"><h3>@i</h3></div>
                 }
             </div>
             <br>
@@ -265,9 +270,10 @@
     </div>
 
 </section>
+<link rel="stylesheet" href="/Content/css/pages.css">
 <script>
   $(function(){
-    $('.slick-track .slick-slide').eq(0).click();
+   $('.slick-track .slick-slide[data-slick-index="0"]').click();
 
   })
 </script>

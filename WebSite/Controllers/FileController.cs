@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -47,9 +48,8 @@ namespace Begonia.Toyota.WebSite.Controllers
                 upload.SaveAs(Server.MapPath("~/App_Data/UploadFile/" + FileName));
                 upload.SaveAs(Server.MapPath("~/uploads/images/" + FileName));
 
-                var imageUrl = "http://tmht.crazy-j.com.tw/File/Get?FileId=" + FileName;
-                //var imageUrl = "http://localhost:45247/File/Get?FileId=" + FileName;
-
+                string domain = ConfigurationManager.AppSettings["domain"];
+                var imageUrl = domain + "File/Get?FileId=" + FileName;
                 var vMessage = string.Empty;
 
                 result = @"<html><body><script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + imageUrl + "\", \"" + vMessage + "\");</script></body></html>";

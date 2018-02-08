@@ -22,7 +22,12 @@ namespace Begonia.Toyota.WebSite.Library
 
         public static void SendMailByGmail(string MailList, string mailSender, string Subject, string Body)
         {
-            if (string.IsNullOrEmpty(mailSender))
+            string d = ConfigurationManager.AppSettings["isProduction"];
+            bool isProduction = false;
+            if (string.IsNullOrEmpty(d))
+                isProduction = Convert.ToBoolean(d);
+
+            if (!isProduction)
             {
                 mailSender = ConfigurationManager.AppSettings["mailSender"];
             }
@@ -49,14 +54,22 @@ namespace Begonia.Toyota.WebSite.Library
             msg.BodyEncoding = System.Text.Encoding.UTF8;
             msg.Priority = MailPriority.Normal;
 
-            //SmtpClient MySmtp = new SmtpClient(smtpHost, Convert.ToInt32(smtpPort));
-            //MySmtp.Credentials = new NetworkCredential(networkCredentialUserName, networkCredentialPassword);
-            ////MySmtp.EnableSsl = true;
+            SmtpClient mySmtp = new SmtpClient(smtpHost, Convert.ToInt32(smtpPort));
 
-            //local
-            SmtpClient MySmtp = new SmtpClient(smtpHost, Convert.ToInt32(smtpPort));
-            MySmtp.UseDefaultCredentials = true;
-            MySmtp.Send(msg);
+
+            if (isProduction)
+            {
+                //local
+                mySmtp.UseDefaultCredentials = true;
+            }
+            else
+            {
+                //測試站
+                mySmtp.Credentials = new NetworkCredential(networkCredentialUserName, networkCredentialPassword);
+                //MySmtp.EnableSsl = true;
+            }
+
+            mySmtp.Send(msg);
         }
 
         public static string[] SplitToArrary(this string value, string splitString)

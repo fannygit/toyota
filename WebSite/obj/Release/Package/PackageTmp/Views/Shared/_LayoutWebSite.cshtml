@@ -87,7 +87,7 @@
                     <input type="text" placeholder="Search" id="googlesearch">*@ @*
                     <button onclick="location.href = '/website/searchresult?kg=' + $('#googlesearch').val();" class="button expand">Search</button>*@
                 </div>
-                <a class="fb_icon" href="https://business.facebook.com/%E5%8F%B0%E7%81%A3%E8%B1%90%E7%94%B0%E7%94%A2%E6%A9%9F-1961131114162736/" target="_blank">
+                <a class="fb_icon" href="https://business.facebook.com/%E5%8F%B0%E7%81%A3%E8%B1%90%E7%94%B0%E7%94%A2%E6%A9%9F-1961131114162736/?business_id=370082093410145" target="_blank">
                     <img src="/Content/images/element_17.png" alt="">
                 </a>
             </div>
@@ -322,7 +322,7 @@
             </div>
             <div class="unit last">
                 <div class="title_container">
-                    <h3 class="alr"><a href="https://business.facebook.com/%E5%8F%B0%E7%81%A3%E8%B1%90%E7%94%B0%E7%94%A2%E6%A9%9F-1961131114162736/" target="_blank"><img src="/Content/images/element_17.png" alt="台灣豐田產機"></a></h3>
+                    <h3 class="alr"><a href="https://business.facebook.com/%E5%8F%B0%E7%81%A3%E8%B1%90%E7%94%B0%E7%94%A2%E6%A9%9F-1961131114162736/?business_id=370082093410145" target="_blank"><img src="/Content/images/element_17.png" alt="台灣豐田產機"></a></h3>
                 </div>
             </div>
         </div>
@@ -338,9 +338,13 @@
 
         if ($('#googlesearch').val() == '') {
             alert("請於左側輸入搜尋字串");
+
         } else {
+
             location.href = '/website/searchresult?kg=' + $('#googlesearch').val();
+
         }
+
     }
 
     function goSearchM() {
@@ -349,8 +353,11 @@
             // alert("請於左側輸入搜尋字串");
             $('#googlesearchM').attr('placeholder', '請輸入搜尋字串');
 
+
         } else {
+
             location.href = '/website/searchresult?kg=' + $('#googlesearchM').val();
+
         }
 
     }

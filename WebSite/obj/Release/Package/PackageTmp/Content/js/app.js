@@ -1,5 +1,13 @@
-var isMobile = (function(a) { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) });
-var clickMenuActive= false
+var isMobile
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    isMobile = true;
+    console.log("is_Mobile");
+} else {
+    console.log("not_Mobile");
+    isMobile = null;
+
+}
+var clickMenuActive = false
 $(document).ready(function() {
     if (isMobile) {
         var t = setTimeout(function() {
@@ -7,16 +15,16 @@ $(document).ready(function() {
                 opacity: .0,
                 onComplete: loadComplete
             });
-            if ($(window).width() <= 1000 && clickMenuActive==false) {
+            if ($(window).width() <= 1000 && clickMenuActive == false) {
                 crt_clickMenu();
-                clickMenuActive=true;
+                clickMenuActive = true;
             }
 
             console.log("mobile early Complete");
 
         }, 5000)
     }
- 
+
 
 
 })
@@ -38,10 +46,10 @@ $(window).resize(function() {
 
 
 })
-$(document).foundation();
-$(window).load(function() {
-    //這裡都是控制產品內容頁的function
 
+$(window).on('load',function() {
+    //這裡都是控制產品內容頁的function
+    $(document).foundation();
     if ($('.products_banneer').length > 0) {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             Gallery("mobile");
@@ -105,7 +113,7 @@ function Gallery(Device) {
 //產品內容相簿----------------------------------------------------------------------
 //計算配件----------------------------------------------------------------------
 function calcAccessories() {
-    var titleHeightSize = $('.container .name').size();
+    var titleHeightSize = $('.container .name').length;
     var HeightArray = [];
     var titleHeight
     var MaxHeight
@@ -214,7 +222,7 @@ function AccessoriesSlider() {
             if (page == 0) {
                 $('#AccessoriesOpen .prevBtn').addClass('disable');
                 $('#AccessoriesOpen .nextBtn').removeClass('disable');
-            } else if (page == $('.owl-item').size() - 1) {
+            } else if (page == $('.owl-item').length - 1) {
                 $('#AccessoriesOpen .nextBtn').addClass('disable');
                 $('#AccessoriesOpen .prevBtn').removeClass('disable');
             } else {
@@ -239,10 +247,10 @@ function AccessoriesSlider() {
 // -------------------------------------產品頁配件slider
 //-------------------產品頁------------判斷規格的tab數量
 
-$(window).load(function() {
+$(window).on('load',function() {
 
-    console.log($('.spc_tab a').size());
-    if ($('.spc_tab a').size() == 1) {
+    console.log($('.spc_tab a').length);
+    if ($('.spc_tab a').length == 1) {
         $('.spc_tab a').removeClass("small-6");
         $('.spc_tab a').addClass("small-12");
     }
@@ -250,8 +258,8 @@ $(window).load(function() {
 //--------------------產品頁-----------判斷規格的tab數量
 
 //--------------------產品頁-----------判斷配件章節數量
-$(window).load(function() {
-    var sectionQuantity = $('section').size();
+$(window).on('load',function() {
+    var sectionQuantity = $('section').length;
     console.log("sectionQuantity=" + sectionQuantity);
     $('section').eq(sectionQuantity - 2).addClass('lastSection');
 })
@@ -260,16 +268,16 @@ $(window).load(function() {
 
 var loadComplete = function() {
     $('#loader').css({ "display": "none", "left": 100 + "%" });
-    if ($(window).width() <= 1000 && clickMenuActive==false) {
-                crt_clickMenu();
-                clickMenuActive=true;
-            }
+    if ($(window).width() <= 1000 && clickMenuActive == false) {
+        crt_clickMenu();
+        clickMenuActive = true;
+    }
 
 }
 
 //--------------------產品頁---------------------------------控制輸入框
 
-$(window).load(function() {
+$(window).on('load',function() {
     // Run code
     //detect mobile or pc
     //---------------------------------------------------------------imagesLoaded
@@ -330,13 +338,15 @@ $(window).load(function() {
 
         //ctrl_footer();
         ctrl_menu_mobile();
+
     } else {
-        ctrl_menu_pc();
+        
         ctrl_menu_follow();
         searchCtrl();
 
     }
     ctrlSelectBox();
+    ctrl_menu_pc();
     // ------------------------------------------------------top鍵控制
     if ($(this).scrollTop() < 200) {
         $('.gotop').fadeOut();
@@ -653,7 +663,8 @@ function ctrl_menu_pc() {
 
 
     }
-    console.log("oringalCollection=" + oringalCollection)
+    console.log("pc選單");
+    console.log("oringalCollection=" + oringalCollection);
 
 
     //控制主選單商品按鈕的行為
@@ -698,7 +709,7 @@ function ctrl_menu_pc() {
         } else {
             originalHeight = 55;
         }
-        quantity = $(this).find('a.sub').size();
+        quantity = $(this).find('a.sub').length;
         subHeight = $(this).find('a.sub').eq(0).height();
         $(this).css({ 'height': originalHeight + (quantity * subHeight) + 'px' });
     });
@@ -716,43 +727,45 @@ function ctrl_menu_pc() {
         //console.log(OriginalScrollTop);
         $(window).scrollTop(OriginalScrollTop);
     })
-}
-$('.product_list_container').not('.open').slideUp();
-$('.control .tab').click(function() {
-    var nowId = $(this).attr("id");
 
-    $('.control .tab').removeClass("open");
-    $(this).addClass("open");
-    $('.product_list_container').removeClass('open');
-    $('.product_list_container#' + nowId).addClass('open');
     $('.product_list_container').not('.open').slideUp();
-    $('.product_list_container.open').slideDown();
+    $('.control .tab').click(function() {
+        var nowId = $(this).attr("id");
+        console.log(nowId);
 
-})
-$('#MenuBox .item,#FooterItems a').click(function() {
-    $('#item_container .products').toggleClass('active');
-    if (OriginalScrollTop == null || $(window).scrollTop() != 0) {
+        $('.control .tab').removeClass("open");
+        $(this).addClass("open");
+        $('.product_list_container').removeClass('open');
+        $('.product_list_container#' + nowId).addClass('open');
+        $('.product_list_container').not('.open').slideUp();
+        $('.product_list_container.open').slideDown();
 
-        OriginalScrollTop = $(window).scrollTop();
-        if ($('.mainmenu').hasClass('fixedMenu')) {
-            originalHeight = 45;
-        } else {
-            originalHeight = 55;
+    })
+    $('#MenuBox .item,#FooterItems a').click(function() {
+        $('#item_container .products').toggleClass('active');
+        if (OriginalScrollTop == null || $(window).scrollTop() != 0) {
+
+            OriginalScrollTop = $(window).scrollTop();
+            if ($('.mainmenu').hasClass('fixedMenu')) {
+                originalHeight = 45;
+            } else {
+                originalHeight = 55;
+            }
         }
-    }
+        $('#item_container .item').eq(oringalCollection).toggleClass('active');
+        $('#pcProductsMenu').fadeToggle("fast");
+        var nowId = $(this).attr("id");
+        //console.log(nowId);
+        $('.control .tab').removeClass("open");
+        $('.control #' + nowId).addClass("open");
+        // $('.product_list_container').removeClass('open');
+        // $('.product_list_container#' + nowId).addClass('open');
+        $('.product_list_container').not('#' + nowId).slideUp(0);
+        $('.product_list_container#' + nowId).slideDown(0);
+        $('html, body').toggleClass('disable_scroll');
 
-    $('#pcProductsMenu').fadeToggle("fast");
-    var nowId = $(this).attr("id");
-    //console.log(nowId);
-    $('.control .tab').removeClass("open");
-    $('.control #' + nowId).addClass("open");
-    // $('.product_list_container').removeClass('open');
-    // $('.product_list_container#' + nowId).addClass('open');
-    $('.product_list_container').not('#' + nowId).slideUp(0);
-    $('.product_list_container#' + nowId).slideDown(0);
-    $('html, body').toggleClass('disable_scroll');
-
-})
+    })
+}
 
 
 //-----------------------------------------------------pc產品控制
@@ -830,8 +843,8 @@ function nowSection(nav) {
     var detect = $('#PdSectionDetect');
     var navObj = nav;
     var pagesection = $('.pageSection');
-    var navQuantity = navObj.find('.items').size();
-    var sectionQuantity = $('.pageSection').size();
+    var navQuantity = navObj.find('.items').length;
+    var sectionQuantity = $('.pageSection').length;
 
 
     if (navQuantity == navQuantity) {
@@ -932,27 +945,6 @@ function ctrlSelectBox() {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //處理select-text選單-----------------------------------
 //截斷文字截斷文字截斷文字截斷文字截斷文字截斷文字截斷文字截斷文字

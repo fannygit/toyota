@@ -23,8 +23,8 @@ namespace Begonia.Toyota.WebSite.Controllers
     {
         public FixedDataService htmlService = new FixedDataService();
 
-        public string domain = ConfigurationManager.AppSettings["domain"];
-        public string secretKey = ConfigurationManager.AppSettings["secretKey"];
+        public string Domain = ConfigurationManager.AppSettings["domain"];
+        public string SecretKey = ConfigurationManager.AppSettings["secretKey"];
         // GET: /WebSite/
         
 
@@ -159,8 +159,8 @@ namespace Begonia.Toyota.WebSite.Controllers
             info = Service.Get1("", nid);
             TempData["ogtitle"] = info.Title;
             TempData["ogdescription"] = RemoveHTMLTag(info.Detail.Length >= 100 ? info.Detail.Substring(0, 100)+"..." : info.Detail);
-            TempData["ogurl"] = domain + "WebSite/news?nid=" + info.Id;
-            TempData["ogimage"] = domain + "File/Get?FileId=" + info.ListImg;
+            TempData["ogurl"] = Domain + "WebSite/news?nid=" + info.Id;
+            TempData["ogimage"] = Domain + "File/Get?FileId=" + info.ListImg;
             return View(info);
         }
 
@@ -494,7 +494,7 @@ namespace Begonia.Toyota.WebSite.Controllers
                 // response:回傳的Token
                 // remoteip:設定的Domain Name
 
-                string posStr = "secret=" + secretKey + "&response=" + Request.Form["captchaToken"] + "&remoteip=" + Request.Url.Host;
+                string posStr = "secret=" + SecretKey + "&response=" + Request.Form["captchaToken"] + "&remoteip=" + Request.Url.Host;
                 byte[] byteStr = Encoding.UTF8.GetBytes(posStr);
                 req.Method = "POST";
                 req.ContentType = "application/x-www-form-urlencoded";
@@ -551,7 +551,7 @@ namespace Begonia.Toyota.WebSite.Controllers
                 // secret:secret_key
                 // response:回傳的Token
                 // remoteip:設定的Domain Name
-                string posStr = "secret=" + secretKey + "&response=" + Request.Form["captchaToken"] + "&remoteip=" + Request.Url.Host;
+                string posStr = "secret=" + SecretKey + "&response=" + Request.Form["captchaToken"] + "&remoteip=" + Request.Url.Host;
                 byte[] byteStr = Encoding.UTF8.GetBytes(posStr);
                 req.Method = "POST";
                 req.ContentType = "application/x-www-form-urlencoded";
@@ -587,9 +587,10 @@ namespace Begonia.Toyota.WebSite.Controllers
                     var m = htmlService.Get2("", FixedData2.聯絡我們信箱.ToString());
                     if (!string.IsNullOrEmpty(m.MailBoxReceiver))
                     {
-                        model1.Email = model1.Email + "," + m.MailBoxReceiver;
+                        Utils.SendMailByGmail(m.MailBoxReceiver, m.MailBoxSender, "台灣豐田產業機械 聯絡我們", body);
+                        //model1.Email = model1.Email + "," + m.MailBoxReceiver;
                     }
-                    Utils.SendMailByGmail(model1.Email, m.MailBoxSender,"台灣豐田產業機械 聯絡我們", body);
+                   
                     return RedirectToAction("ContactUs");
                 }
             }
@@ -667,7 +668,7 @@ namespace Begonia.Toyota.WebSite.Controllers
                 // secret:secret_key
                 // response:回傳的Token
                 // remoteip:設定的Domain Name
-                string posStr = "secret=" + secretKey + "&response=" + Request.Form["captchaToken"] + "&remoteip=" + Request.Url.Host;
+                string posStr = "secret=" + SecretKey + "&response=" + Request.Form["captchaToken"] + "&remoteip=" + Request.Url.Host;
                 byte[] byteStr = Encoding.UTF8.GetBytes(posStr);
                 req.Method = "POST";
                 req.ContentType = "application/x-www-form-urlencoded";
@@ -707,9 +708,10 @@ namespace Begonia.Toyota.WebSite.Controllers
                     var m = htmlService.Get2("", FixedData2.索取型錄信箱.ToString());
                     if (!string.IsNullOrEmpty(m.MailBoxReceiver))
                     {
-                        model1.Email = model1.Email + "," + m.MailBoxReceiver;
+                        Utils.SendMailByGmail(m.MailBoxReceiver, m.MailBoxSender, "台灣豐田產業機械 索取型錄", body);
+                        //model1.Email = model1.Email + "," + m.MailBoxReceiver;
                     }
-                    Utils.SendMailByGmail(model1.Email, m.MailBoxSender, "台灣豐田產業機械 索取型錄", body);
+                    
                     return RedirectToAction("RequestCatalogs");
                 }
             }
