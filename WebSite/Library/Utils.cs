@@ -13,12 +13,19 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Begonia.Toyota.WebSite.Service;
 
 namespace Begonia.Toyota.WebSite.Library
 {
 
     public static class Utils
     {
+        public static string GetUserAccount(string userName)
+        {
+            AccountService acs = new AccountService();
+            return acs.GetUserAccount(userName);
+        }
+
 
         public static void SendMailByGmail(string MailList, string mailSender, string Subject, string Body)
         {

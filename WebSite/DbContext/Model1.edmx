@@ -325,28 +325,28 @@
           <Property Name="UpdateUserId" Type="nvarchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="toyota_machineryModelStoreContainer">
-          <EntitySet Name="a_used_car_engine" EntityType="Self.a_used_car_engine" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="a_used_car_info" EntityType="Self.a_used_car_info" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="a_used_car_info_img" EntityType="Self.a_used_car_info_img" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="contact_catalog_manager" EntityType="Self.contact_catalog_manager" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="contact_us_manager" EntityType="Self.contact_us_manager" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="fixed_data" EntityType="Self.fixed_data" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="fixed_data2" EntityType="Self.fixed_data2" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="index_banner" EntityType="Self.index_banner" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="index_video" EntityType="Self.index_video" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="info_location" EntityType="Self.info_location" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="info_news" EntityType="Self.info_news" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="info_prize" EntityType="Self.info_prize" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="log_login" EntityType="Self.log_login" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="log_news" EntityType="Self.log_news" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="product_accessories" EntityType="Self.product_accessories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="product_info" EntityType="Self.product_info" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="product_info_accessories_list" EntityType="Self.product_info_accessories_list" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="product_info_spc_image" EntityType="Self.product_info_spc_image" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="question_and_answer" EntityType="Self.question_and_answer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="T_Account" EntityType="Self.T_Account" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="T_Account_Permission_Mapping" EntityType="Self.T_Account_Permission_Mapping" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="T_Permission" EntityType="Self.T_Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="a_used_car_engine" EntityType="Self.a_used_car_engine" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="a_used_car_info" EntityType="Self.a_used_car_info" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="a_used_car_info_img" EntityType="Self.a_used_car_info_img" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="contact_catalog_manager" EntityType="Self.contact_catalog_manager" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="contact_us_manager" EntityType="Self.contact_us_manager" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="fixed_data" EntityType="Self.fixed_data" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="fixed_data2" EntityType="Self.fixed_data2" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="index_banner" EntityType="Self.index_banner" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="index_video" EntityType="Self.index_video" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="info_location" EntityType="Self.info_location" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="info_news" EntityType="Self.info_news" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="info_prize" EntityType="Self.info_prize" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="log_login" EntityType="Self.log_login" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="log_news" EntityType="Self.log_news" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="product_accessories" EntityType="Self.product_accessories" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="product_info" EntityType="Self.product_info" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="product_info_accessories_list" EntityType="Self.product_info_accessories_list" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="product_info_spc_image" EntityType="Self.product_info_spc_image" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="question_and_answer" EntityType="Self.question_and_answer" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="T_Account" EntityType="Self.T_Account" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="T_Account_Permission_Mapping" EntityType="Self.T_Account_Permission_Mapping" Schema="tmht" store:Type="Tables" />
+          <EntitySet Name="T_Permission" EntityType="Self.T_Permission" Schema="tmht" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>

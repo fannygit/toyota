@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@using Begonia.Toyota.WebSite.Library
+<!doctype html>
 <html dir="ltr" lang="zh-TW" itemscope itemtype="http://schema.org/Blog">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -76,7 +77,7 @@
 <div id="WRAPPER">
     <header id="HEADER">
         <h1><img src="~/manage/images/logo.jpg" alt="網站後台管理平台" width="219" height="92"></h1>
-        <article id="HELLO">您好，admin 現在是 @DateTime.Now.ToString("yyyy/MM/dd HH:mm")</article>
+        <article id="HELLO">您好，@Utils.GetUserAccount(User.Identity.Name) 現在是 @DateTime.Now.ToString("yyyy/MM/dd HH:mm")</article>
         @*<nav id="NAV"> 橘色上方BAR不要
                 <ul>
                     <li class="CC"><a href="#">系統管理</a></li>

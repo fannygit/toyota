@@ -64,8 +64,7 @@ namespace Begonia.Toyota.WebSite.Service
                 basedb.SaveChanges();
             }
         }
-
-
+        
         public string GetClientIP()
         {
             // 取得本機名稱
@@ -89,6 +88,13 @@ namespace Begonia.Toyota.WebSite.Service
         }
 
 
+        public string GetUserAccount(string userName)
+        {
+            return (from p in basedb.T_Account
+                where p.Id == userName
+                select p.Account).FirstOrDefault();
+
+        }
 
         public List<string> GetHaveRoles(string account)
         {
